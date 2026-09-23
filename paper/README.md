@@ -17,8 +17,13 @@ Packages used (all part of TeX Live): `newpx` (with `newtx`, `txfonts`, `fontaxe
 The figures in `figures/` are crops of the final frames of the animations (light theme); they are
 produced by `../animations/render.sh` (see `../animations/crop_figures.py`).
 
-Items still to be supplied are typeset in red: the authors, the date, and the confirmation of the
-comparator run.
+Two items remain for the authors; both are typeset in red on the title page of `main.pdf`:
+
+- the authors, with affiliations and emails: `\author{…}` in `main.tex`, and `pdfauthor` in the
+  `\hypersetup` line below it;
+- the date: `\date{…}`.
+
+Once both are filled in, the `\placeholder` macro can be deleted.
 
 `check_lean_names.py` lists the Lean names cited in `main.tex` (`\leanname{…}`) that the library
 does not declare; run it from the repository root after the library changes:

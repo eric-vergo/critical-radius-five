@@ -26,7 +26,7 @@ classification:
   msc2020: ["20B07", "37E05", "37E10", "11R18"]
 
 sources:
-  - title: "The critical radius of GG_5 (both halves), first presented in this formalization"
+  - title: "The critical radius of GG_5: the lower bound and the equality, first presented in this formalization"
     type: original-proof
     relationship: other
     note: >-
