@@ -34,7 +34,7 @@ namespace CriticalRadiusFive
 starting from any point are pairwise distinct. -/
 theorem iterate_injective_of_irrational {L α : ℝ} (hα : Irrational (α / L)) {T : ℝ → ℝ}
     (hT : ∀ t, ∃ m : ℤ, T t = t + α + m * L) (t₀ : ℝ) :
-    Function.Injective fun k : ℕ => T^[k] t₀ := by
+    Function.Injective fun k : ℕ ↦ T^[k] t₀ := by
   have key (k : ℕ) : ∃ m : ℤ, T^[k] t₀ = t₀ + k * α + m * L := by
     induction k with
     | zero => exact ⟨0, by simp⟩
@@ -64,8 +64,8 @@ theorem infinite_orbit_of_irrational_rotation {X : Type*} {G : Subgroup (Equiv.P
     (hG : ∀ t ∈ W, ∃ g ∈ G, g (x t) = x (T t)) {t₀ : ℝ} (ht₀ : t₀ ∈ W) :
     (orbit G (x t₀)).Infinite := by
   have hW (k : ℕ) : T^[k] t₀ ∈ W := hTW.iterate k ht₀
-  refine infinite_of_injective_forall_mem (f := fun k : ℕ => x (T^[k] t₀))
-    (fun i j hij => iterate_injective_of_irrational hα hT t₀ (hx (hW i) (hW j) hij)) fun k => ?_
+  refine infinite_of_injective_forall_mem (f := fun k : ℕ ↦ x (T^[k] t₀))
+    (fun i j hij ↦ iterate_injective_of_irrational hα hT t₀ (hx (hW i) (hW j) hij)) fun k ↦ ?_
   induction k with
   | zero => exact mem_orbit_self _
   | succ k ih =>
@@ -97,7 +97,7 @@ theorem exists_march {ε η y : ℝ} (hε : ε ≠ 0) (h : 2 * η + |ε| < 1) :
     exact ⟨j, by rw [div_lt_iff₀ hpos] at hj; linarith⟩
   have hspec := Nat.find_spec hex
   have hpos' : 0 < Nat.find hex := by
-    refine Nat.pos_of_ne_zero fun h0 => ?_
+    refine Nat.pos_of_ne_zero fun h0 ↦ ?_
     rw [h0] at hspec
     push_cast at hspec
     linarith
@@ -164,7 +164,7 @@ theorem exists_cut_levels {δ t L : ℝ} (hδ : 0 < δ) (ht : Irrational (t / δ
     linarith
   -- March from the levels `1` and `-1`, `a` levels at a time.
   set J := ⌈1 / |ε|⌉₊ + 1
-  refine ⟨1 + J * a, fun Z => ⟨?_, ?_⟩⟩
+  refine ⟨1 + J * a, fun Z ↦ ⟨?_, ?_⟩⟩
   · obtain ⟨j, hj, k, h₁, h₂⟩ := exists_march (y := θ - Z / δ) hε hεη
     have hja : j * a ≤ J * a := Nat.mul_le_mul_right a hj
     have e : θ * ((1 + j * a : ℕ) : ℤ) - Z / δ = θ - Z / δ + j * ε + (j * b : ℤ) := by

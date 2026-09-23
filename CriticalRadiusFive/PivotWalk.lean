@@ -87,7 +87,7 @@ theorem mapsTo_reach_left (hV : EdgeClosed p r V) {g : Equiv.Perm ℂ} {κ : ℂ
   by_cases h : ‖toC f * (p + 1 - 2 * toC v) - 1 + 1‖ ≤ r
   · have hv : v ∈ V := hfv.pivot_mem (by rw [Window, ← hnorm]; exact h)
     rw [hg _ h, sub_add_cancel, ← mul_assoc, ← hρκ]
-    refine mem_reach ⟨hρ f hfv.unit, hfv.cls_pivot, fun _ => hv, fun hw => ?_, .inl hv⟩
+    refine mem_reach ⟨hρ f hfv.unit, hfv.cls_pivot, fun _ ↦ hv, fun hw ↦ ?_, .inl hv⟩
     exact hV.add_mem v hv hfv.cls_pivot _ (bar_mem_units _ (hρ f hfv.unit)) hw
   · rw [hg' _ h]
     exact mem_reach hfv
@@ -124,8 +124,8 @@ theorem mapsTo_reach_right (hV : EdgeClosed p r V) {g : Equiv.Perm ℂ} {κ : �
       rw [toC_sub, hρκ]
       linear_combination (-2 : ℂ) * hmm'
     rw [hg _ h, hx, key]
-    refine mem_reach ⟨hf', ?_, fun hw => hV.sub_mem t ht hct _ (bar_mem_units _ hf') hw,
-      fun _ => by rw [hback]; exact ht, .inr (by rw [hback]; exact ht)⟩
+    refine mem_reach ⟨hf', ?_, fun hw ↦ hV.sub_mem t ht hct _ (bar_mem_units _ hf') hw,
+      fun _ ↦ by rw [hback]; exact ht, .inr (by rw [hback]; exact ht)⟩
     have := cls_of_mem_units _ (bar_mem_units _ hf')
     rw [cls_sub]
     omega
@@ -139,12 +139,12 @@ theorem orbit_subset_reach (hV : EdgeClosed p r V) (h₀ : Good p r V (1, 0, 0, 
     orbit (GG 5 r) p ⊆ reach p r V := by
   refine orbit_subset_of_mapsTo ?_ ?_ ?_ ?_ ⟨_, _, h₀, by simp⟩
   · exact mapsTo_reach_left hV mulZetaInv_mem_units toC_mulZetaInv
-      (fun _ => genA_apply_of_le) (fun _ => genA_apply_of_not_le)
+      (fun _ ↦ genA_apply_of_le) (fun _ ↦ genA_apply_of_not_le)
   · exact mapsTo_reach_left hV mulZeta_mem_units toC_mulZeta
-      (fun _ => genA_inv_apply_of_le) (fun _ => genA_inv_apply_of_not_le)
+      (fun _ ↦ genA_inv_apply_of_le) (fun _ ↦ genA_inv_apply_of_not_le)
   · exact mapsTo_reach_right hV mulZetaInv_mem_units toC_mulZetaInv
-      (fun _ => genB_apply_of_le) (fun _ => genB_apply_of_not_le)
+      (fun _ ↦ genB_apply_of_le) (fun _ ↦ genB_apply_of_not_le)
   · exact mapsTo_reach_right hV mulZeta_mem_units toC_mulZeta
-      (fun _ => genB_inv_apply_of_le) (fun _ => genB_inv_apply_of_not_le)
+      (fun _ ↦ genB_inv_apply_of_le) (fun _ ↦ genB_inv_apply_of_not_le)
 
 end CriticalRadiusFive

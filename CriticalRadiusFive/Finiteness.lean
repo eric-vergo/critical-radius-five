@@ -56,16 +56,16 @@ theorem finite_of_encard_orbit_le {G : Subgroup (Equiv.Perm X)} {s : Set (Equiv.
   subst hG
   -- A homomorphism out of `G` is determined by its values on the generators, so only finitely
   -- many `ψ x` occur.
-  have hgen : Function.Injective fun (φ : Subgroup.closure s →* Equiv.Perm (Fin N)) (g : s) =>
+  have hgen : Function.Injective fun (φ : Subgroup.closure s →* Equiv.Perm (Fin N)) (g : s) ↦
       φ ⟨g, Subgroup.subset_closure g.2⟩ := by
     intro φ φ' h
-    refine MonoidHom.eq_of_eqOn_dense Subgroup.closure_closure_coe_preimage fun g hg => ?_
+    refine MonoidHom.eq_of_eqOn_dense Subgroup.closure_closure_coe_preimage fun g hg ↦ ?_
     exact congrFun h ⟨g, hg⟩
   have : Finite s := hs.to_subtype
   have : Finite (range ψ) := Finite.of_injective _ (hgen.comp Subtype.val_injective)
   -- Evaluating all the `ψ x` embeds `G` into a finite product of copies of `Perm (Fin N)`.
-  refine Finite.of_injective (fun g (φ : range ψ) => φ.1 g) fun g h hgh => ?_
-  refine Subtype.ext (Equiv.ext fun x => ?_)
+  refine Finite.of_injective (fun g (φ : range ψ) ↦ φ.1 g) fun g h hgh ↦ ?_
+  refine Subtype.ext (Equiv.ext fun x ↦ ?_)
   have h₁ : ψ x g = ψ x h := congrFun hgh ⟨ψ x, x, rfl⟩
   have h₂ := congr($(Equiv.Perm.viaEmbeddingHom_injective _ h₁) ⟨x, mem_orbit_self x⟩)
   exact congrArg Subtype.val h₂
@@ -119,13 +119,13 @@ theorem infinite_of_infinite_orbit {X : Type*} {G : Subgroup (Equiv.Perm X)} {p 
     (h : (orbit G p).Infinite) : Infinite G := by
   by_contra hG
   rw [not_infinite_iff_finite] at hG
-  exact h (finite_range fun g : G => g • p)
+  exact h (finite_range fun g : G ↦ g • p)
 
 /-- **Finiteness is monotone in the radius.** If `GG n r'` is finite and `r ≤ r'`, then `GG n r`
 is finite: its orbits lie in those of `GG n r'`, which have at most `|GG n r'|` points. -/
 theorem finite_GG_of_le (hr : r ≤ r') (hfin : Finite (GG n r')) : Finite (GG n r) := by
   refine finite_of_encard_orbit_le rfl (toFinite {genA n r, genB n r}) (Nat.card (GG n r'))
-    fun p => ?_
+    fun p ↦ ?_
   calc (orbit (GG n r) p).encard ≤ (orbit (GG n r') p).encard :=
         encard_le_encard (orbit_subset_orbit_of_le n hr p)
     _ ≤ (univ : Set (GG n r')).encard := by
@@ -138,14 +138,14 @@ theorem finite_GG_of_le (hr : r ≤ r') (hfin : Finite (GG n r')) : Finite (GG n
 /-- Off the disks nothing moves: at a negative radius both generators are the identity. -/
 theorem GG_eq_bot_of_neg (hr : r < 0) : GG n r = ⊥ := by
   have h (c : ℂ) : turn c r (-(2 * Real.pi / n)) = 1 :=
-    Equiv.ext fun z => turn_apply_of_not_le fun h => (norm_nonneg _).trans h |>.not_gt hr
+    Equiv.ext fun z ↦ turn_apply_of_not_le fun h ↦ (norm_nonneg _).trans h |>.not_gt hr
   simp [GG, genA, genB, h]
 
 /-- **The critical radius is a threshold.** If `GG n r` is finite for every `r < R` but infinite
 at `R`, then it is finite exactly for `r < R`. -/
 theorem finite_GG_iff_of_forall_lt {R : ℝ} (hfin : ∀ r < R, Finite (GG n r))
     (hinf : Infinite (GG n R)) (r : ℝ) : Finite (GG n r) ↔ r < R := by
-  refine ⟨fun h => ?_, hfin r⟩
+  refine ⟨fun h ↦ ?_, hfin r⟩
   by_contra hR
   have := finite_GG_of_le (not_lt.1 hR) h
   exact not_finite (GG n R)

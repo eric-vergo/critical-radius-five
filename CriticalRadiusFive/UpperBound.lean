@@ -241,10 +241,10 @@ theorem infinite_orbit_zero : (orbit (GG 5 √(3 + φ)) (0 : ℂ)).Infinite := b
     unfold chordRot
     split_ifs
     exacts [⟨0, by simp⟩, ⟨-1, by push_cast; ring⟩]
-  have hx : InjOn (fun s : ℝ => s • chordE) (Ico (-1) 1) :=
+  have hx : InjOn (fun s : ℝ ↦ s • chordE) (Ico (-1) 1) :=
     (smul_left_injective ℝ chordE_ne_zero).injOn
   simpa using infinite_orbit_of_irrational_rotation hα hT chordRot_mapsTo hx
-    (fun s hs => exists_mem_GG_apply_smul_chordE hs) (t₀ := 0) (by norm_num)
+    (fun s hs ↦ exists_mem_GG_apply_smul_chordE hs) (t₀ := 0) (by norm_num)
 
 /-- **Theorem 2** (Hearn–Kretschmer–Rokicki–Streeter–Vergo). `GG₅` is infinite at
 `r = √(3 + φ)`. -/

@@ -235,7 +235,7 @@ theorem exists_isCutLevel {r : ℝ} (hr : r ^ 2 < 3 + φ) :
   have := goldenRatio_lt
   obtain ⟨N, hN⟩ := exists_cut_levels (δ := 3 - φ) (t := -5) (by linarith)
     irrational_neg_five_div (two_mul_lensWidth_lt hr)
-  exact ⟨N, fun w₀ => hN (cutCenter w₀)⟩
+  exact ⟨N, fun w₀ ↦ hN (cutCenter w₀)⟩
 
 /-- A pivot on a cut level cannot take an active step inside the window: its value of `ψ` would lie
 both in the lens window and in the progression that the window misses. -/
@@ -321,18 +321,18 @@ theorem edgeClosed_cutSet {p : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {q₁ q₁' 
     exact ⟨hve, .inl (by rw [cls_sub]; omega), key he hv hve (.inr ⟨hc, rfl⟩)⟩
 
 /-- If `p` lies in one of the disks, the initial state — pivot `0`, tip `1` — is good for the
-invariant set between cut levels `q₊ ≥ 1` and `q₋ ≤ -1`. -/
+invariant set, as long as the upper cut levels are `≥ 1` and the lower ones `≤ -1`. -/
 theorem good_cutSet {p : ℂ} {r : ℝ} (hp : ‖p + 1‖ ≤ r ∨ ‖p - 1‖ ≤ r) {q₁ q₁' q₂ q₂' : ℤ}
     (hq₁ : 1 ≤ q₁) (hq₁' : q₁' ≤ -1) (hq₂ : 1 ≤ q₂) (hq₂' : q₂' ≤ -1) :
     Good p r (cutSet p r q₁ q₁' q₂ q₂') (1, 0, 0, 0) 0 := by
   have htip : (0 : Cyc) + bar (1, 0, 0, 0) = (1, 0, 0, 0) := by decide
-  have h₀ : Window p r 0 → 0 ∈ cutSet p r q₁ q₁' q₂ q₂' := fun hw => ⟨hw, .inl (by decide),
+  have h₀ : Window p r 0 → 0 ∈ cutSet p r q₁ q₁' q₂ q₂' := fun hw ↦ ⟨hw, .inl (by decide),
     by rw [show level 0 = 0 by decide]; omega,
     by rw [show level (mulZetaInv 0) = 0 by decide]; omega⟩
-  have h₁ : Window p r (1, 0, 0, 0) → (1, 0, 0, 0) ∈ cutSet p r q₁ q₁' q₂ q₂' := fun hw =>
+  have h₁ : Window p r (1, 0, 0, 0) → (1, 0, 0, 0) ∈ cutSet p r q₁ q₁' q₂ q₂' := fun hw ↦
     ⟨hw, .inr (by decide), by rw [show level (1, 0, 0, 0) = 3 by decide]; omega,
       by rw [show level (mulZetaInv (1, 0, 0, 0)) = -2 by decide]; omega⟩
-  refine ⟨by decide, by decide, h₀, fun hw => ?_, ?_⟩
+  refine ⟨by decide, by decide, h₀, fun hw ↦ ?_, ?_⟩
   · rw [htip] at hw ⊢
     exact h₁ hw
   · rw [htip]
@@ -430,7 +430,7 @@ theorem finite_GG_five_of_lt {r : ℝ} (hr : r < √(3 + φ)) : Finite (GG 5 r) 
   obtain ⟨N, hN⟩ := exists_isCutLevel hr₂
   set K : ℤ := 2 * (⌈2 + 2 * r⌉₊ + 5 * N : ℕ) + 1 with hK
   refine finite_of_encard_orbit_le rfl (Set.toFinite {genA 5 r, genB 5 r}) (units ×ˢ box K).card
-    fun p => ?_
+    fun p ↦ ?_
   by_cases hp : ‖p + 1‖ ≤ r ∨ ‖p - 1‖ ≤ r
   swap
   · -- A point off both disks is fixed.
@@ -452,7 +452,7 @@ theorem finite_GG_five_of_lt {r : ℝ} (hr : r < √(3 + φ)) : Finite (GG 5 r) 
   -- Every pivot lies in the box: it or its tip lies in the invariant set, and the step between
   -- them has coordinates in `[-1, 1]`.
   have himg : reach p r (cutSet p r q₁ q₁' q₂ q₂') ⊆ ((units ×ˢ box K).image
-      fun fv : Cyc × Cyc => toC fv.1 * (p + 1 - 2 * toC fv.2) - 1 : Set ℂ) := by
+      fun fv : Cyc × Cyc ↦ toC fv.1 * (p + 1 - 2 * toC fv.2) - 1 : Set ℂ) := by
     rintro _ ⟨f, v, hfv, rfl⟩
     refine Finset.mem_coe.2 (Finset.mem_image.2 ⟨(f, v), Finset.mem_product.2 ⟨hfv.unit, ?_⟩, rfl⟩)
     rcases hfv.mem with hv | hv
@@ -469,7 +469,7 @@ theorem finite_GG_five_of_lt {r : ℝ} (hr : r < √(3 + φ)) : Finite (GG 5 r) 
       omega
   calc (orbit (GG 5 r) p).encard
       ≤ ((units ×ˢ box K).image
-          fun fv : Cyc × Cyc => toC fv.1 * (p + 1 - 2 * toC fv.2) - 1 : Set ℂ).encard :=
+          fun fv : Cyc × Cyc ↦ toC fv.1 * (p + 1 - 2 * toC fv.2) - 1 : Set ℂ).encard :=
         encard_le_encard (hsub.trans himg)
     _ ≤ (units ×ˢ box K).card := by
         rw [encard_coe_eq_coe_finsetCard]

@@ -56,8 +56,8 @@ the two turns `genA n r` and `genB n r`. -/
 def GG (n : ℕ) (r : ℝ) : Subgroup (Equiv.Perm ℂ) := Subgroup.closure {genA n r, genB n r}
 
 /-- The critical radius of `GG n`: the supremum of the radii `r` at which `GG n r` is finite.
-(As always in Mathlib, `sSup` of a set that is empty or unbounded above is `0`; for `n = 5` the set
-is the interval `(-∞, √(3 + φ))`.) -/
+(As always in Mathlib, `sSup` of a set that is empty or unbounded above is `0`. For `n = 5` the set
+is the interval `(-∞, √(3 + φ))`: this is the theorem `finite_GG_five_iff`.) -/
 def criticalRadius (n : ℕ) : ℝ := sSup {r : ℝ | Finite (GG n r)}
 
 end CriticalRadiusFive

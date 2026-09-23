@@ -34,10 +34,10 @@ namespace CriticalRadiusFive
 
 /-- **`GG₅(r)` is finite exactly below `√(3 + φ)`.** -/
 theorem finite_GG_five_iff (r : ℝ) : Finite (GG 5 r) ↔ r < √(3 + φ) :=
-  finite_GG_iff_of_forall_lt (fun _ => finite_GG_five_of_lt) infinite_GG_five r
+  finite_GG_iff_of_forall_lt (fun _ ↦ finite_GG_five_of_lt) infinite_GG_five r
 
 /-- **The critical radius of `GG₅` is `√(3 + φ)`.** -/
 theorem criticalRadius_five : criticalRadius 5 = √(3 + φ) :=
-  criticalRadius_eq_of_forall_lt (fun _ => finite_GG_five_of_lt) infinite_GG_five
+  criticalRadius_eq_of_forall_lt (fun _ ↦ finite_GG_five_of_lt) infinite_GG_five
 
 end CriticalRadiusFive
