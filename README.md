@@ -146,6 +146,14 @@ lake lint            # the Batteries/Mathlib environment linters, on the same mo
 commit, `Mathlib.Probability.Kernel.Invariance` and `Mathlib`); this is harmless, and `lake build`
 compiles them in a few seconds.
 
+`lake lint` lints the five modules in a single process, which imports Mathlib once per module and
+peaks at about 37 GB of memory (measured on macOS). With less memory, lint one module per process,
+as CI does (about 6 GB each):
+
+```sh
+for m in CriticalRadiusFive Challenge Solution Test Check; do lake exe runLinter "$m"; done
+```
+
 `lake build` reports the deliberate `sorry` of the two statements in `Challenge.lean` and nothing
 else. It fails if [`Test.lean`](Test.lean) finds any axiom other than the three standard ones:
 
