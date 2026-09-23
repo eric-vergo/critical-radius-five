@@ -12,13 +12,16 @@ import CriticalRadiusFive.Basic
   finite set and all of whose orbits have at most `N` points is finite. This is how finiteness is
   proved below the critical radius: every orbit is trapped in a finite set whose size depends on
   the radius only.
-* `exists_mem_GG_apply_eq`, `orbit_subset_orbit_of_le`: enlarging the radius can only enlarge the
-  orbits. The groups themselves are not nested — their generators are different permutations — but
-  at any single point a generator either acts by the same rotation for both radii or not at all.
-* `finite_GG_of_le`: consequently finiteness of `GG n r` is inherited by every smaller radius.
-* `finite_GG_iff_of_forall_lt`, `criticalRadius_eq_of_forall_lt`: a radius at which the group is
-  infinite, and below which it is always finite, is the critical radius; the group is finite
-  exactly below it.
+* `turn_apply_eq_or`, `exists_mem_GG_apply_eq`, `orbit_subset_orbit_of_le`: enlarging the radius
+  can only enlarge the orbits. The groups themselves are not nested — their generators are different
+  permutations — but at any single point a generator either acts by the same rotation for both
+  radii or not at all.
+* `infinite_of_infinite_orbit`: an infinite orbit makes the group infinite.
+* `finite_GG_of_le`: finiteness of `GG n r` is inherited by every smaller radius.
+* `GG_eq_bot_of_neg`: at a negative radius both generators are the identity.
+* `finite_GG_iff_of_forall_lt`, `criticalRadius_eq_of_forall_lt` (**the critical radius is a
+  threshold**): if the group is finite at every radius below `R` and infinite at `R`, then it is
+  finite exactly below `R`, and `R` is the critical radius.
 -/
 
 noncomputable section
@@ -156,21 +159,5 @@ theorem criticalRadius_eq_of_forall_lt {R : ℝ} (hfin : ∀ r < R, Finite (GG n
     (hinf : Infinite (GG n R)) : criticalRadius n = R := by
   have : {r : ℝ | Finite (GG n r)} = Iio R := ext (finite_GG_iff_of_forall_lt hfin hinf)
   rw [criticalRadius, this, csSup_Iio]
-
-/-- **An infinite radius is an upper bound.** If `GG n R` is infinite then every radius at which the
-group is finite is below `R`; in particular `criticalRadius n ≤ R` whenever the finite radii are
-bounded above at all (they are, by `criticalRadius_eq_of_forall_lt`, once some radius is infinite). -/
-theorem lt_of_finite_of_infinite {R r : ℝ} (hinf : Infinite (GG n R)) (hfin : Finite (GG n r)) :
-    r < R := by
-  by_contra hR
-  have := finite_GG_of_le (not_lt.1 hR) hfin
-  exact not_finite (GG n R)
-
-/-- **Finite below `R` means `R` is at most the critical radius**, provided the finite radii are
-bounded above (which `criticalRadius_eq_of_forall_lt` supplies once some radius is infinite). -/
-theorem le_criticalRadius_of_forall_lt {R : ℝ} (hfin : ∀ r < R, Finite (GG n r))
-    (hbdd : BddAbove {r : ℝ | Finite (GG n r)}) : R ≤ criticalRadius n :=
-  le_of_forall_lt fun r hr ↦
-    lt_of_lt_of_le (by linarith : r < (r + R) / 2) (le_csSup hbdd (hfin _ (by linarith)))
 
 end CriticalRadiusFive

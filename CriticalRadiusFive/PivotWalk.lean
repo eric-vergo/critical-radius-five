@@ -19,10 +19,10 @@ pivot `ν` to its *tip* `ν + m̄`: a letter `a^{±1}` acts only if `ν` lies in
 `‖p + 1 - 2ν‖ ≤ r`, and then it keeps `ν` and turns `m`; a letter `b^{±1}` acts only if the tip
 lies in the window, and then the tip becomes the new pivot's tip, `ν ↦ (ν + m̄) - m̄'`.
 
-Hence the pivots and tips walk on the lattice points in the window, by steps that are fifth roots
-of unity. Since `n = 5` is odd the walk is *typed*: it adds `m̄ ∈ μ₅` going from a pivot to its tip
-and subtracts one going back. As every fifth root of unity is `≡ 1` modulo the prime `1 - ζ`,
-pivots have class `0` and tips class `1` modulo `1 - ζ` (`Cyc.cls`).
+Hence the pivots and tips walk on the lattice by steps that are fifth roots of unity, turning only
+about an end that lies in the window. Since `n = 5` is odd the walk is *typed*: it adds `m̄ ∈ μ₅`
+going from a pivot to its tip and subtracts one going back. As every fifth root of unity is `≡ 1`
+modulo the prime `1 - ζ`, pivots have class `0` and tips class `1` modulo `1 - ζ` (`Cyc.cls`).
 
 `orbit_subset_reach` makes this precise: for any set `V` of lattice points that is closed under
 typed steps inside the window (`EdgeClosed`), the orbit of `p` consists of points

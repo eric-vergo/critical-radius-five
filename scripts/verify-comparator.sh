@@ -14,8 +14,9 @@
 # the repository). Requirements: git, python3, cargo, elan (lake), and on Linux
 # also go.
 #
-# Sandbox. On Linux, the comparator runs every build, export and kernel replay
-# inside the landrun (Landlock) sandbox, through scripts/landrun-wrapper.sh.
+# Sandbox. On Linux, the comparator runs the builds, the exports and the nanoda
+# replay inside the landrun (Landlock) sandbox, through scripts/landrun-wrapper.sh;
+# the Lean kernel replays the exported solution in the comparator's own process.
 # landrun exists only on Linux. On any other system the script stops, unless
 # COMPARATOR_ALLOW_UNSANDBOXED=1 is set: then the comparator's development shim
 # scripts/fake-landrun.sh stands in for landrun and runs the same commands with

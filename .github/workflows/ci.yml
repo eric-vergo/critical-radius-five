@@ -2,8 +2,8 @@
 #
 # hygiene:    no `sorry` outside Challenge.lean, Challenge.lean imports only
 #             Mathlib, and the landrun wrapper keeps its option policy.
-# build:      builds the library, Challenge, Solution and the axiom audit Test,
-#             and runs the environment linters (lake lint).
+# build:      builds the library, Challenge, Solution, the axiom audit Test and the
+#             reading guide Check, and runs the environment linters (lake lint).
 # comparator: checks with the pinned Lean FRO comparator, inside the landrun
 #             sandbox, that Solution proves exactly the statements of Challenge
 #             (definitions included) with the standard axioms, replayed by the
@@ -126,12 +126,15 @@ jobs:
         with:
           persist-credentials: false
       # Installs elan, fetches the Mathlib cache, runs `lake build`, whose
-      # default targets are the library, Challenge, Solution and Test, and runs
-      # the environment linters with `lake lint`.
+      # default targets are the library, Challenge, Solution, Test and Check,
+      # and runs the environment linters with `lake lint` on the same modules.
+      # The GitHub cache of .lake stays off, as in the comparator job below;
+      # Mathlib comes from the Mathlib build cache.
       - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
         with:
           build: true
           lint: true
+          use-github-cache: false
       # Test.lean fixes the axioms of the main theorems with #guard_msgs, so any
       # other axiom fails this build.
       - name: Axiom audit

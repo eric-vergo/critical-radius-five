@@ -130,7 +130,7 @@ theorem smul_chordE (x y : ℤ) : ((x + y * φ : ℝ)) • chordE = toC (y, x, -
   linear_combination (-(y : ℂ) * (ζ ^ 2 - 2 * ζ + 1)) * cyclotomic_zeta_five +
     (-(y : ℂ) * (ζ - ζ ^ 2)) * hφ
 
-/-- `E ≠ 0`: indeed `‖E‖² = 2 - φ`. -/
+/-- `E ≠ 0`: indeed `‖E‖² = 3 - φ`. -/
 theorem chordE_ne_zero : chordE ≠ 0 := by
   intro h
   have := norm_toC_sq (0, 1, -1, 0)

@@ -21,22 +21,23 @@ real functional and its *level*.
 
 `ψ(ν) + ℓ(ν) = -δ B(ν)`,  `δ = 3 - φ`  (`psi_add_level`),
 
-so the values of `ψ` at level `ℓ` lie in the progression `-ℓ + δ ℤ`. A step `e ∈ μ₅` changes the
-level by `ℓ(e) ∈ {3, -2}`, and `ℓ ≡ 3 · class (mod 5)`: pivots sit at levels `≡ 0`, tips at levels
-`≡ 3`. The level can therefore only overshoot a bound `5q` through an *active* step (`ℓ(e) = 3`)
-from a pivot at level exactly `5q`, and only undershoot `5q` through an active step back to a
-pivot at level `5q`.
+so the values of `ψ` at level `ℓ` lie in the progression `-ℓ + δ ℤ`. A step from a pivot adds some
+`e ∈ μ₅` and changes the level by `ℓ(e) ∈ {3, -2}`; a step from a tip subtracts one. As
+`ℓ ≡ 3 · class (mod 5)`, pivots sit at levels `≡ 0` and tips at levels `≡ 3`. The level can
+therefore only overshoot a bound `5q` through an *active* step (`ℓ(e) = 3`) from a pivot at level
+exactly `5q`, and only undershoot `5q` through an active step back to a pivot at level `5q`.
 
-**The lens.** Both endpoints of such a step lie in the window, so by the lens bound `ψ` of the
-pivot lies within `L(r) = √((7 - 4φ)/4) · √(r² - 1)` of a centre that depends on `p` only
-(`abs_psi_sub_cutCenter_le`). For `r < √(3 + φ)` this window is shorter than the period:
+**The lens.** Only steps between two points of the window matter, since the invariant set consists
+of points of the window. For such an active step, the lens bound puts `ψ` of the pivot within
+`L(r) = √((7 - 4φ)/4) · √(r² - 1)` of a centre that depends on `p` only
+(`abs_psi_sub_cutCenter_le`). For `r < √(3 + φ)` this interval is shorter than the period:
 `2 L(r) < δ` (`two_mul_lensWidth_lt`), with equality exactly at `r = √(3 + φ)`.
 
 **Cut levels.** The progressions `-5q + δ ℤ` move with `q` by the irrational rotation
 `-5/δ = -(2 + φ)`, so there are *cut levels* `q₊ ≥ 1` and `q₋ ≤ -1` at which the window misses the
-progression, within a bound `N` that depends on `r` only (`exists_cut_levels`). No step of the walk
-crosses a cut level, so the level stays in the band `(5q₋, 5q₊]` (`level_mem_band`). The same holds
-for the turned functional `ψ ∘ ζ⁻¹`.
+progression, within a bound `N` that depends on `r` only (`exists_cut_levels`). No step between two
+points of the window crosses a cut level, so their levels stay in the band `(5q₋, 5q₊]`
+(`level_mem_band`). The same holds for the turned functional `ψ ∘ ζ⁻¹`.
 
 **Discreteness.** In the window `ψ` and `ψ ∘ ζ⁻¹` are bounded, and in the bands so are the two
 levels; together they bound the coordinates of the lattice point (`mem_box_of_abs_le`). So all

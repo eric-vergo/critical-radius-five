@@ -1,6 +1,10 @@
+# One monthly pull request that updates all pinned GitHub Actions together.
 version: 2
 updates:
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
