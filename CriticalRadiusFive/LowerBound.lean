@@ -122,9 +122,15 @@ theorem level_emod_five (v : Cyc) : level v % 5 = 3 * cls v % 5 := by
 /-- **The step table.** A fifth root of unity raises the level by `3` or lowers it by `2`. -/
 theorem level_of_mem_units : ∀ e ∈ units, level e = 3 ∨ level e = -2 := by decide
 
-/-- The two *active* steps `1` and `ζ²`, which raise the level, have the same value of `ψ`. -/
+/-- The two *active* steps `1` and `ζ²`, which raise the level, both have `ψ(e) = 3 - 2φ`. -/
 theorem psi_of_level_eq_three : ∀ e ∈ units, level e = 3 → psiRat e = 3 ∧ psiGold e = -2 := by
   decide
+
+/-- `‖u‖² = 5 - 3φ = (2 - φ)²`. -/
+theorem norm_bar_cutU_sq : ‖toC (bar cutU)‖ ^ 2 = 5 - 3 * φ := by
+  rw [norm_toC_sq, show normRat (bar cutU) = 5 by decide, show normGold (bar cutU) = -3 by decide]
+  push_cast
+  ring
 
 /-! ### The lens window -/
 
@@ -170,9 +176,7 @@ theorem abs_psi_sub_cutCenter_le {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {v
     push_cast at this
     linarith
   have hUe : ‖U * toC e‖ ^ 2 = 5 - 3 * φ := by
-    rw [norm_mul, norm_toC_of_mem_units he, mul_one, norm_toC_sq]
-    simp [cutU, bar, normRat, normGold]
-    ring
+    rw [norm_mul, norm_toC_of_mem_units he, mul_one, norm_bar_cutU_sq]
   have him : (U * toC e).im ^ 2 = (7 - 4 * φ) / 4 := by
     have := Complex.sq_norm (U * toC e)
     rw [hUe, normSq_apply, hre] at this
@@ -361,8 +365,7 @@ theorem norm_toC_le_of_window {p : ℂ} {r : ℝ} (hp : ‖p‖ ≤ 1 + r) {v : 
 theorem abs_psi_le (v : Cyc) : |psi v| ≤ 2 * ‖toC v‖ := by
   have h : ‖toC (bar cutU)‖ ≤ 1 := by
     have := goldenRatio_gt
-    rw [← sq_le_one_iff₀ (norm_nonneg _), norm_toC_sq]
-    simp [cutU, bar, normRat, normGold]
+    rw [← sq_le_one_iff₀ (norm_nonneg _), norm_bar_cutU_sq]
     linarith
   rw [psi_eq, abs_mul, abs_two]
   calc 2 * |(toC (bar cutU) * toC v).re| ≤ 2 * ‖toC (bar cutU) * toC v‖ := by
