@@ -100,6 +100,19 @@ orbit of the origin is infinite.
 | [`LowerBound`](CriticalRadiusFive/LowerBound.lean) | 478 | the cut functional and its levels, the lens window, cut levels, discreteness, `finite_GG_five_of_lt` |
 | [`Main`](CriticalRadiusFive/Main.lean) | 43 | `finite_GG_five_iff`, `criticalRadius_five` |
 
+## Reading guide
+
+[`Check.lean`](Check.lean) unfolds the four definitions of `Challenge.lean` (`turn_apply_check`,
+`genA_apply_check`, `genB_apply_check`, `GG_check`, `criticalRadius_check`) and restates the two
+theorems in fully elementary terms (`finite_iff_check`, `criticalRadius_check_five`); every proof there
+is `rfl`, a one-line unfolding, or a direct appeal to the library. `lake build Check` compiles it.
+
+The proof architecture, with every statement linked to its Lean declaration and an interactive
+dependency graph, is the Verso blueprint in [`blueprint/`](blueprint/), published at
+<https://eric-vergo.github.io/critical-radius-five/>. A short expository paper is in
+[`paper/`](paper/) (`main.pdf`), the animations in [`animations/`](animations/), and the
+dependency-graph poster in [`poster/`](poster/).
+
 ## Building and checking
 
 Requirements: [elan](https://github.com/leanprover/elan). The toolchain (`leanprover/lean4:v4.34.0`)

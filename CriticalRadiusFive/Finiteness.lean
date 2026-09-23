@@ -157,4 +157,20 @@ theorem criticalRadius_eq_of_forall_lt {R : ℝ} (hfin : ∀ r < R, Finite (GG n
   have : {r : ℝ | Finite (GG n r)} = Iio R := ext (finite_GG_iff_of_forall_lt hfin hinf)
   rw [criticalRadius, this, csSup_Iio]
 
+/-- **An infinite radius is an upper bound.** If `GG n R` is infinite then every radius at which the
+group is finite is below `R`; in particular `criticalRadius n ≤ R` whenever the finite radii are
+bounded above at all (they are, by `criticalRadius_eq_of_forall_lt`, once some radius is infinite). -/
+theorem lt_of_finite_of_infinite {R r : ℝ} (hinf : Infinite (GG n R)) (hfin : Finite (GG n r)) :
+    r < R := by
+  by_contra hR
+  have := finite_GG_of_le (not_lt.1 hR) hfin
+  exact not_finite (GG n R)
+
+/-- **Finite below `R` means `R` is at most the critical radius**, provided the finite radii are
+bounded above (which `criticalRadius_eq_of_forall_lt` supplies once some radius is infinite). -/
+theorem le_criticalRadius_of_forall_lt {R : ℝ} (hfin : ∀ r < R, Finite (GG n r))
+    (hbdd : BddAbove {r : ℝ | Finite (GG n r)}) : R ≤ criticalRadius n :=
+  le_of_forall_lt fun r hr ↦
+    lt_of_lt_of_le (by linarith : r < (r + R) / 2) (le_csSup hbdd (hfin _ (by linarith)))
+
 end CriticalRadiusFive

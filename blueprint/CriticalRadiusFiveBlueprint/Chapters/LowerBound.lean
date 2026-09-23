@@ -27,7 +27,7 @@ such steps to a window shorter than the lattice period exactly when $`r^2 < 3 + 
 golden rotation then supplies _cut levels_ that the walk cannot cross, on both sides and for two
 independent level functions. A discreteness argument turns the resulting bands into a finite set.
 
-:::lemma_ "lemma:normal-form" (parent := "lower-bound") (lean := "CriticalRadiusFive.mapsTo_reach_left, CriticalRadiusFive.mapsTo_reach_right")
+:::lemma_ "lemma:normal-form" (parent := "lower-bound") (lean := "CriticalRadiusFive.mapsTo_reach_left, CriticalRadiusFive.mapsTo_reach_right") (uses := "def:group")
 *Normal form.* Every $`g \in G_5(r)` acts at the point $`p` as a formal isometry,
 
 $$`g(p) = m\,(p + 1 - 2\nu) - 1,`

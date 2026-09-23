@@ -29,3 +29,7 @@ roots = ["Solution"]
 [[lean_lib]]
 name = "Test"
 roots = ["Test"]
+
+[[lean_lib]]
+name = "Check"
+roots = ["Check"]

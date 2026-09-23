@@ -524,7 +524,7 @@ with exactly the statement it has in \texttt{Challenge.lean} --- every constant 
 mentions, definitions included, must be identical in the two modules --- that the proofs use only
 the three axioms above, and that both Lean's kernel and the independent kernel \texttt{nanoda}
 accept the solution; on Linux it runs every build and replay in a sandbox.
-\placeholder{Confirm the comparator run and its output before publication.}
+On a fresh clone (macOS, unsandboxed run with the documented opt-in, comparator d03acab with \texttt{lean4export} 076e8e5 and \texttt{nanoda} 68d5ca9) the comparator reported ``nanoda kernel accepts the solution'', ``Lean default kernel accepts the solution'' and ``Your solution is okay!''; the sandboxed Linux run is the \texttt{comparator} job of the repository's continuous integration.
 
 \paragraph{Scope.}
 Every numbered statement of \cref{sec:result,sec:upper,sec:lower} and the two displayed equations
