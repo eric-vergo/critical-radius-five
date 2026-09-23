@@ -59,7 +59,7 @@ warn_unsandboxed() {
 ================================================================================
 WARNING: UNSANDBOXED RUN (COMPARATOR_ALLOW_UNSANDBOXED=1 on $system)
 landrun is not available here, so the comparator's development shim
-fake-landrun.sh runs every build, export and kernel replay with no sandbox.
+fake-landrun.sh runs the builds, the exports and the nanoda replay with no sandbox.
 The sandbox guarantee is lost: Solution and the library it imports are compiled
 with full access to this machine. Still checked: the statements and every
 definition they use against Challenge, the permitted axioms, and the replay of
