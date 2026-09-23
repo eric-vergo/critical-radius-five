@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="841mm" height="594mm" viewBox="0 0 2383.94 1683.78">
-<title>The critical radius of GG5: dependency graph of the proof</title>
+<title>The critical radius of GG₅: dependency graph of the proof</title>
 <rect width="2383.94" height="1683.78" fill="#ffffff"/>
 <text x="64.0" y="110.0" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="52" font-weight="600" font-style="normal" fill="#0f172a" text-anchor="start">The critical radius of GG<tspan baseline-shift="sub" font-size="32">5</tspan></text>
 <text x="64.0" y="176.0" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="46" font-weight="400" font-style="normal" fill="#0f172a" text-anchor="start"><tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">r</tspan><tspan baseline-shift="sub" font-size="30"><tspan font-style="italic">c</tspan></tspan>(5) = √(3 + <tspan font-style="italic">φ</tspan>) = 2.1489611417…</tspan><tspan dx="26" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="24" fill="#475569">a root of</tspan><tspan dx="10" font-size="30" fill="#475569"><tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">x</tspan><tspan baseline-shift="super" font-size="19">4</tspan> − 7<tspan font-style="italic">x</tspan><tspan baseline-shift="super" font-size="19">2</tspan> + 11</tspan></tspan></text>
@@ -20,557 +20,568 @@
 <text x="2119.7" y="179.1" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="18" font-weight="400" font-style="normal" fill="#1d4ed8" text-anchor="end"><tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">E</tspan>′</tspan></text>
 <text x="2169.9" y="256.0" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" font-style="normal" fill="#94a3b8" text-anchor="middle">The chord <tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">E</tspan>′<tspan font-style="italic">E</tspan></tspan> in the lens at <tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">r</tspan> = <tspan font-style="italic">r</tspan><tspan baseline-shift="sub" font-size="10"><tspan font-style="italic">c</tspan></tspan>(5)</tspan></text>
 <line x1="64.0" y1="274.0" x2="2319.9" y2="274.0" stroke="#e2e8f0" stroke-width="1.5"/>
-<svg x="332.19" y="278.00" width="1719.55" height="1249.78" viewBox="0 0 2145.00 1559.00" overflow="visible">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1555.47)">
+<svg x="159.94" y="278.00" width="2064.06" height="1249.78" viewBox="0 0 2038.00 1234.00" overflow="visible">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1229.81)">
 
 <g id="clust1" class="cluster">
 
-<path fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" d="M1609,-321.66C1609,-321.66 2117,-321.66 2117,-321.66 2123,-321.66 2129,-327.66 2129,-333.66 2129,-333.66 2129,-1047.1 2129,-1047.1 2129,-1053.1 2123,-1059.1 2117,-1059.1 2117,-1059.1 1609,-1059.1 1609,-1059.1 1603,-1059.1 1597,-1053.1 1597,-1047.1 1597,-1047.1 1597,-333.66 1597,-333.66 1597,-327.66 1603,-321.66 1609,-321.66"/>
-<text xml:space="preserve" text-anchor="start" x="1605" y="-1036.15" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#1d4ed8">Upper bound: &#160;r</text>
-<text xml:space="preserve" text-anchor="start" x="1759.5" y="-1036.15" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" baseline-shift="sub" font-size="14.00" fill="#1d4ed8">c</text>
-<text xml:space="preserve" text-anchor="start" x="1765.5" y="-1036.15" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#1d4ed8">(5) ≤ √(3 + φ)</text>
+<path fill="#eff6ff" stroke="#93c5fd" stroke-width="1.5" d="M1502,-8C1502,-8 2010,-8 2010,-8 2016,-8 2022,-14 2022,-20 2022,-20 2022,-718.82 2022,-718.82 2022,-724.82 2016,-730.82 2010,-730.82 2010,-730.82 1502,-730.82 1502,-730.82 1496,-730.82 1490,-724.82 1490,-718.82 1490,-718.82 1490,-20 1490,-20 1490,-14 1496,-8 1502,-8"/>
+<text xml:space="preserve" text-anchor="start" x="1640.5" y="-707.87" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#1d4ed8">Upper bound: &#160;GG</text>
+<text xml:space="preserve" text-anchor="start" x="1820.5" y="-707.87" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" baseline-shift="sub" font-size="14.00" fill="#1d4ed8">5</text>
+<text xml:space="preserve" text-anchor="start" x="1827.25" y="-707.87" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#1d4ed8">(√(3 + φ)) is infinite</text>
 </g>
 <g id="clust2" class="cluster">
 
-<path fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" d="M1046,-8C1046,-8 1564,-8 1564,-8 1570,-8 1576,-14 1576,-20 1576,-20 1576,-1250.06 1576,-1250.06 1576,-1256.06 1570,-1262.06 1564,-1262.06 1564,-1262.06 1046,-1262.06 1046,-1262.06 1040,-1262.06 1034,-1256.06 1034,-1250.06 1034,-1250.06 1034,-20 1034,-20 1034,-14 1040,-8 1046,-8"/>
-<text xml:space="preserve" text-anchor="start" x="1276.5" y="-1237.06" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#475569">Setup</text>
+<path fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" d="M886,-12.12C886,-12.12 1404,-12.12 1404,-12.12 1410,-12.12 1416,-18.12 1416,-24.12 1416,-24.12 1416,-915.77 1416,-915.77 1416,-921.77 1410,-927.77 1404,-927.77 1404,-927.77 886,-927.77 886,-927.77 880,-927.77 874,-921.77 874,-915.77 874,-915.77 874,-24.13 874,-24.13 874,-18.12 880,-12.12 886,-12.12"/>
+<text xml:space="preserve" text-anchor="start" x="1116.5" y="-902.77" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#475569">Setup</text>
 </g>
 <g id="clust3" class="cluster">
 
-<path fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" d="M20,-509.99C20,-509.99 1014,-509.99 1014,-509.99 1020,-509.99 1026,-515.99 1026,-521.99 1026,-521.99 1026,-1394.14 1026,-1394.14 1026,-1400.14 1020,-1406.14 1014,-1406.14 1014,-1406.14 20,-1406.14 20,-1406.14 14,-1406.14 8,-1400.14 8,-1394.14 8,-1394.14 8,-521.99 8,-521.99 8,-515.99 14,-509.99 20,-509.99"/>
-<text xml:space="preserve" text-anchor="start" x="728.5" y="-1383.19" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#c2410c">Lower bound: &#160;√(3 + φ) ≤ r</text>
-<text xml:space="preserve" text-anchor="start" x="985.75" y="-1383.19" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" baseline-shift="sub" font-size="14.00" fill="#c2410c">c</text>
-<text xml:space="preserve" text-anchor="start" x="991.75" y="-1383.19" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#c2410c">(5)</text>
+<path fill="#fff7ed" stroke="#fdba74" stroke-width="1.5" d="M20,-12.12C20,-12.12 812,-12.12 812,-12.12 818,-12.12 824,-18.12 824,-24.12 824,-24.12 824,-1068.48 824,-1068.48 824,-1074.48 818,-1080.48 812,-1080.48 812,-1080.48 20,-1080.48 20,-1080.48 14,-1080.48 8,-1074.48 8,-1068.48 8,-1068.48 8,-24.12 8,-24.12 8,-18.13 14,-12.12 20,-12.12"/>
+<text xml:space="preserve" text-anchor="start" x="16" y="-1057.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#c2410c">Lower bound: &#160;GG</text>
+<text xml:space="preserve" text-anchor="start" x="194.5" y="-1057.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" baseline-shift="sub" font-size="14.00" fill="#c2410c">5</text>
+<text xml:space="preserve" text-anchor="start" x="201.25" y="-1057.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#c2410c">(r) is finite for r &lt; √(3 + φ)</text>
 </g>
 
 <g id="edge4" class="edge">
 
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1738,-441.68C1738,-461.96 1738,-486.51 1738,-509.25"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1738,-517.04 1734.4,-509.04 1737.75,-514.87 1737.75,-509.04 1738,-509.04 1738.25,-509.04 1738.25,-514.87 1741.6,-509.04 1738,-517.04"/>
-</g>
-
-<g id="edge5" class="edge">
-
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1913.33,-452C1886.9,-471.26 1856.86,-493.16 1829.2,-513.31"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1822.95,-517.87 1827.29,-510.25 1824.56,-516.39 1829.27,-512.95 1829.41,-513.16 1829.56,-513.36 1824.85,-516.79 1831.53,-516.07 1822.95,-517.87"/>
-</g>
-
-<g id="edge23" class="edge">
-
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1735.72,-642.53C1734.98,-662.25 1734.15,-684.17 1733.4,-704.11"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1733.11,-711.9 1729.81,-703.77 1732.94,-709.72 1733.16,-703.9 1733.41,-703.91 1733.66,-703.92 1733.44,-709.74 1737.01,-704.04 1733.11,-711.9"/>
-</g>
-
-<g id="edge12" class="edge">
-
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1731,-824.51C1731,-848.86 1731,-877.52 1731,-901.9"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1731,-909.88 1727.4,-901.88 1730.75,-907.71 1730.75,-901.88 1731,-901.88 1731.25,-901.88 1731.25,-907.71 1734.6,-901.88 1731,-909.88"/>
-</g>
-
-<g id="edge13" class="edge">
-
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1911.93,-825.26C1876.57,-850.9 1834.81,-881.18 1800.32,-906.18"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1794.11,-910.68 1798.47,-903.07 1795.72,-909.21 1800.44,-905.79 1800.59,-905.99 1800.73,-906.19 1796.02,-909.61 1802.7,-908.9 1794.11,-910.68"/>
-</g>
-
-<g id="edge2" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1675.51,-1003.03C1648.4,-1022.84 1614.47,-1044.84 1581,-1059.1 1495.04,-1095.74 1391.57,-1117.48 1312.38,-1129.89"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1304.65,-1131.08 1312.01,-1126.3 1306.76,-1130.5 1312.52,-1129.61 1312.56,-1129.86 1312.6,-1130.11 1306.84,-1130.99 1313.11,-1133.42 1304.65,-1131.08"/>
-</g>
-
-<g id="edge15" class="edge">
-
-<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M1717.71,-1003.23C1697.03,-1066.87 1651.97,-1184.35 1581,-1262.06 1525.37,-1322.97 1449.13,-1372.98 1381.05,-1409.93"/>
-<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1373.2,-1414.14 1379.22,-1406.31 1374.26,-1412.78 1380.81,-1409.27 1381.14,-1409.88 1381.47,-1410.5 1374.92,-1414.01 1383.05,-1413.45 1373.2,-1414.14"/>
-</g>
-
-<g id="edge3" class="edge">
-
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1282.52,-123.77C1371.43,-163.26 1491.83,-229.31 1567,-321.66 1605.64,-369.14 1580.67,-399.51 1613,-451.49 1626.38,-473.01 1643.91,-493.83 1661.59,-512.21"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1666.83,-517.56 1658.66,-514.36 1665.13,-516.19 1661.06,-512.02 1661.24,-511.84 1661.41,-511.67 1665.49,-515.84 1663.81,-509.33 1666.83,-517.56"/>
-</g>
-
-<g id="edge31" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1168,-130.06C1168,-148.54 1168,-169.37 1168,-187.56"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1168,-195.53 1164.4,-187.53 1167.75,-193.36 1167.75,-187.53 1168,-187.53 1168.25,-187.53 1168.25,-193.36 1171.6,-187.53 1168,-195.53"/>
-</g>
-
-<g id="edge30" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1053.16,-130.22C955.67,-175.06 813.75,-245.22 699,-321.66 603.35,-385.37 503.43,-474.22 444.5,-529.31"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="438.86,-534.6 442.23,-526.51 440.27,-532.94 444.52,-528.95 444.69,-529.13 444.86,-529.31 440.61,-533.3 447.16,-531.76 438.86,-534.6"/>
-</g>
-
-<g id="edge18" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1106.12,-274.36C1090.44,-287.25 1075.61,-303.16 1067,-321.66 1042.66,-373.98 1045.7,-397.86 1067,-451.49 1080.01,-484.25 1105.79,-513.49 1130.23,-535.75"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1136.05,-540.93 1127.67,-538.3 1134.26,-539.67 1129.9,-535.8 1130.07,-535.61 1130.23,-535.42 1134.59,-539.3 1132.46,-532.92 1136.05,-540.93"/>
-</g>
-
-<g id="edge24" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1234.51,-274.29C1260.32,-288.98 1290.09,-306.02 1317,-321.66 1325.09,-326.36 1333.47,-331.25 1341.87,-336.18"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1348.7,-340.19 1339.98,-339.25 1346.7,-339.31 1341.68,-336.36 1341.8,-336.14 1341.93,-335.93 1346.95,-338.88 1343.63,-333.04 1348.7,-340.19"/>
-</g>
-
-<g id="edge29" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1093.42,-274.27C1002.06,-319.59 841.92,-396.46 700,-451.49 620.39,-482.36 595.33,-476.01 517,-509.99 502.61,-516.23 487.72,-523.64 473.44,-531.26"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="466.73,-534.89 472.05,-527.92 468.52,-533.64 473.65,-530.86 473.77,-531.08 473.88,-531.3 468.76,-534.08 475.48,-534.25 466.73,-534.89"/>
-</g>
-
-<g id="edge7" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1238.59,-619.49C1271.09,-643.71 1314.15,-675.8 1351.94,-703.97"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1357.95,-708.45 1349.39,-706.56 1356.06,-707.35 1351.39,-703.87 1351.54,-703.67 1351.69,-703.47 1356.36,-706.95 1353.69,-700.78 1357.95,-708.45"/>
-</g>
-
-<g id="edge1" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1188,-619.16C1188,-712.44 1188,-956.58 1188,-1076.42"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1188,-1084.39 1184.4,-1076.39 1187.75,-1082.22 1187.75,-1076.39 1188,-1076.39 1188.25,-1076.39 1188.25,-1082.22 1191.6,-1076.39 1188,-1084.39"/>
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1813.48,-128.02C1784.05,-149.47 1748.05,-175.71 1715.36,-199.53"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1709.05,-204.13 1713.39,-196.51 1710.66,-202.65 1715.37,-199.22 1715.51,-199.42 1715.66,-199.62 1710.95,-203.06 1717.63,-202.33 1709.05,-204.13"/>
 </g>
 
 <g id="edge25" class="edge">
 
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1440.81,-451.75C1440.33,-473.86 1439.76,-499.47 1439.27,-521.95"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1439.1,-529.87 1435.67,-521.79 1438.89,-527.69 1439.02,-521.87 1439.27,-521.87 1439.52,-521.88 1439.39,-527.7 1442.87,-521.95 1439.1,-529.87"/>
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1856.69,-127.87C1835.51,-178.79 1796.52,-263.94 1749,-328.41 1733.22,-349.82 1713.58,-370.87 1694.57,-389.29"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1688.92,-394.7 1692.22,-386.56 1690.32,-393.01 1694.53,-388.98 1694.7,-389.16 1694.88,-389.35 1690.67,-393.37 1697.19,-391.77 1688.92,-394.7"/>
+</g>
+
+<g id="edge5" class="edge">
+
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1624,-138.09C1624,-156.04 1624,-176.3 1624,-195.32"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1624,-203.3 1620.4,-195.3 1623.75,-201.13 1623.75,-195.3 1624,-195.3 1624.25,-195.3 1624.25,-201.13 1627.6,-195.3 1624,-203.3"/>
 </g>
 
 <g id="edge26" class="edge">
 
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1257.92,-446.4C1291.13,-471 1331.48,-500.88 1365.55,-526.12"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1371.7,-530.68 1363.13,-528.81 1369.81,-529.58 1365.13,-526.12 1365.28,-525.92 1365.42,-525.71 1370.11,-529.18 1367.42,-523.02 1371.7,-530.68"/>
-</g>
-
-<g id="edge10" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1116.96,-446.33C1096,-463.81 1075.55,-485.38 1063,-509.99 1010.69,-612.6 1040,-652.94 1040,-768.11 1040,-768.11 1040,-768.11 1040,-958.44 1040,-1092.78 914.04,-1206.76 833.24,-1266.05"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="827.04,-1270.54 831.41,-1262.93 828.66,-1269.06 833.37,-1265.64 833.52,-1265.84 833.67,-1266.05 828.95,-1269.47 835.63,-1268.76 827.04,-1270.54"/>
-</g>
-
-<g id="edge8" class="edge">
-
-<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1438,-629.76C1438,-651.09 1438,-676.58 1438,-699.83"/>
-<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1438,-707.82 1434.4,-699.82 1437.75,-705.65 1437.75,-699.82 1438,-699.82 1438.25,-699.82 1438.25,-705.65 1441.6,-699.82 1438,-707.82"/>
-</g>
-
-<g id="edge14" class="edge">
-
-<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1530.3,-828.81C1569.61,-853.81 1614.98,-882.66 1652.62,-906.6"/>
-<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1658.99,-910.65 1650.31,-909.39 1657.03,-909.69 1652.11,-906.57 1652.24,-906.36 1652.38,-906.14 1657.29,-909.27 1654.18,-903.32 1658.99,-910.65"/>
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1624,-329.04C1624,-347.37 1624,-367.54 1624,-386.07"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1624,-394.06 1620.4,-386.06 1623.75,-391.89 1623.75,-386.06 1624,-386.06 1624.25,-386.06 1624.25,-391.89 1627.6,-386.06 1624,-394.06"/>
 </g>
 
 <g id="edge11" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1135.36,-1205.27C1113.21,-1226.39 1085.88,-1248.37 1057,-1262.06 1006.1,-1286.18 945.18,-1298.38 892.35,-1304.46"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="884.39,-1305.33 891.96,-1300.88 886.53,-1304.85 892.32,-1304.21 892.35,-1304.46 892.37,-1304.71 886.58,-1305.34 892.74,-1308.04 884.39,-1305.33"/>
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1624,-506.51C1624,-527.95 1624,-552.54 1624,-573.98"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1624,-581.76 1620.4,-573.76 1623.75,-579.59 1623.75,-573.76 1624,-573.76 1624.25,-573.76 1624.25,-579.59 1627.6,-573.76 1624,-581.76"/>
 </g>
 
-<g id="edge6" class="edge">
+<g id="edge12" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M392,-625.47C392,-650.87 392,-683.18 392,-710.63"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="392,-718.29 388.4,-710.29 391.75,-716.12 391.75,-710.29 392,-710.29 392.25,-710.29 392.25,-716.12 395.6,-710.29 392,-718.29"/>
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1800.39,-507.48C1767.41,-530.04 1729.53,-555.96 1697.34,-577.98"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1690.79,-582.46 1695.36,-574.97 1692.44,-581.02 1697.25,-577.73 1697.4,-577.94 1697.54,-578.15 1692.73,-581.44 1699.43,-580.91 1690.79,-582.46"/>
+</g>
+
+<g id="edge15" class="edge">
+
+<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M1615.68,-674.89C1597.75,-761.26 1548.64,-953.63 1447,-1080.48 1446.92,-1080.58 1446.84,-1080.68 1446.76,-1080.78"/>
+<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1440.84,-1087.54 1443.72,-1078.1 1441.36,-1085.89 1446.24,-1080.31 1446.77,-1080.77 1447.3,-1081.23 1442.41,-1086.81 1449.82,-1083.43 1440.84,-1087.54"/>
+</g>
+
+<g id="edge3" class="edge">
+
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1367.67,-134.19C1408.82,-155.37 1457.19,-180.26 1500.76,-202.69"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1507.78,-206.3 1499.02,-205.84 1505.73,-205.53 1500.55,-202.86 1500.67,-202.64 1500.78,-202.42 1505.96,-205.08 1502.31,-199.44 1507.78,-206.3"/>
+</g>
+
+<g id="edge34" class="edge">
+
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1270,-134.19C1270,-160.62 1270,-192.83 1270,-218.81"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1270,-226.61 1266.4,-218.61 1269.75,-224.44 1269.75,-218.61 1270,-218.61 1270.25,-218.61 1270.25,-224.44 1273.6,-218.61 1270,-226.61"/>
 </g>
 
 <g id="edge33" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M456.71,-818.34C488.58,-842.1 527.34,-870.98 561.15,-896.18"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="567.27,-900.74 558.7,-898.85 565.38,-899.64 560.7,-896.16 560.85,-895.96 561,-895.76 565.68,-899.24 563,-893.07 567.27,-900.74"/>
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1190.27,-134.29C1078.94,-204.61 878.22,-331.42 767.89,-401.12"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="761.33,-405.26 766.17,-397.95 763.03,-403.89 767.96,-400.78 768.09,-400.99 768.22,-401.2 763.3,-404.32 770.01,-404.04 761.33,-405.26"/>
 </g>
 
-<g id="edge17" class="edge">
+<g id="edge10" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M642,-632.2C642,-655.61 642,-683.61 642,-708.1"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="642,-715.82 638.4,-707.82 641.75,-713.65 641.75,-707.82 642,-707.82 642.25,-707.82 642.25,-713.65 645.6,-707.82 642,-715.82"/>
-</g>
-
-<g id="edge32" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M642,-820.53C642,-842.7 642,-868.99 642,-892.51"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="642,-900.23 638.4,-892.23 641.75,-898.05 641.75,-892.23 642,-892.23 642.25,-892.23 642.25,-898.05 645.6,-892.23 642,-900.23"/>
-</g>
-
-<g id="edge28" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M709.65,-820.53C740.98,-843.88 778.44,-871.8 811.24,-896.25"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="817.57,-900.96 809,-899.07 815.67,-899.86 811,-896.38 811.15,-896.18 811.3,-895.98 815.97,-899.46 813.3,-893.3 817.57,-900.96"/>
-</g>
-
-<g id="edge21" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M642,-1012.84C642,-1035.2 642,-1061.2 642,-1084.18"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="642,-1091.99 638.4,-1083.99 641.75,-1089.82 641.75,-1083.99 642,-1083.99 642.25,-1083.99 642.25,-1089.82 645.6,-1083.99 642,-1091.99"/>
-</g>
-
-<g id="edge27" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M892,-807.82C892,-831.98 892,-863.96 892,-892.07"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="892,-900.01 888.4,-892.01 891.75,-897.83 891.75,-892.01 892,-892.01 892.25,-892.01 892.25,-897.83 895.6,-892.01 892,-900.01"/>
-</g>
-
-<g id="edge22" class="edge">
-
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M826.25,-1012.96C807.36,-1028.19 786.56,-1044.56 767,-1059.1 754.12,-1068.68 740.27,-1078.57 726.66,-1088.06"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="720.18,-1092.56 724.7,-1085.04 721.82,-1091.11 726.61,-1087.79 726.75,-1087.99 726.89,-1088.2 722.11,-1091.52 728.8,-1090.95 720.18,-1092.56"/>
+<path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1337.81,-305.85C1373.79,-328.47 1416.7,-359.91 1447,-396.41 1481.5,-437.96 1467.62,-462.29 1499,-506.24 1517.2,-531.73 1541.07,-556.5 1563.07,-576.99"/>
+<polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1568.79,-582.24 1560.46,-579.48 1567.02,-580.96 1562.73,-577.01 1562.9,-576.83 1563.07,-576.65 1567.36,-580.59 1565.33,-574.18 1568.79,-582.24"/>
 </g>
 
 <g id="edge19" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M190.98,-1006.54C212.71,-1025.46 239.54,-1045.8 267,-1059.1 345.67,-1097.23 441.93,-1118.76 517.23,-1130.71"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="524.97,-1131.91 516.51,-1134.24 522.78,-1131.82 517.02,-1130.93 517.06,-1130.68 517.1,-1130.43 522.86,-1131.33 517.61,-1127.12 524.97,-1131.91"/>
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1316.43,-305.61C1341.33,-328.8 1369.58,-360.87 1383,-396.41 1400.24,-442.08 1399.55,-460.32 1383,-506.24 1372.53,-535.28 1351.81,-562.3 1331.85,-583.49"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1326.39,-589.13 1329.37,-580.88 1327.72,-587.4 1331.78,-583.21 1331.95,-583.38 1332.13,-583.55 1328.08,-587.74 1334.54,-585.88 1326.39,-589.13"/>
 </g>
 
-<g id="edge20" class="edge">
+<g id="edge27" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M465.62,-1019.28C482.32,-1032.65 500.12,-1046.55 517,-1059.1 529.88,-1068.68 543.73,-1078.57 557.34,-1088.06"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="563.82,-1092.56 555.2,-1090.95 561.89,-1091.52 557.11,-1088.2 557.25,-1087.99 557.39,-1087.79 562.18,-1091.11 559.3,-1085.04 563.82,-1092.56"/>
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1267.54,-305.43C1266.02,-328.61 1264.01,-359.03 1262.24,-386.01"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1261.71,-393.96 1258.65,-385.74 1261.61,-391.77 1261.99,-385.96 1262.24,-385.97 1262.49,-385.99 1262.1,-391.8 1265.83,-386.21 1261.71,-393.96"/>
+</g>
+
+<g id="edge32" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1155.41,-297.06C1064.02,-321.05 933.19,-357.43 821,-396.41 815.07,-398.47 809.02,-400.66 802.93,-402.92"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="795.7,-405.65 801.92,-399.46 797.65,-404.65 803.1,-402.59 803.19,-402.82 803.28,-403.06 797.82,-405.12 804.46,-406.19 795.7,-405.65"/>
+</g>
+
+<g id="edge7" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M1155.27,-292.76C1054.9,-316.63 919.58,-355.17 883,-396.41 782.35,-509.87 886.33,-596.97 815,-730.82 768.83,-817.46 683.68,-894.14 625.72,-939.86"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="619.52,-944.7 623.61,-936.94 621.08,-943.17 625.67,-939.58 625.83,-939.78 625.98,-939.97 621.39,-943.56 628.04,-942.61 619.52,-944.7"/>
+</g>
+
+<g id="edge13" class="edge">
+
+<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M1319.53,-305.8C1346.28,-328.94 1377.36,-360.9 1395,-396.41 1441.35,-489.69 1430,-523.99 1430,-628.15 1430,-628.15 1430,-628.15 1430,-816.61 1430,-909.48 1396.29,-1011.34 1368.61,-1079.31"/>
+<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1365.34,-1087.22 1365.04,-1077.35 1365.3,-1085.49 1368.13,-1078.63 1368.78,-1078.9 1369.43,-1079.16 1366.59,-1086.03 1372.52,-1080.44 1365.34,-1087.22"/>
+</g>
+
+<g id="edge1" class="edge">
+
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1262.37,-667.48C1249.68,-691.62 1232.84,-723.64 1218.11,-751.65"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1214.46,-758.58 1215,-749.83 1215.25,-756.54 1217.97,-751.38 1218.19,-751.5 1218.41,-751.62 1215.7,-756.78 1221.37,-753.18 1214.46,-758.58"/>
+</g>
+
+<g id="edge14" class="edge">
+
+<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M1292.36,-667.74C1298.54,-691.68 1305.93,-723.47 1310,-752.07 1325.98,-864.51 1330.96,-995.97 1332.45,-1078"/>
+<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1332.6,-1086.82 1328.4,-1077.88 1331.87,-1085.25 1331.75,-1077.83 1332.45,-1077.82 1333.15,-1077.81 1333.27,-1085.23 1336.5,-1077.75 1332.6,-1086.82"/>
+</g>
+
+<g id="edge28" class="edge">
+
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1188.04,-506.75C1160.55,-528.14 1129.06,-552.64 1101.61,-574"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1095.42,-578.82 1099.52,-571.06 1096.98,-577.28 1101.58,-573.71 1101.73,-573.9 1101.89,-574.1 1097.29,-577.68 1103.94,-576.74 1095.42,-578.82"/>
+</g>
+
+<g id="edge29" class="edge">
+
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1014.62,-500.84C1017.57,-522.45 1021.07,-548.07 1024.15,-570.64"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1025.19,-578.3 1020.55,-570.86 1024.65,-576.18 1023.86,-570.4 1024.11,-570.37 1024.36,-570.33 1025.15,-576.11 1027.68,-569.88 1025.19,-578.3"/>
 </g>
 
 <g id="edge9" class="edge">
 
-<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M681.21,-1197.92C697.4,-1219.04 716.02,-1243.34 731.77,-1263.89"/>
-<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="736.54,-1270.11 728.82,-1265.95 735.02,-1268.54 731.48,-1263.91 731.67,-1263.76 731.87,-1263.61 735.42,-1268.24 734.53,-1261.57 736.54,-1270.11"/>
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M957.08,-501.14C938.39,-521.91 918.91,-547.5 907,-574.24 842.39,-719.32 964.68,-812.92 855,-927.77 831.99,-951.87 757.68,-966.03 690.04,-974.15"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="682.36,-975.04 689.89,-970.54 684.49,-974.54 690.28,-973.87 690.31,-974.11 690.34,-974.36 684.55,-975.04 690.72,-977.69 682.36,-975.04"/>
+</g>
+
+<g id="edge2" class="edge">
+
+<path fill="none" stroke="#94a3b8" stroke-width="1.5" d="M1071.8,-678.14C1090.66,-700.87 1113.41,-728.3 1133.56,-752.59"/>
+<polygon fill="#94a3b8" stroke="#94a3b8" stroke-width="1.5" points="1138.55,-758.62 1130.68,-754.76 1136.98,-757.1 1133.25,-752.62 1133.45,-752.46 1133.64,-752.3 1137.36,-756.78 1136.22,-750.16 1138.55,-758.62"/>
+</g>
+
+<g id="edge17" class="edge">
+
+<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M1208.61,-871.01C1232.99,-927.16 1271.27,-1015.32 1298.92,-1079.02"/>
+<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1302.44,-1087.14 1295.15,-1080.49 1301.18,-1085.97 1298.22,-1079.16 1298.86,-1078.88 1299.5,-1078.6 1302.46,-1085.41 1302.58,-1077.27 1302.44,-1087.14"/>
+</g>
+
+<g id="edge6" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M690,-496.24C690,-518.68 690,-546.27 690,-570.41"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="690,-578.34 686.4,-570.34 689.75,-576.17 689.75,-570.34 690,-570.34 690.25,-570.34 690.25,-576.17 693.6,-570.34 690,-578.34"/>
+</g>
+
+<g id="edge24" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M636.66,-678.36C615.32,-696.22 589.92,-715.76 565,-730.82 543.59,-743.77 519.82,-755.78 496.48,-766.44"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="489.23,-769.71 495.05,-763.14 491.11,-768.59 496.42,-766.19 496.52,-766.42 496.63,-766.65 491.31,-769.04 498,-769.7 489.23,-769.71"/>
+</g>
+
+<g id="edge18" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M392,-134.19C392,-156.4 392,-182.69 392,-205.94"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="392,-213.87 388.4,-205.87 391.75,-211.7 391.75,-205.87 392,-205.87 392.25,-205.87 392.25,-211.7 395.6,-205.87 392,-213.87"/>
+</g>
+
+<g id="edge31" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M323.02,-318.39C292.52,-340.62 256.4,-366.95 224.48,-390.21"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="218.36,-394.67 222.71,-387.05 219.97,-393.19 224.68,-389.76 224.83,-389.96 224.98,-390.16 220.27,-393.59 226.95,-392.87 218.36,-394.67"/>
+</g>
+
+<g id="edge37" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M343.65,-318.5C324.64,-340.81 304.25,-368.34 291,-396.41 269.67,-441.59 288.89,-461.33 267,-506.24 256.58,-527.62 241.67,-548.47 226.49,-566.71"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="221.63,-572.44 224.06,-564.01 222.84,-570.62 226.62,-566.18 226.81,-566.34 227,-566.5 223.22,-570.94 229.55,-568.67 221.63,-572.44"/>
+</g>
+
+<g id="edge30" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M142,-305.43C142,-328.61 142,-359.03 142,-386.01"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="142,-393.95 138.4,-385.95 141.75,-391.78 141.75,-385.95 142,-385.95 142.25,-385.95 142.25,-391.78 145.6,-385.95 142,-393.95"/>
+</g>
+
+<g id="edge36" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M149.4,-506.51C151.88,-524.73 154.68,-545.22 157.26,-564.12"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="158.34,-572.03 153.69,-564.59 157.8,-569.91 157.01,-564.14 157.26,-564.1 157.5,-564.07 158.29,-569.84 160.82,-563.62 158.34,-572.03"/>
+</g>
+
+<g id="edge20" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M83.17,-506.88C66.22,-526.31 49.9,-549.55 41,-574.24 17.4,-639.71 -1.75,-675.9 41,-730.82 66.68,-763.81 164.56,-785.89 247.28,-799.06"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="254.96,-800.26 246.5,-802.58 252.78,-800.17 247.02,-799.27 247.06,-799.02 247.1,-798.78 252.86,-799.68 247.62,-795.47 254.96,-800.26"/>
+</g>
+
+<g id="edge21" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M422.31,-678.14C415.15,-697.56 406.72,-720.42 398.83,-741.82"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="396.12,-749.17 395.51,-740.42 396.64,-747.05 398.66,-741.58 398.89,-741.67 399.12,-741.75 397.11,-747.22 402.27,-742.91 396.12,-749.17"/>
+</g>
+
+<g id="edge35" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M347.69,-500.37C317.97,-521.27 282.82,-545.99 251.4,-568.09"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="244.99,-572.6 249.46,-565.05 246.62,-571.14 251.39,-567.79 251.53,-568 251.68,-568.2 246.91,-571.55 253.61,-570.94 244.99,-572.6"/>
+</g>
+
+<g id="edge22" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M363.05,-500.32C344.07,-520.98 324.93,-546.7 315,-574.24 291.4,-639.71 294.52,-664.31 315,-730.82 316.13,-734.5 317.49,-738.16 319.02,-741.78"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="322.39,-749.03 315.75,-743.29 321.25,-747.16 318.79,-741.88 319.02,-741.77 319.24,-741.67 321.7,-746.95 322.28,-740.25 322.39,-749.03"/>
+</g>
+
+<g id="edge23" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M226.97,-684.75C247.85,-703.44 271.5,-724.62 293.56,-744.38"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="299.3,-749.51 290.94,-746.86 297.52,-748.25 293.17,-744.36 293.34,-744.18 293.51,-743.99 297.85,-747.88 295.74,-741.5 299.3,-749.51"/>
+</g>
+
+<g id="edge8" class="edge">
+
+<path fill="none" stroke="#f0a070" stroke-width="1.5" d="M445.52,-880.44C468.19,-900.14 492.67,-921.39 513.53,-939.5"/>
+<polygon fill="#f0a070" stroke="#f0a070" stroke-width="1.5" points="519.37,-944.57 510.97,-942.04 517.57,-943.33 513.17,-939.51 513.33,-939.33 513.49,-939.14 517.89,-942.96 515.69,-936.61 519.37,-944.57"/>
 </g>
 
 <g id="edge16" class="edge">
 
-<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M868.38,-1350.19C920.31,-1369.83 985.02,-1394.31 1044.73,-1416.89"/>
-<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1053.08,-1420.05 1043.23,-1420.65 1051.36,-1420.15 1044.41,-1417.52 1044.66,-1416.86 1044.91,-1416.21 1051.85,-1418.84 1046.09,-1413.08 1053.08,-1420.05"/>
+<path fill="none" stroke="#1e293b" stroke-width="2.4" d="M680.39,-1011.93C806.91,-1040.16 1011.36,-1085.77 1157.71,-1118.42"/>
+<polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1166.17,-1120.3 1156.51,-1122.3 1164.48,-1120.64 1157.24,-1119.03 1157.39,-1118.34 1157.54,-1117.66 1164.79,-1119.28 1158.27,-1114.39 1166.17,-1120.3"/>
 </g>
 
 <g id="node1" class="node">
 
-<polygon fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" points="1852.2,-440.99 1623.8,-440.99 1623.8,-352.16 1852.2,-352.16 1852.2,-440.99"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1631,-415.7 1631,-415.7 1731,-415.7 1731,-415.7 1631,-415.7"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1731,-415.7 1731,-415.7 1845,-415.7 1845,-415.7 1731,-415.7"/>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-422.45" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">DEFINITION 2.1</text>
-<text xml:space="preserve" text-anchor="start" x="1797" y="-420.95" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:points</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-397.7" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The chord E′E</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-375.95" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">chordE</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-363.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">smul_chordE</text>
+<polygon fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" points="1988.2,-127.33 1759.8,-127.33 1759.8,-38.5 1988.2,-38.5 1988.2,-127.33"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1767,-102.04 1767,-102.04 1867,-102.04 1867,-102.04 1767,-102.04"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1867,-102.04 1867,-102.04 1981,-102.04 1981,-102.04 1867,-102.04"/>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-108.79" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">DEFINITION 2.1</text>
+<text xml:space="preserve" text-anchor="start" x="1933" y="-107.29" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:points</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-84.04" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The chord E′E</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-62.29" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">chordE</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-49.54" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">smul_chordE</text>
 </g>
 
 <g id="node2" class="node">
 
-<path fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" d="M2090.2,-451.49C2090.2,-451.49 1885.8,-451.49 1885.8,-451.49 1879.8,-451.49 1873.8,-445.49 1873.8,-439.49 1873.8,-439.49 1873.8,-353.66 1873.8,-353.66 1873.8,-347.66 1879.8,-341.66 1885.8,-341.66 1885.8,-341.66 2090.2,-341.66 2090.2,-341.66 2096.2,-341.66 2102.2,-347.66 2102.2,-353.66 2102.2,-353.66 2102.2,-439.49 2102.2,-439.49 2102.2,-445.49 2096.2,-451.49 2090.2,-451.49"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1881,-426.2 1881,-426.2 1981,-426.2 1981,-426.2 1881,-426.2"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1981,-426.2 1981,-426.2 2095,-426.2 2095,-426.2 1981,-426.2"/>
-<text xml:space="preserve" text-anchor="start" x="1884" y="-432.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">LEMMA 2.2</text>
-<text xml:space="preserve" text-anchor="start" x="2011" y="-431.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:convex&#45;words</text>
-<text xml:space="preserve" text-anchor="start" x="1884" y="-408.2" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Words act on segments</text>
-<text xml:space="preserve" text-anchor="start" x="1884" y="-387.2" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">through their endpoints</text>
-<text xml:space="preserve" text-anchor="start" x="1884" y="-365.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">admissible_of_mem_segment</text>
-<text xml:space="preserve" text-anchor="start" x="1884" y="-352.7" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">wordPerm_apply_of_mem_segment</text>
+<path fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" d="M1726.2,-137.83C1726.2,-137.83 1521.8,-137.83 1521.8,-137.83 1515.8,-137.83 1509.8,-131.83 1509.8,-125.83 1509.8,-125.83 1509.8,-40 1509.8,-40 1509.8,-34 1515.8,-28 1521.8,-28 1521.8,-28 1726.2,-28 1726.2,-28 1732.2,-28 1738.2,-34 1738.2,-40 1738.2,-40 1738.2,-125.83 1738.2,-125.83 1738.2,-131.83 1732.2,-137.83 1726.2,-137.83"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1517,-112.54 1517,-112.54 1617,-112.54 1617,-112.54 1517,-112.54"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1617,-112.54 1617,-112.54 1731,-112.54 1731,-112.54 1617,-112.54"/>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-119.29" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">LEMMA 2.2</text>
+<text xml:space="preserve" text-anchor="start" x="1647" y="-117.79" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:convex&#45;words</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-94.54" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Words act on segments</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-73.54" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">through their endpoints</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-51.79" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">admissible_of_mem_segment</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-39.04" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">wordPerm_apply_of_mem_segment</text>
 </g>
 
 <g id="node3" class="node">
 
-<path fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" d="M1840.2,-642.07C1840.2,-642.07 1635.8,-642.07 1635.8,-642.07 1629.8,-642.07 1623.8,-636.07 1623.8,-630.07 1623.8,-630.07 1623.8,-531.49 1623.8,-531.49 1623.8,-525.49 1629.8,-519.49 1635.8,-519.49 1635.8,-519.49 1840.2,-519.49 1840.2,-519.49 1846.2,-519.49 1852.2,-525.49 1852.2,-531.49 1852.2,-531.49 1852.2,-630.07 1852.2,-630.07 1852.2,-636.07 1846.2,-642.07 1840.2,-642.07"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1631,-616.78 1631,-616.78 1731,-616.78 1731,-616.78 1631,-616.78"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1731,-616.78 1731,-616.78 1845,-616.78 1845,-616.78 1731,-616.78"/>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-623.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">LEMMA 2.3</text>
-<text xml:space="preserve" text-anchor="start" x="1792.5" y="-622.03" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:words</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-598.78" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Three words translate the</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-577.78" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">three pieces</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-556.03" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">piece₁</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-543.28" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">piece₂</text>
-<text xml:space="preserve" text-anchor="start" x="1634" y="-530.53" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">piece₃</text>
+<path fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" d="M1726.2,-328.41C1726.2,-328.41 1521.8,-328.41 1521.8,-328.41 1515.8,-328.41 1509.8,-322.41 1509.8,-316.41 1509.8,-316.41 1509.8,-217.83 1509.8,-217.83 1509.8,-211.83 1515.8,-205.83 1521.8,-205.83 1521.8,-205.83 1726.2,-205.83 1726.2,-205.83 1732.2,-205.83 1738.2,-211.83 1738.2,-217.83 1738.2,-217.83 1738.2,-316.41 1738.2,-316.41 1738.2,-322.41 1732.2,-328.41 1726.2,-328.41"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1517,-303.12 1517,-303.12 1617,-303.12 1617,-303.12 1517,-303.12"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1617,-303.12 1617,-303.12 1731,-303.12 1731,-303.12 1617,-303.12"/>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-309.87" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">LEMMA 2.3</text>
+<text xml:space="preserve" text-anchor="start" x="1678.5" y="-308.37" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:words</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-285.12" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Three words translate the</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-264.12" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">three pieces</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-242.37" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">piece₁</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-229.62" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">piece₂</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-216.87" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">piece₃</text>
 </g>
 
 <g id="node4" class="node">
 
-<path fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" d="M1833.2,-824.02C1833.2,-824.02 1628.8,-824.02 1628.8,-824.02 1622.8,-824.02 1616.8,-818.02 1616.8,-812.02 1616.8,-812.02 1616.8,-726.19 1616.8,-726.19 1616.8,-720.19 1622.8,-714.19 1628.8,-714.19 1628.8,-714.19 1833.2,-714.19 1833.2,-714.19 1839.2,-714.19 1845.2,-720.19 1845.2,-726.19 1845.2,-726.19 1845.2,-812.02 1845.2,-812.02 1845.2,-818.02 1839.2,-824.02 1833.2,-824.02"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1624,-798.73 1624,-798.73 1724,-798.73 1724,-798.73 1624,-798.73"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1724,-798.73 1724,-798.73 1838,-798.73 1838,-798.73 1724,-798.73"/>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-805.48" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">LEMMA 2.4</text>
-<text xml:space="preserve" text-anchor="start" x="1772" y="-803.98" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:rotation</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-780.73" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The exchange is a circle</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-759.73" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">rotation</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-737.98" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">chordRot</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-725.23" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">exists_mem_GG_apply_smul_chordE</text>
+<path fill="#ffffff" stroke="#1d4ed8" stroke-width="1.4" d="M1726.2,-506.24C1726.2,-506.24 1521.8,-506.24 1521.8,-506.24 1515.8,-506.24 1509.8,-500.24 1509.8,-494.24 1509.8,-494.24 1509.8,-408.41 1509.8,-408.41 1509.8,-402.41 1515.8,-396.41 1521.8,-396.41 1521.8,-396.41 1726.2,-396.41 1726.2,-396.41 1732.2,-396.41 1738.2,-402.41 1738.2,-408.41 1738.2,-408.41 1738.2,-494.24 1738.2,-494.24 1738.2,-500.24 1732.2,-506.24 1726.2,-506.24"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1517,-480.95 1517,-480.95 1617,-480.95 1617,-480.95 1517,-480.95"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1617,-480.95 1617,-480.95 1731,-480.95 1731,-480.95 1617,-480.95"/>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-487.7" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">LEMMA 2.4</text>
+<text xml:space="preserve" text-anchor="start" x="1665" y="-486.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:rotation</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-462.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The exchange is a circle</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-441.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">rotation</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-420.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">chordRot</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-407.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">exists_mem_GG_apply_smul_chordE</text>
 </g>
 
 <g id="node5" class="node">
 
-<path fill="#ffffff" stroke="#1d4ed8" stroke-width="2.8" d="M2097.2,-824.02C2097.2,-824.02 1878.8,-824.02 1878.8,-824.02 1872.8,-824.02 1866.8,-818.02 1866.8,-812.02 1866.8,-812.02 1866.8,-726.19 1866.8,-726.19 1866.8,-720.19 1872.8,-714.19 1878.8,-714.19 1878.8,-714.19 2097.2,-714.19 2097.2,-714.19 2103.2,-714.19 2109.2,-720.19 2109.2,-726.19 2109.2,-726.19 2109.2,-812.02 2109.2,-812.02 2109.2,-818.02 2103.2,-824.02 2097.2,-824.02"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1874,-798.73 1874,-798.73 1981,-798.73 1981,-798.73 1874,-798.73"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1981,-798.73 1981,-798.73 2102,-798.73 2102,-798.73 1981,-798.73"/>
-<text xml:space="preserve" text-anchor="start" x="1877" y="-805.48" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">THEOREM 2.5</text>
-<text xml:space="preserve" text-anchor="start" x="2054" y="-803.98" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:engine</text>
-<text xml:space="preserve" text-anchor="start" x="1877" y="-780.73" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">An irrational rotation</text>
-<text xml:space="preserve" text-anchor="start" x="1877" y="-759.73" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">makes the group infinite</text>
-<text xml:space="preserve" text-anchor="start" x="1877" y="-737.98" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_orbit_of_irrational_rotation</text>
-<text xml:space="preserve" text-anchor="start" x="1877" y="-725.23" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_of_infinite_orbit</text>
+<path fill="#ffffff" stroke="#1d4ed8" stroke-width="2.8" d="M1990.2,-506.24C1990.2,-506.24 1771.8,-506.24 1771.8,-506.24 1765.8,-506.24 1759.8,-500.24 1759.8,-494.24 1759.8,-494.24 1759.8,-408.41 1759.8,-408.41 1759.8,-402.41 1765.8,-396.41 1771.8,-396.41 1771.8,-396.41 1990.2,-396.41 1990.2,-396.41 1996.2,-396.41 2002.2,-402.41 2002.2,-408.41 2002.2,-408.41 2002.2,-494.24 2002.2,-494.24 2002.2,-500.24 1996.2,-506.24 1990.2,-506.24"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1767,-480.95 1767,-480.95 1874,-480.95 1874,-480.95 1767,-480.95"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1874,-480.95 1874,-480.95 1995,-480.95 1995,-480.95 1874,-480.95"/>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-487.7" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">THEOREM 2.5</text>
+<text xml:space="preserve" text-anchor="start" x="1947" y="-486.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:engine</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-462.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">An irrational rotation</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-441.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">makes the group infinite</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-420.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_orbit_of_irrational_rotation</text>
+<text xml:space="preserve" text-anchor="start" x="1770" y="-407.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_of_infinite_orbit</text>
 </g>
 
 <g id="node6" class="node">
 
-<path fill="#ffffff" stroke="#1d4ed8" stroke-width="2.8" d="M1833.2,-1001.85C1833.2,-1001.85 1628.8,-1001.85 1628.8,-1001.85 1622.8,-1001.85 1616.8,-995.85 1616.8,-989.85 1616.8,-989.85 1616.8,-925.02 1616.8,-925.02 1616.8,-919.02 1622.8,-913.02 1628.8,-913.02 1628.8,-913.02 1833.2,-913.02 1833.2,-913.02 1839.2,-913.02 1845.2,-919.02 1845.2,-925.02 1845.2,-925.02 1845.2,-989.85 1845.2,-989.85 1845.2,-995.85 1839.2,-1001.85 1833.2,-1001.85"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1624,-976.56 1624,-976.56 1724,-976.56 1724,-976.56 1624,-976.56"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1724,-976.56 1724,-976.56 1838,-976.56 1838,-976.56 1724,-976.56"/>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-983.31" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">THEOREM 2.6</text>
-<text xml:space="preserve" text-anchor="start" x="1794.5" y="-981.81" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:upper</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-958.56" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The upper bound</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-936.81" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_orbit_zero</text>
-<text xml:space="preserve" text-anchor="start" x="1627" y="-924.06" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_GG_five</text>
+<path fill="#ffffff" stroke="#1d4ed8" stroke-width="2.8" d="M1726.2,-673.57C1726.2,-673.57 1521.8,-673.57 1521.8,-673.57 1515.8,-673.57 1509.8,-667.57 1509.8,-661.57 1509.8,-661.57 1509.8,-596.74 1509.8,-596.74 1509.8,-590.74 1515.8,-584.74 1521.8,-584.74 1521.8,-584.74 1726.2,-584.74 1726.2,-584.74 1732.2,-584.74 1738.2,-590.74 1738.2,-596.74 1738.2,-596.74 1738.2,-661.57 1738.2,-661.57 1738.2,-667.57 1732.2,-673.57 1726.2,-673.57"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1517,-648.28 1517,-648.28 1617,-648.28 1617,-648.28 1517,-648.28"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1617,-648.28 1617,-648.28 1731,-648.28 1731,-648.28 1617,-648.28"/>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-655.03" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#1d4ed8">THEOREM 2.6</text>
+<text xml:space="preserve" text-anchor="start" x="1687.5" y="-653.53" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:upper</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-630.28" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The upper bound</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-608.53" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_orbit_zero</text>
+<text xml:space="preserve" text-anchor="start" x="1520" y="-595.78" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#1e40af">infinite_GG_five</text>
 </g>
 
 <g id="node7" class="node">
 
-<polygon fill="#ffffff" stroke="#64748b" stroke-width="1.4" points="1282.2,-129.58 1053.8,-129.58 1053.8,-28 1282.2,-28 1282.2,-129.58"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1061,-104.29 1061,-104.29 1161,-104.29 1161,-104.29 1061,-104.29"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1161,-104.29 1161,-104.29 1275,-104.29 1275,-104.29 1161,-104.29"/>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-111.04" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">DEFINITION 1.1</text>
-<text xml:space="preserve" text-anchor="start" x="1231.5" y="-109.54" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:turns</text>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-86.29" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The two turns</text>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-64.54" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">turn</text>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-51.79" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">genA</text>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-39.04" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">genB</text>
+<polygon fill="#ffffff" stroke="#64748b" stroke-width="1.4" points="1384.2,-133.7 1155.8,-133.7 1155.8,-32.12 1384.2,-32.12 1384.2,-133.7"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1163,-108.41 1163,-108.41 1263,-108.41 1263,-108.41 1163,-108.41"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1263,-108.41 1263,-108.41 1377,-108.41 1377,-108.41 1263,-108.41"/>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-115.16" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">DEFINITION 1.1</text>
+<text xml:space="preserve" text-anchor="start" x="1333.5" y="-113.66" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:turns</text>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-90.41" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The two turns</text>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-68.66" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">turn</text>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-55.91" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">genA</text>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-43.16" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">genB</text>
 </g>
 
 <g id="node8" class="node">
 
-<polygon fill="#ffffff" stroke="#64748b" stroke-width="1.4" points="1282.2,-273.66 1053.8,-273.66 1053.8,-197.58 1282.2,-197.58 1282.2,-273.66"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1061,-248.37 1061,-248.37 1161,-248.37 1161,-248.37 1061,-248.37"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1161,-248.37 1161,-248.37 1275,-248.37 1275,-248.37 1161,-248.37"/>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-255.12" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">DEFINITION 1.2</text>
-<text xml:space="preserve" text-anchor="start" x="1231.5" y="-253.62" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:group</text>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-230.37" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The group</text>
-<text xml:space="preserve" text-anchor="start" x="1064" y="-208.62" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">GG</text>
+<polygon fill="#ffffff" stroke="#64748b" stroke-width="1.4" points="1384.2,-305.16 1155.8,-305.16 1155.8,-229.08 1384.2,-229.08 1384.2,-305.16"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1163,-279.87 1163,-279.87 1263,-279.87 1263,-279.87 1163,-279.87"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1263,-279.87 1263,-279.87 1377,-279.87 1377,-279.87 1263,-279.87"/>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-286.62" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">DEFINITION 1.2</text>
+<text xml:space="preserve" text-anchor="start" x="1333.5" y="-285.12" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:group</text>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-261.87" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The group</text>
+<text xml:space="preserve" text-anchor="start" x="1166" y="-240.12" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">GG</text>
 </g>
 
 <g id="node9" class="node">
 
-<polygon fill="#ffffff" stroke="#64748b" stroke-width="1.4" points="1302.2,-618.82 1073.8,-618.82 1073.8,-542.74 1302.2,-542.74 1302.2,-618.82"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1081,-593.53 1081,-593.53 1181,-593.53 1181,-593.53 1081,-593.53"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1181,-593.53 1181,-593.53 1295,-593.53 1295,-593.53 1181,-593.53"/>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-600.28" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">DEFINITION 1.3</text>
-<text xml:space="preserve" text-anchor="start" x="1211" y="-598.78" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:criticalRadius</text>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-575.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The critical radius</text>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-553.78" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">criticalRadius</text>
+<polygon fill="#ffffff" stroke="#64748b" stroke-width="1.4" points="1396.2,-667.19 1167.8,-667.19 1167.8,-591.11 1396.2,-591.11 1396.2,-667.19"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1175,-641.9 1175,-641.9 1275,-641.9 1275,-641.9 1175,-641.9"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1275,-641.9 1275,-641.9 1389,-641.9 1389,-641.9 1275,-641.9"/>
+<text xml:space="preserve" text-anchor="start" x="1178" y="-648.65" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">DEFINITION 1.3</text>
+<text xml:space="preserve" text-anchor="start" x="1305" y="-647.15" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:criticalRadius</text>
+<text xml:space="preserve" text-anchor="start" x="1178" y="-623.9" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The critical radius</text>
+<text xml:space="preserve" text-anchor="start" x="1178" y="-602.15" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">criticalRadius</text>
 </g>
 
 <g id="node10" class="node">
 
-<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1544.2,-451.49C1544.2,-451.49 1339.8,-451.49 1339.8,-451.49 1333.8,-451.49 1327.8,-445.49 1327.8,-439.49 1327.8,-439.49 1327.8,-353.66 1327.8,-353.66 1327.8,-347.66 1333.8,-341.66 1339.8,-341.66 1339.8,-341.66 1544.2,-341.66 1544.2,-341.66 1550.2,-341.66 1556.2,-347.66 1556.2,-353.66 1556.2,-353.66 1556.2,-439.49 1556.2,-439.49 1556.2,-445.49 1550.2,-451.49 1544.2,-451.49"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1335,-426.2 1335,-426.2 1435,-426.2 1435,-426.2 1335,-426.2"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1435,-426.2 1435,-426.2 1549,-426.2 1549,-426.2 1435,-426.2"/>
-<text xml:space="preserve" text-anchor="start" x="1338" y="-432.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.4</text>
-<text xml:space="preserve" text-anchor="start" x="1474" y="-431.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:orbit&#45;mono</text>
-<text xml:space="preserve" text-anchor="start" x="1338" y="-408.2" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Orbits grow with the</text>
-<text xml:space="preserve" text-anchor="start" x="1338" y="-387.2" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">radius</text>
-<text xml:space="preserve" text-anchor="start" x="1338" y="-365.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">exists_mem_GG_apply_eq</text>
-<text xml:space="preserve" text-anchor="start" x="1338" y="-352.7" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">orbit_subset_orbit_of_le</text>
+<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1360.2,-506.24C1360.2,-506.24 1155.8,-506.24 1155.8,-506.24 1149.8,-506.24 1143.8,-500.24 1143.8,-494.24 1143.8,-494.24 1143.8,-408.41 1143.8,-408.41 1143.8,-402.41 1149.8,-396.41 1155.8,-396.41 1155.8,-396.41 1360.2,-396.41 1360.2,-396.41 1366.2,-396.41 1372.2,-402.41 1372.2,-408.41 1372.2,-408.41 1372.2,-494.24 1372.2,-494.24 1372.2,-500.24 1366.2,-506.24 1360.2,-506.24"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1151,-480.95 1151,-480.95 1251,-480.95 1251,-480.95 1151,-480.95"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1251,-480.95 1251,-480.95 1365,-480.95 1365,-480.95 1251,-480.95"/>
+<text xml:space="preserve" text-anchor="start" x="1154" y="-487.7" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.4</text>
+<text xml:space="preserve" text-anchor="start" x="1290" y="-486.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:orbit&#45;mono</text>
+<text xml:space="preserve" text-anchor="start" x="1154" y="-462.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Orbits grow with the</text>
+<text xml:space="preserve" text-anchor="start" x="1154" y="-441.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">radius</text>
+<text xml:space="preserve" text-anchor="start" x="1154" y="-420.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">exists_mem_GG_apply_eq</text>
+<text xml:space="preserve" text-anchor="start" x="1154" y="-407.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">orbit_subset_orbit_of_le</text>
 </g>
 
 <g id="node11" class="node">
 
-<path fill="#ffffff" stroke="#64748b" stroke-width="2.8" d="M1294.2,-445.11C1294.2,-445.11 1089.8,-445.11 1089.8,-445.11 1083.8,-445.11 1077.8,-439.11 1077.8,-433.11 1077.8,-433.11 1077.8,-360.03 1077.8,-360.03 1077.8,-354.03 1083.8,-348.03 1089.8,-348.03 1089.8,-348.03 1294.2,-348.03 1294.2,-348.03 1300.2,-348.03 1306.2,-354.03 1306.2,-360.03 1306.2,-360.03 1306.2,-433.11 1306.2,-433.11 1306.2,-439.11 1300.2,-445.11 1294.2,-445.11"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1085,-419.82 1085,-419.82 1185,-419.82 1185,-419.82 1085,-419.82"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1185,-419.82 1185,-419.82 1299,-419.82 1299,-419.82 1185,-419.82"/>
-<text xml:space="preserve" text-anchor="start" x="1088" y="-426.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">THEOREM 1.5</text>
-<text xml:space="preserve" text-anchor="start" x="1269" y="-425.07" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:T1</text>
-<text xml:space="preserve" text-anchor="start" x="1088" y="-401.82" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Bounded orbits imply a</text>
-<text xml:space="preserve" text-anchor="start" x="1088" y="-380.82" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">finite group</text>
-<text xml:space="preserve" text-anchor="start" x="1088" y="-359.07" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">finite_of_encard_orbit_le</text>
+<path fill="#ffffff" stroke="#64748b" stroke-width="2.8" d="M1110.2,-499.86C1110.2,-499.86 905.8,-499.86 905.8,-499.86 899.8,-499.86 893.8,-493.86 893.8,-487.86 893.8,-487.86 893.8,-414.78 893.8,-414.78 893.8,-408.78 899.8,-402.78 905.8,-402.78 905.8,-402.78 1110.2,-402.78 1110.2,-402.78 1116.2,-402.78 1122.2,-408.78 1122.2,-414.78 1122.2,-414.78 1122.2,-487.86 1122.2,-487.86 1122.2,-493.86 1116.2,-499.86 1110.2,-499.86"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="901,-474.57 901,-474.57 1001,-474.57 1001,-474.57 901,-474.57"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1001,-474.57 1001,-474.57 1115,-474.57 1115,-474.57 1001,-474.57"/>
+<text xml:space="preserve" text-anchor="start" x="904" y="-481.32" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">THEOREM 1.5</text>
+<text xml:space="preserve" text-anchor="start" x="1031" y="-479.82" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:bounded&#45;orbits</text>
+<text xml:space="preserve" text-anchor="start" x="904" y="-456.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Bounded orbits imply a</text>
+<text xml:space="preserve" text-anchor="start" x="904" y="-435.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">finite group</text>
+<text xml:space="preserve" text-anchor="start" x="904" y="-413.82" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">finite_of_encard_orbit_le</text>
 </g>
 
 <g id="node12" class="node">
 
-<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1540.2,-629.32C1540.2,-629.32 1335.8,-629.32 1335.8,-629.32 1329.8,-629.32 1323.8,-623.32 1323.8,-617.32 1323.8,-617.32 1323.8,-544.24 1323.8,-544.24 1323.8,-538.24 1329.8,-532.24 1335.8,-532.24 1335.8,-532.24 1540.2,-532.24 1540.2,-532.24 1546.2,-532.24 1552.2,-538.24 1552.2,-544.24 1552.2,-544.24 1552.2,-617.32 1552.2,-617.32 1552.2,-623.32 1546.2,-629.32 1540.2,-629.32"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1331,-604.03 1331,-604.03 1431,-604.03 1431,-604.03 1331,-604.03"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1431,-604.03 1431,-604.03 1545,-604.03 1545,-604.03 1431,-604.03"/>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-610.78" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.6</text>
-<text xml:space="preserve" text-anchor="start" x="1465.5" y="-609.28" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:finite&#45;mono</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-586.03" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Finiteness is monotone in</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-565.03" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">the radius</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-543.28" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">finite_GG_of_le</text>
+<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1134.2,-677.69C1134.2,-677.69 929.8,-677.69 929.8,-677.69 923.8,-677.69 917.8,-671.69 917.8,-665.69 917.8,-665.69 917.8,-592.61 917.8,-592.61 917.8,-586.61 923.8,-580.61 929.8,-580.61 929.8,-580.61 1134.2,-580.61 1134.2,-580.61 1140.2,-580.61 1146.2,-586.61 1146.2,-592.61 1146.2,-592.61 1146.2,-665.69 1146.2,-665.69 1146.2,-671.69 1140.2,-677.69 1134.2,-677.69"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="925,-652.4 925,-652.4 1025,-652.4 1025,-652.4 925,-652.4"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1025,-652.4 1025,-652.4 1139,-652.4 1139,-652.4 1025,-652.4"/>
+<text xml:space="preserve" text-anchor="start" x="928" y="-659.15" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.6</text>
+<text xml:space="preserve" text-anchor="start" x="1059.5" y="-657.65" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:finite&#45;mono</text>
+<text xml:space="preserve" text-anchor="start" x="928" y="-634.4" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Finiteness is monotone in</text>
+<text xml:space="preserve" text-anchor="start" x="928" y="-613.4" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">the radius</text>
+<text xml:space="preserve" text-anchor="start" x="928" y="-591.65" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">finite_GG_of_le</text>
 </g>
 
 <g id="node13" class="node">
 
-<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1540.2,-828.15C1540.2,-828.15 1335.8,-828.15 1335.8,-828.15 1329.8,-828.15 1323.8,-822.15 1323.8,-816.15 1323.8,-816.15 1323.8,-722.07 1323.8,-722.07 1323.8,-716.07 1329.8,-710.07 1335.8,-710.07 1335.8,-710.07 1540.2,-710.07 1540.2,-710.07 1546.2,-710.07 1552.2,-716.07 1552.2,-722.07 1552.2,-722.07 1552.2,-816.15 1552.2,-816.15 1552.2,-822.15 1546.2,-828.15 1540.2,-828.15"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1331,-802.86 1331,-802.86 1431,-802.86 1431,-802.86 1331,-802.86"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1431,-802.86 1431,-802.86 1545,-802.86 1545,-802.86 1431,-802.86"/>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-809.61" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.7</text>
-<text xml:space="preserve" text-anchor="start" x="1470" y="-808.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:crit&#45;upper</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-784.86" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">An infinite group bounds</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-763.86" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">the critical radius from</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-742.86" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">above</text>
-<text xml:space="preserve" text-anchor="start" x="1334" y="-721.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">lt_of_finite_of_infinite</text>
+<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1287.2,-870.52C1287.2,-870.52 1082.8,-870.52 1082.8,-870.52 1076.8,-870.52 1070.8,-864.52 1070.8,-858.52 1070.8,-858.52 1070.8,-772.69 1070.8,-772.69 1070.8,-766.69 1076.8,-760.69 1082.8,-760.69 1082.8,-760.69 1287.2,-760.69 1287.2,-760.69 1293.2,-760.69 1299.2,-766.69 1299.2,-772.69 1299.2,-772.69 1299.2,-858.52 1299.2,-858.52 1299.2,-864.52 1293.2,-870.52 1287.2,-870.52"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1078,-845.23 1078,-845.23 1178,-845.23 1178,-845.23 1078,-845.23"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1178,-845.23 1178,-845.23 1292,-845.23 1292,-845.23 1178,-845.23"/>
+<text xml:space="preserve" text-anchor="start" x="1081" y="-851.98" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.7</text>
+<text xml:space="preserve" text-anchor="start" x="1221.5" y="-850.48" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:threshold</text>
+<text xml:space="preserve" text-anchor="start" x="1081" y="-827.23" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The critical radius is a</text>
+<text xml:space="preserve" text-anchor="start" x="1081" y="-806.23" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">threshold</text>
+<text xml:space="preserve" text-anchor="start" x="1081" y="-784.48" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">finite_GG_iff_of_forall_lt</text>
+<text xml:space="preserve" text-anchor="start" x="1081" y="-771.73" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">criticalRadius_eq_of_forall_lt</text>
 </g>
 
 <g id="node14" class="node">
 
-<path fill="#ffffff" stroke="#64748b" stroke-width="1.4" d="M1290.2,-1204.81C1290.2,-1204.81 1085.8,-1204.81 1085.8,-1204.81 1079.8,-1204.81 1073.8,-1198.81 1073.8,-1192.81 1073.8,-1192.81 1073.8,-1098.73 1073.8,-1098.73 1073.8,-1092.73 1079.8,-1086.73 1085.8,-1086.73 1085.8,-1086.73 1290.2,-1086.73 1290.2,-1086.73 1296.2,-1086.73 1302.2,-1092.73 1302.2,-1098.73 1302.2,-1098.73 1302.2,-1192.81 1302.2,-1192.81 1302.2,-1198.81 1296.2,-1204.81 1290.2,-1204.81"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1081,-1179.52 1081,-1179.52 1181,-1179.52 1181,-1179.52 1081,-1179.52"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="1181,-1179.52 1181,-1179.52 1295,-1179.52 1295,-1179.52 1181,-1179.52"/>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-1186.27" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#475569">LEMMA 1.8</text>
-<text xml:space="preserve" text-anchor="start" x="1220" y="-1184.77" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:crit&#45;lower</text>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-1161.52" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Finite groups below a</text>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-1140.52" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">radius bound the critical</text>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-1119.52" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">radius from below</text>
-<text xml:space="preserve" text-anchor="start" x="1084" y="-1097.77" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#475569">le_criticalRadius_of_forall_lt</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M792.2,-495.74C792.2,-495.74 587.8,-495.74 587.8,-495.74 581.8,-495.74 575.8,-489.74 575.8,-483.74 575.8,-483.74 575.8,-418.91 575.8,-418.91 575.8,-412.91 581.8,-406.91 587.8,-406.91 587.8,-406.91 792.2,-406.91 792.2,-406.91 798.2,-406.91 804.2,-412.91 804.2,-418.91 804.2,-418.91 804.2,-483.74 804.2,-483.74 804.2,-489.74 798.2,-495.74 792.2,-495.74"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="583,-470.45 583,-470.45 683,-470.45 683,-470.45 583,-470.45"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="683,-470.45 683,-470.45 797,-470.45 797,-470.45 683,-470.45"/>
+<text xml:space="preserve" text-anchor="start" x="586" y="-477.2" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.1</text>
+<text xml:space="preserve" text-anchor="start" x="717.5" y="-475.7" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:normal&#45;form</text>
+<text xml:space="preserve" text-anchor="start" x="586" y="-452.45" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Normal form</text>
+<text xml:space="preserve" text-anchor="start" x="586" y="-430.7" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">mapsTo_reach_left</text>
+<text xml:space="preserve" text-anchor="start" x="586" y="-417.95" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">mapsTo_reach_right</text>
 </g>
 
 <g id="node15" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M494.2,-625.19C494.2,-625.19 289.8,-625.19 289.8,-625.19 283.8,-625.19 277.8,-619.19 277.8,-613.19 277.8,-613.19 277.8,-548.36 277.8,-548.36 277.8,-542.36 283.8,-536.36 289.8,-536.36 289.8,-536.36 494.2,-536.36 494.2,-536.36 500.2,-536.36 506.2,-542.36 506.2,-548.36 506.2,-548.36 506.2,-613.19 506.2,-613.19 506.2,-619.19 500.2,-625.19 494.2,-625.19"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="285,-599.9 285,-599.9 385,-599.9 385,-599.9 285,-599.9"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="385,-599.9 385,-599.9 499,-599.9 499,-599.9 385,-599.9"/>
-<text xml:space="preserve" text-anchor="start" x="288" y="-606.65" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.1</text>
-<text xml:space="preserve" text-anchor="start" x="419.5" y="-605.15" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:normal&#45;form</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-581.9" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Normal form</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-560.15" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">mapsTo_reach_left</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-547.4" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">mapsTo_reach_right</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M792.2,-677.69C792.2,-677.69 587.8,-677.69 587.8,-677.69 581.8,-677.69 575.8,-671.69 575.8,-665.69 575.8,-665.69 575.8,-592.61 575.8,-592.61 575.8,-586.61 581.8,-580.61 587.8,-580.61 587.8,-580.61 792.2,-580.61 792.2,-580.61 798.2,-580.61 804.2,-586.61 804.2,-592.61 804.2,-592.61 804.2,-665.69 804.2,-665.69 804.2,-671.69 798.2,-677.69 792.2,-677.69"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="583,-652.4 583,-652.4 683,-652.4 683,-652.4 583,-652.4"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="683,-652.4 683,-652.4 797,-652.4 797,-652.4 683,-652.4"/>
+<text xml:space="preserve" text-anchor="start" x="586" y="-659.15" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.2</text>
+<text xml:space="preserve" text-anchor="start" x="722" y="-657.65" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:typed&#45;walk</text>
+<text xml:space="preserve" text-anchor="start" x="586" y="-634.4" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The pivot performs a typed</text>
+<text xml:space="preserve" text-anchor="start" x="586" y="-613.4" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">walk</text>
+<text xml:space="preserve" text-anchor="start" x="586" y="-591.65" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">orbit_subset_reach</text>
 </g>
 
 <g id="node16" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M494.2,-817.65C494.2,-817.65 289.8,-817.65 289.8,-817.65 283.8,-817.65 277.8,-811.65 277.8,-805.65 277.8,-805.65 277.8,-732.57 277.8,-732.57 277.8,-726.57 283.8,-720.57 289.8,-720.57 289.8,-720.57 494.2,-720.57 494.2,-720.57 500.2,-720.57 506.2,-726.57 506.2,-732.57 506.2,-732.57 506.2,-805.65 506.2,-805.65 506.2,-811.65 500.2,-817.65 494.2,-817.65"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="285,-792.36 285,-792.36 385,-792.36 385,-792.36 285,-792.36"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="385,-792.36 385,-792.36 499,-792.36 499,-792.36 385,-792.36"/>
-<text xml:space="preserve" text-anchor="start" x="288" y="-799.11" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.2</text>
-<text xml:space="preserve" text-anchor="start" x="424" y="-797.61" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:typed&#45;walk</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-774.36" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The pivot performs a typed</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-753.36" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">walk</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-731.61" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">orbit_subset_reach</text>
+<polygon fill="#ffffff" stroke="#c2410c" stroke-width="1.4" points="506.2,-133.7 277.8,-133.7 277.8,-32.12 506.2,-32.12 506.2,-133.7"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="285,-108.41 285,-108.41 385,-108.41 385,-108.41 285,-108.41"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="385,-108.41 385,-108.41 499,-108.41 499,-108.41 385,-108.41"/>
+<text xml:space="preserve" text-anchor="start" x="288" y="-115.16" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">DEFINITION 3.3</text>
+<text xml:space="preserve" text-anchor="start" x="455.5" y="-113.66" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:level</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-90.41" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The level</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-68.66" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">cutU</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-55.91" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">psi</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-43.16" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level</text>
 </g>
 
 <g id="node17" class="node">
 
-<polygon fill="#ffffff" stroke="#c2410c" stroke-width="1.4" points="756.2,-631.57 527.8,-631.57 527.8,-529.99 756.2,-529.99 756.2,-631.57"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="535,-606.28 535,-606.28 635,-606.28 635,-606.28 535,-606.28"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="635,-606.28 635,-606.28 749,-606.28 749,-606.28 635,-606.28"/>
-<text xml:space="preserve" text-anchor="start" x="538" y="-613.03" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">DEFINITION 3.3</text>
-<text xml:space="preserve" text-anchor="start" x="705.5" y="-611.53" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">def:level</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-588.28" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The level</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-566.53" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">cutU</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-553.78" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">psi</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-541.03" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M494.2,-317.91C494.2,-317.91 289.8,-317.91 289.8,-317.91 283.8,-317.91 277.8,-311.91 277.8,-305.91 277.8,-305.91 277.8,-228.33 277.8,-228.33 277.8,-222.33 283.8,-216.33 289.8,-216.33 289.8,-216.33 494.2,-216.33 494.2,-216.33 500.2,-216.33 506.2,-222.33 506.2,-228.33 506.2,-228.33 506.2,-305.91 506.2,-305.91 506.2,-311.91 500.2,-317.91 494.2,-317.91"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="285,-292.62 285,-292.62 385,-292.62 385,-292.62 285,-292.62"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="385,-292.62 385,-292.62 499,-292.62 499,-292.62 385,-292.62"/>
+<text xml:space="preserve" text-anchor="start" x="288" y="-299.37" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.4</text>
+<text xml:space="preserve" text-anchor="start" x="424" y="-297.87" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:step&#45;table</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-274.62" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The step table</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-252.87" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_of_mem_units</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-240.12" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">psi_of_level_eq_three</text>
+<text xml:space="preserve" text-anchor="start" x="288" y="-227.37" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_emod_five</text>
 </g>
 
 <g id="node18" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M744.2,-819.9C744.2,-819.9 539.8,-819.9 539.8,-819.9 533.8,-819.9 527.8,-813.9 527.8,-807.9 527.8,-807.9 527.8,-730.32 527.8,-730.32 527.8,-724.32 533.8,-718.32 539.8,-718.32 539.8,-718.32 744.2,-718.32 744.2,-718.32 750.2,-718.32 756.2,-724.32 756.2,-730.32 756.2,-730.32 756.2,-807.9 756.2,-807.9 756.2,-813.9 750.2,-819.9 744.2,-819.9"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="535,-794.61 535,-794.61 635,-794.61 635,-794.61 535,-794.61"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="635,-794.61 635,-794.61 749,-794.61 749,-794.61 635,-794.61"/>
-<text xml:space="preserve" text-anchor="start" x="538" y="-801.36" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.4</text>
-<text xml:space="preserve" text-anchor="start" x="674" y="-799.86" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:step&#45;table</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-776.61" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The step table</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-754.86" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_of_mem_units</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-742.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">psi_of_level_eq_three</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-729.36" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_emod_five</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M244.2,-305.16C244.2,-305.16 39.8,-305.16 39.8,-305.16 33.8,-305.16 27.8,-299.16 27.8,-293.16 27.8,-293.16 27.8,-241.08 27.8,-241.08 27.8,-235.08 33.8,-229.08 39.8,-229.08 39.8,-229.08 244.2,-229.08 244.2,-229.08 250.2,-229.08 256.2,-235.08 256.2,-241.08 256.2,-241.08 256.2,-293.16 256.2,-293.16 256.2,-299.16 250.2,-305.16 244.2,-305.16"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="35,-279.87 35,-279.87 135,-279.87 135,-279.87 35,-279.87"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="135,-279.87 135,-279.87 249,-279.87 249,-279.87 135,-279.87"/>
+<text xml:space="preserve" text-anchor="start" x="38" y="-286.62" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.5</text>
+<text xml:space="preserve" text-anchor="start" x="174" y="-285.12" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:lens&#45;bound</text>
+<text xml:space="preserve" text-anchor="start" x="38" y="-261.87" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The lens bound</text>
+<text xml:space="preserve" text-anchor="start" x="38" y="-240.12" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">abs_re_mul_add_le</text>
 </g>
 
 <g id="node19" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M744.2,-1012.35C744.2,-1012.35 539.8,-1012.35 539.8,-1012.35 533.8,-1012.35 527.8,-1006.35 527.8,-1000.35 527.8,-1000.35 527.8,-914.52 527.8,-914.52 527.8,-908.52 533.8,-902.52 539.8,-902.52 539.8,-902.52 744.2,-902.52 744.2,-902.52 750.2,-902.52 756.2,-908.52 756.2,-914.52 756.2,-914.52 756.2,-1000.35 756.2,-1000.35 756.2,-1006.35 750.2,-1012.35 744.2,-1012.35"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="535,-987.06 535,-987.06 635,-987.06 635,-987.06 535,-987.06"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="635,-987.06 635,-987.06 749,-987.06 749,-987.06 635,-987.06"/>
-<text xml:space="preserve" text-anchor="start" x="538" y="-993.81" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.5</text>
-<text xml:space="preserve" text-anchor="start" x="669.5" y="-992.31" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:active&#45;step</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-969.06" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Only active steps break a</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-948.06" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">level bound</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-926.31" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_mem_band</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-913.56" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_ne_of_isCutLevel</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M244.2,-506.24C244.2,-506.24 39.8,-506.24 39.8,-506.24 33.8,-506.24 27.8,-500.24 27.8,-494.24 27.8,-494.24 27.8,-408.41 27.8,-408.41 27.8,-402.41 33.8,-396.41 39.8,-396.41 39.8,-396.41 244.2,-396.41 244.2,-396.41 250.2,-396.41 256.2,-402.41 256.2,-408.41 256.2,-408.41 256.2,-494.24 256.2,-494.24 256.2,-500.24 250.2,-506.24 244.2,-506.24"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="35,-480.95 35,-480.95 135,-480.95 135,-480.95 35,-480.95"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="135,-480.95 135,-480.95 249,-480.95 249,-480.95 135,-480.95"/>
+<text xml:space="preserve" text-anchor="start" x="38" y="-487.7" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.6</text>
+<text xml:space="preserve" text-anchor="start" x="192" y="-486.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:window</text>
+<text xml:space="preserve" text-anchor="start" x="38" y="-462.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The window of an active</text>
+<text xml:space="preserve" text-anchor="start" x="38" y="-441.95" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">step</text>
+<text xml:space="preserve" text-anchor="start" x="38" y="-420.2" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">abs_psi_sub_cutCenter_le</text>
+<text xml:space="preserve" text-anchor="start" x="38" y="-407.45" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">psi_add_level</text>
 </g>
 
 <g id="node20" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M994.2,-807.15C994.2,-807.15 789.8,-807.15 789.8,-807.15 783.8,-807.15 777.8,-801.15 777.8,-795.15 777.8,-795.15 777.8,-743.07 777.8,-743.07 777.8,-737.07 783.8,-731.07 789.8,-731.07 789.8,-731.07 994.2,-731.07 994.2,-731.07 1000.2,-731.07 1006.2,-737.07 1006.2,-743.07 1006.2,-743.07 1006.2,-795.15 1006.2,-795.15 1006.2,-801.15 1000.2,-807.15 994.2,-807.15"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="785,-781.86 785,-781.86 885,-781.86 885,-781.86 785,-781.86"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="885,-781.86 885,-781.86 999,-781.86 999,-781.86 885,-781.86"/>
-<text xml:space="preserve" text-anchor="start" x="788" y="-788.61" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.6</text>
-<text xml:space="preserve" text-anchor="start" x="924" y="-787.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:lens&#45;bound</text>
-<text xml:space="preserve" text-anchor="start" x="788" y="-763.86" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The lens bound</text>
-<text xml:space="preserve" text-anchor="start" x="788" y="-742.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">abs_re_mul_add_le</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M542.2,-677.69C542.2,-677.69 337.8,-677.69 337.8,-677.69 331.8,-677.69 325.8,-671.69 325.8,-665.69 325.8,-665.69 325.8,-592.61 325.8,-592.61 325.8,-586.61 331.8,-580.61 337.8,-580.61 337.8,-580.61 542.2,-580.61 542.2,-580.61 548.2,-580.61 554.2,-586.61 554.2,-592.61 554.2,-592.61 554.2,-665.69 554.2,-665.69 554.2,-671.69 548.2,-677.69 542.2,-677.69"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="333,-652.4 333,-652.4 433,-652.4 433,-652.4 333,-652.4"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="433,-652.4 433,-652.4 547,-652.4 547,-652.4 433,-652.4"/>
+<text xml:space="preserve" text-anchor="start" x="336" y="-659.15" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.7</text>
+<text xml:space="preserve" text-anchor="start" x="445" y="-657.65" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:window&#45;lt&#45;period</text>
+<text xml:space="preserve" text-anchor="start" x="336" y="-634.4" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The window is shorter than</text>
+<text xml:space="preserve" text-anchor="start" x="336" y="-613.4" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">the period</text>
+<text xml:space="preserve" text-anchor="start" x="336" y="-591.65" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">two_mul_lensWidth_lt</text>
 </g>
 
 <g id="node21" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M994.2,-1012.35C994.2,-1012.35 789.8,-1012.35 789.8,-1012.35 783.8,-1012.35 777.8,-1006.35 777.8,-1000.35 777.8,-1000.35 777.8,-914.52 777.8,-914.52 777.8,-908.52 783.8,-902.52 789.8,-902.52 789.8,-902.52 994.2,-902.52 994.2,-902.52 1000.2,-902.52 1006.2,-908.52 1006.2,-914.52 1006.2,-914.52 1006.2,-1000.35 1006.2,-1000.35 1006.2,-1006.35 1000.2,-1012.35 994.2,-1012.35"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="785,-987.06 785,-987.06 885,-987.06 885,-987.06 785,-987.06"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="885,-987.06 885,-987.06 999,-987.06 999,-987.06 885,-987.06"/>
-<text xml:space="preserve" text-anchor="start" x="788" y="-993.81" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.7</text>
-<text xml:space="preserve" text-anchor="start" x="942" y="-992.31" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:window</text>
-<text xml:space="preserve" text-anchor="start" x="788" y="-969.06" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The window of an active</text>
-<text xml:space="preserve" text-anchor="start" x="788" y="-948.06" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">step</text>
-<text xml:space="preserve" text-anchor="start" x="788" y="-926.31" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">abs_psi_sub_cutCenter_le</text>
-<text xml:space="preserve" text-anchor="start" x="788" y="-913.56" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">psi_add_level</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M518.2,-499.86C518.2,-499.86 313.8,-499.86 313.8,-499.86 307.8,-499.86 301.8,-493.86 301.8,-487.86 301.8,-487.86 301.8,-414.78 301.8,-414.78 301.8,-408.78 307.8,-402.78 313.8,-402.78 313.8,-402.78 518.2,-402.78 518.2,-402.78 524.2,-402.78 530.2,-408.78 530.2,-414.78 530.2,-414.78 530.2,-487.86 530.2,-487.86 530.2,-493.86 524.2,-499.86 518.2,-499.86"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="309,-474.57 309,-474.57 409,-474.57 409,-474.57 309,-474.57"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="409,-474.57 409,-474.57 523,-474.57 523,-474.57 409,-474.57"/>
+<text xml:space="preserve" text-anchor="start" x="312" y="-481.32" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.8</text>
+<text xml:space="preserve" text-anchor="start" x="448" y="-479.82" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:cut&#45;levels</text>
+<text xml:space="preserve" text-anchor="start" x="312" y="-456.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Cut levels under the</text>
+<text xml:space="preserve" text-anchor="start" x="312" y="-435.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">golden rotation</text>
+<text xml:space="preserve" text-anchor="start" x="312" y="-413.82" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">exists_cut_levels</text>
 </g>
 
 <g id="node22" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M244.2,-1005.98C244.2,-1005.98 39.8,-1005.98 39.8,-1005.98 33.8,-1005.98 27.8,-999.98 27.8,-993.98 27.8,-993.98 27.8,-920.9 27.8,-920.9 27.8,-914.9 33.8,-908.9 39.8,-908.9 39.8,-908.9 244.2,-908.9 244.2,-908.9 250.2,-908.9 256.2,-914.9 256.2,-920.9 256.2,-920.9 256.2,-993.98 256.2,-993.98 256.2,-999.98 250.2,-1005.98 244.2,-1005.98"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="35,-980.69 35,-980.69 135,-980.69 135,-980.69 35,-980.69"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="135,-980.69 135,-980.69 249,-980.69 249,-980.69 135,-980.69"/>
-<text xml:space="preserve" text-anchor="start" x="38" y="-987.44" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.8</text>
-<text xml:space="preserve" text-anchor="start" x="147" y="-985.94" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:window&#45;lt&#45;period</text>
-<text xml:space="preserve" text-anchor="start" x="38" y="-962.69" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The window is shorter than</text>
-<text xml:space="preserve" text-anchor="start" x="38" y="-941.69" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">the period</text>
-<text xml:space="preserve" text-anchor="start" x="38" y="-919.94" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">two_mul_lensWidth_lt</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M268.2,-684.07C268.2,-684.07 63.8,-684.07 63.8,-684.07 57.8,-684.07 51.8,-678.07 51.8,-672.07 51.8,-672.07 51.8,-586.24 51.8,-586.24 51.8,-580.24 57.8,-574.24 63.8,-574.24 63.8,-574.24 268.2,-574.24 268.2,-574.24 274.2,-574.24 280.2,-580.24 280.2,-586.24 280.2,-586.24 280.2,-672.07 280.2,-672.07 280.2,-678.07 274.2,-684.07 268.2,-684.07"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="59,-658.78 59,-658.78 159,-658.78 159,-658.78 59,-658.78"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="159,-658.78 159,-658.78 273,-658.78 273,-658.78 159,-658.78"/>
+<text xml:space="preserve" text-anchor="start" x="62" y="-665.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.9</text>
+<text xml:space="preserve" text-anchor="start" x="193.5" y="-664.03" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:active&#45;step</text>
+<text xml:space="preserve" text-anchor="start" x="62" y="-640.78" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">No step of the walk</text>
+<text xml:space="preserve" text-anchor="start" x="62" y="-619.78" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">crosses a cut level</text>
+<text xml:space="preserve" text-anchor="start" x="62" y="-598.03" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_mem_band</text>
+<text xml:space="preserve" text-anchor="start" x="62" y="-585.28" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">level_ne_of_isCutLevel</text>
 </g>
 
 <g id="node23" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="1.4" d="M494.2,-1018.73C494.2,-1018.73 289.8,-1018.73 289.8,-1018.73 283.8,-1018.73 277.8,-1012.73 277.8,-1006.73 277.8,-1006.73 277.8,-908.15 277.8,-908.15 277.8,-902.15 283.8,-896.15 289.8,-896.15 289.8,-896.15 494.2,-896.15 494.2,-896.15 500.2,-896.15 506.2,-902.15 506.2,-908.15 506.2,-908.15 506.2,-1006.73 506.2,-1006.73 506.2,-1012.73 500.2,-1018.73 494.2,-1018.73"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="285,-993.44 285,-993.44 385,-993.44 385,-993.44 285,-993.44"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="385,-993.44 385,-993.44 499,-993.44 499,-993.44 385,-993.44"/>
-<text xml:space="preserve" text-anchor="start" x="288" y="-1000.19" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">LEMMA 3.9</text>
-<text xml:space="preserve" text-anchor="start" x="424" y="-998.69" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">lemma:cut&#45;levels</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-975.44" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Cut levels under the</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-954.44" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">golden rotation</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-932.69" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">exists_cut_levels</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-919.94" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">IsCutLevel</text>
-<text xml:space="preserve" text-anchor="start" x="288" y="-907.19" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">exists_isCutLevel</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="2.8" d="M474.2,-879.15C474.2,-879.15 269.8,-879.15 269.8,-879.15 263.8,-879.15 257.8,-873.15 257.8,-867.15 257.8,-867.15 257.8,-764.07 257.8,-764.07 257.8,-758.07 263.8,-752.07 269.8,-752.07 269.8,-752.07 474.2,-752.07 474.2,-752.07 480.2,-752.07 486.2,-758.07 486.2,-764.07 486.2,-764.07 486.2,-867.15 486.2,-867.15 486.2,-873.15 480.2,-879.15 474.2,-879.15"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="265,-853.86 265,-853.86 365,-853.86 365,-853.86 265,-853.86"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="365,-853.86 365,-853.86 479,-853.86 479,-853.86 365,-853.86"/>
+<text xml:space="preserve" text-anchor="start" x="268" y="-860.61" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">THEOREM 3.10</text>
+<text xml:space="preserve" text-anchor="start" x="408.5" y="-859.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:confinement</text>
+<text xml:space="preserve" text-anchor="start" x="268" y="-835.86" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Confinement</text>
+<text xml:space="preserve" text-anchor="start" x="268" y="-814.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">IsCutLevel</text>
+<text xml:space="preserve" text-anchor="start" x="268" y="-801.36" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">exists_isCutLevel</text>
+<text xml:space="preserve" text-anchor="start" x="268" y="-788.61" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">edgeClosed_cutSet</text>
+<text xml:space="preserve" text-anchor="start" x="268" y="-775.86" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">good_cutSet</text>
+<text xml:space="preserve" text-anchor="start" x="268" y="-763.11" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">mem_box_of_mem_cutSet</text>
 </g>
 
 <g id="node24" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="2.8" d="M744.2,-1196.56C744.2,-1196.56 539.8,-1196.56 539.8,-1196.56 533.8,-1196.56 527.8,-1190.56 527.8,-1184.56 527.8,-1184.56 527.8,-1106.98 527.8,-1106.98 527.8,-1100.98 533.8,-1094.98 539.8,-1094.98 539.8,-1094.98 744.2,-1094.98 744.2,-1094.98 750.2,-1094.98 756.2,-1100.98 756.2,-1106.98 756.2,-1106.98 756.2,-1184.56 756.2,-1184.56 756.2,-1190.56 750.2,-1196.56 744.2,-1196.56"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="535,-1171.27 535,-1171.27 635,-1171.27 635,-1171.27 535,-1171.27"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="635,-1171.27 635,-1171.27 749,-1171.27 749,-1171.27 635,-1171.27"/>
-<text xml:space="preserve" text-anchor="start" x="538" y="-1178.02" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">THEOREM 3.10</text>
-<text xml:space="preserve" text-anchor="start" x="678.5" y="-1176.52" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:confinement</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-1153.27" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">Confinement</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-1131.52" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">edgeClosed_cutSet</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-1118.77" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">good_cutSet</text>
-<text xml:space="preserve" text-anchor="start" x="538" y="-1106.02" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">mem_box_of_mem_cutSet</text>
+<path fill="#ffffff" stroke="#c2410c" stroke-width="2.8" d="M667.2,-1023.23C667.2,-1023.23 462.8,-1023.23 462.8,-1023.23 456.8,-1023.23 450.8,-1017.23 450.8,-1011.23 450.8,-1011.23 450.8,-959.15 450.8,-959.15 450.8,-953.15 456.8,-947.15 462.8,-947.15 462.8,-947.15 667.2,-947.15 667.2,-947.15 673.2,-947.15 679.2,-953.15 679.2,-959.15 679.2,-959.15 679.2,-1011.23 679.2,-1011.23 679.2,-1017.23 673.2,-1023.23 667.2,-1023.23"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="458,-997.94 458,-997.94 558,-997.94 558,-997.94 458,-997.94"/>
+<polygon fill="#e2e8f0" stroke="#e2e8f0" points="558,-997.94 558,-997.94 672,-997.94 672,-997.94 558,-997.94"/>
+<text xml:space="preserve" text-anchor="start" x="461" y="-1004.69" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">THEOREM 3.11</text>
+<text xml:space="preserve" text-anchor="start" x="628.5" y="-1003.19" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:lower</text>
+<text xml:space="preserve" text-anchor="start" x="461" y="-979.94" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The lower bound</text>
+<text xml:space="preserve" text-anchor="start" x="461" y="-958.19" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">finite_GG_five_of_lt</text>
 </g>
 
 <g id="node25" class="node">
 
-<path fill="#ffffff" stroke="#c2410c" stroke-width="2.8" d="M869.2,-1348.89C869.2,-1348.89 664.8,-1348.89 664.8,-1348.89 658.8,-1348.89 652.8,-1342.89 652.8,-1336.89 652.8,-1336.89 652.8,-1284.81 652.8,-1284.81 652.8,-1278.81 658.8,-1272.81 664.8,-1272.81 664.8,-1272.81 869.2,-1272.81 869.2,-1272.81 875.2,-1272.81 881.2,-1278.81 881.2,-1284.81 881.2,-1284.81 881.2,-1336.89 881.2,-1336.89 881.2,-1342.89 875.2,-1348.89 869.2,-1348.89"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="660,-1323.6 660,-1323.6 760,-1323.6 760,-1323.6 660,-1323.6"/>
-<polygon fill="#e2e8f0" stroke="#e2e8f0" points="760,-1323.6 760,-1323.6 874,-1323.6 874,-1323.6 760,-1323.6"/>
-<text xml:space="preserve" text-anchor="start" x="663" y="-1330.35" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#c2410c">THEOREM 3.11</text>
-<text xml:space="preserve" text-anchor="start" x="830.5" y="-1328.85" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#94a3b8">thm:lower</text>
-<text xml:space="preserve" text-anchor="start" x="663" y="-1305.6" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="15.00" fill="#0f172a">The lower bound</text>
-<text xml:space="preserve" text-anchor="start" x="663" y="-1283.85" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="10.00" fill="#9a3412">finite_GG_five_of_lt</text>
+<path fill="#0f172a" stroke="#0f172a" stroke-width="3" d="M1483.83,-1225.81C1483.83,-1225.81 1182.17,-1225.81 1182.17,-1225.81 1176.17,-1225.81 1170.17,-1219.81 1170.17,-1213.81 1170.17,-1213.81 1170.17,-1103.23 1170.17,-1103.23 1170.17,-1097.23 1176.17,-1091.23 1182.17,-1091.23 1182.17,-1091.23 1483.83,-1091.23 1483.83,-1091.23 1489.83,-1091.23 1495.83,-1097.23 1495.83,-1103.23 1495.83,-1103.23 1495.83,-1213.81 1495.83,-1213.81 1495.83,-1219.81 1489.83,-1225.81 1483.83,-1225.81"/>
+<polygon fill="#475569" stroke="#475569" points="1177.38,-1200.52 1177.38,-1200.52 1326,-1200.52 1326,-1200.52 1177.38,-1200.52"/>
+<polygon fill="#475569" stroke="#475569" points="1326,-1200.52 1326,-1200.52 1488.62,-1200.52 1488.62,-1200.52 1326,-1200.52"/>
+<text xml:space="preserve" text-anchor="start" x="1180.38" y="-1207.27" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#fcd34d">THEOREM 4.1</text>
+<text xml:space="preserve" text-anchor="start" x="1449.62" y="-1205.77" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#cbd5e1">thm:main</text>
+<text xml:space="preserve" text-anchor="start" x="1180.38" y="-1178.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#ffffff">The critical radius of GG</text>
+<text xml:space="preserve" text-anchor="start" x="1414.38" y="-1178.57" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" baseline-shift="sub" font-size="14.00" fill="#ffffff">5</text>
+
+
+
+
+
+<text xml:space="preserve" text-anchor="start" x="1180.38" y="-1115.77" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="11.00" fill="#fde68a">criticalRadius_five</text>
+<text xml:space="preserve" text-anchor="start" x="1180.38" y="-1102.27" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="11.00" fill="#fde68a">finite_GG_five_iff</text>
 </g>
-
-<g id="node26" class="node">
-
-<path fill="#0f172a" stroke="#0f172a" stroke-width="3" d="M1370.83,-1551.47C1370.83,-1551.47 1069.17,-1551.47 1069.17,-1551.47 1063.17,-1551.47 1057.17,-1545.47 1057.17,-1539.47 1057.17,-1539.47 1057.17,-1428.89 1057.17,-1428.89 1057.17,-1422.89 1063.17,-1416.89 1069.17,-1416.89 1069.17,-1416.89 1370.83,-1416.89 1370.83,-1416.89 1376.83,-1416.89 1382.83,-1422.89 1382.83,-1428.89 1382.83,-1428.89 1382.83,-1539.47 1382.83,-1539.47 1382.83,-1545.47 1376.83,-1551.47 1370.83,-1551.47"/>
-<polygon fill="#475569" stroke="#475569" points="1064.38,-1526.18 1064.38,-1526.18 1213,-1526.18 1213,-1526.18 1064.38,-1526.18"/>
-<polygon fill="#475569" stroke="#475569" points="1213,-1526.18 1213,-1526.18 1375.62,-1526.18 1375.62,-1526.18 1213,-1526.18"/>
-<text xml:space="preserve" text-anchor="start" x="1067.38" y="-1532.93" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="10.00" fill="#fcd34d">THEOREM 4.1</text>
-<text xml:space="preserve" text-anchor="start" x="1336.62" y="-1531.43" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="8.00" fill="#cbd5e1">thm:main</text>
-<text xml:space="preserve" text-anchor="start" x="1067.38" y="-1504.23" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#ffffff">The critical radius of GG</text>
-<text xml:space="preserve" text-anchor="start" x="1301.38" y="-1504.23" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" baseline-shift="sub" font-size="14.00" fill="#ffffff">5</text>
-
-
-
-
-
-<text xml:space="preserve" text-anchor="start" x="1067.38" y="-1441.43" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="11.00" fill="#fde68a">criticalRadius_five</text>
-<text xml:space="preserve" text-anchor="start" x="1067.38" y="-1427.93" font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-weight="400" font-size="11.00" fill="#fde68a">finite_GG_five_iff</text>
-</g>
-<text x="1067.4" y="-1464.2" font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif" font-size="25" font-weight="400" font-style="normal" fill="#fde68a" text-anchor="start"><tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">r</tspan><tspan baseline-shift="sub" font-size="17"><tspan font-style="italic">c</tspan></tspan>(5) = √(3 + <tspan font-style="italic">φ</tspan>) = 2.14896…</tspan></text>
+<text x="1180.4" y="-1138.6" font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif" font-size="25" font-weight="400" font-style="normal" fill="#fde68a" text-anchor="start"><tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">r</tspan><tspan baseline-shift="sub" font-size="17"><tspan font-style="italic">c</tspan></tspan>(5) = √(3 + <tspan font-style="italic">φ</tspan>) = 2.14896…</tspan></text>
 </g>
 </svg>
 <line x1="64.0" y1="1547.8" x2="2319.9" y2="1547.8" stroke="#e2e8f0" stroke-width="1.5"/>
@@ -594,6 +605,6 @@
 <text x="1337.7" y="1581.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="17" font-weight="400" font-style="normal" fill="#0f172a" text-anchor="start"><tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">B</tspan></tspan></text>
 <text x="1361.7" y="1581.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" font-style="normal" fill="#0f172a" text-anchor="start">means  <tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">B</tspan></tspan>  uses  <tspan font-family="'STIX Two Text', 'STIX Two Math', 'Times New Roman', serif"><tspan font-style="italic">A</tspan></tspan></text>
 <text x="2319.9" y="1581.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="15" font-weight="400" font-style="normal" fill="#475569" text-anchor="end"><tspan font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#0f172a">criticalRadius_five</tspan>  is the Lean declaration  <tspan font-family="Menlo, 'SF Mono', Consolas, 'DejaVu Sans Mono', monospace" font-size="14" fill="#0f172a">CriticalRadiusFive.criticalRadius_five</tspan></text>
-<text x="64.0" y="1621.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" font-style="normal" fill="#94a3b8" text-anchor="start">The formal proof uses only the axioms propext, Classical.choice and Quot.sound.   The value was conjectured by R. Hearn, W. Kretschmer, T. Rokicki, B. Streeter and E. Vergo, “Two-Disk Compound Symmetry Groups”, arXiv:2302.12950.</text>
-<text x="2319.9" y="1621.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" font-style="normal" fill="#94a3b8" text-anchor="end">critical-radius-five · 26 nodes · 33 edges</text>
+<text x="64.0" y="1621.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" font-style="normal" fill="#94a3b8" text-anchor="start">The formal proof uses only the axioms propext, Classical.choice and Quot.sound.   Theorem 2.6 is Theorem 2 of R. Hearn, W. Kretschmer, T. Rokicki, B. Streeter and E. Vergo, “Two-Disk Compound Symmetry Groups” (Bridges 2023, arXiv:2302.12950), who also found the value numerically.</text>
+<text x="2319.9" y="1621.8" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="13" font-weight="400" font-style="normal" fill="#94a3b8" text-anchor="end">critical-radius-five · 25 nodes · 37 edges</text>
 </svg>
