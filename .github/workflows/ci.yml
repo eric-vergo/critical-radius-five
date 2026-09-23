@@ -1,0 +1,160 @@
+# Adapted from the Palomar registry template (Apache-2.0).
+#
+# hygiene:    no `sorry` outside Challenge.lean, Challenge.lean imports only
+#             Mathlib, and the landrun wrapper keeps its option policy.
+# build:      builds the library, Challenge, Solution and the axiom audit Test.
+# comparator: checks with the pinned Lean FRO comparator, inside the landrun
+#             sandbox, that Solution proves exactly the statements of Challenge
+#             (definitions included) with the standard axioms, replayed by the
+#             Lean kernel and by nanoda.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hygiene:
+    name: Source hygiene and sandbox wrapper
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: No sorry outside Challenge.lean; Challenge.lean imports only Mathlib
+        run: |
+          python3 - <<'PY'
+          import re
+          import subprocess
+          import sys
+
+          # `sorry`, `admit` and `sorryAx` as whole identifiers, not inside longer names.
+          FORBIDDEN = re.compile(r"(?<![\w.'!?])(?:sorry|admit|sorryAx)(?![\w'!?])")
+          IMPORT = re.compile(r"^\s*(?:(?:public|private|meta)\s+)*import\s+(?:all\s+)?(\S+)", re.M)
+          CHAR_LITERAL = re.compile(r"'(?:\\(?:x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|.)|[^\\'\n])'")
+
+
+          def blank(text):
+              return re.sub(r"[^\n]", " ", text)
+
+
+          def code_only(text):
+              """Blank out comments (nested block comments included) and string and character
+              literals, keeping every line break so that line numbers survive."""
+              out, i, depth = [], 0, 0
+              while i < len(text):
+                  if depth or text.startswith("/-", i):
+                      if text.startswith("/-", i):
+                          depth, step = depth + 1, 2
+                      elif text.startswith("-/", i):
+                          depth, step = depth - 1, 2
+                      else:
+                          step = 1
+                      out.append(blank(text[i:i + step]))
+                      i += step
+                  elif text.startswith("--", i):
+                      end = text.find("\n", i)
+                      end = len(text) if end < 0 else end
+                      out.append(blank(text[i:end]))
+                      i = end
+                  elif text[i] == '"':
+                      end = i + 1
+                      while end < len(text) and text[end] != '"':
+                          end += 2 if text[end] == "\\" else 1
+                      out.append(blank(text[i:end + 1]))
+                      i = end + 1
+                  elif (text[i] == "'" and not (i and re.match(r"[\w'!?]", text[i - 1]))
+                        and (literal := CHAR_LITERAL.match(text, i))):
+                      out.append(blank(literal.group()))
+                      i = literal.end()
+                  else:
+                      out.append(text[i])
+                      i += 1
+              return "".join(out)
+
+
+          failed = False
+          listing = subprocess.run(["git", "ls-files", "-z"],
+                                   check=True, capture_output=True, text=True).stdout
+          tracked = sorted(name for name in listing.split("\0") if name)
+          # Nested Lake projects (the blueprint) are not part of the verified development,
+          # and Verso prose outside comments may mention these words.
+          nested = sorted({path.rsplit("/", 1)[0] + "/" for path in tracked
+                           if "/" in path and path.rsplit("/", 1)[1] in ("lakefile.lean", "lakefile.toml")})
+          if nested:
+              print("skipping nested Lake projects: " + ", ".join(nested))
+          for path in tracked:
+              if not path.endswith(".lean") or path.startswith(tuple(nested)):
+                  continue
+              with open(path, encoding="utf-8") as source:
+                  text = source.read()
+              code, lines = code_only(text), text.splitlines()
+              if path == "Challenge.lean":
+                  for module in IMPORT.findall(code):
+                      if module != "Mathlib" and not module.startswith("Mathlib."):
+                          print(f"::error file={path}::Challenge.lean imports {module}; "
+                                "its imports must all be Mathlib modules")
+                          failed = True
+                  continue
+              for number, line in enumerate(code.splitlines(), 1):
+                  if match := FORBIDDEN.search(line):
+                      print(f"::error file={path},line={number}::`{match.group()}` outside Challenge.lean: "
+                            f"{lines[number - 1].strip()}")
+                      failed = True
+          sys.exit(1 if failed else 0)
+          PY
+      - name: Test the landrun wrapper's option policy
+        run: ./scripts/test-landrun-wrapper.sh
+
+  build:
+    name: Build and axiom audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Installs elan, fetches the Mathlib cache and runs `lake build`, whose
+      # default targets are the library, Challenge, Solution and Test.
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+        with:
+          build: true
+      # Test.lean fixes the axioms of the main theorems with #guard_msgs, so any
+      # other axiom fails this build.
+      - name: Axiom audit
+        run: lake build Test
+
+  comparator:
+    name: Comparator check of Solution against Challenge
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Installs elan and fetches the Mathlib cache, and builds nothing. The
+      # GitHub cache of .lake stays off so that no output built outside the
+      # sandbox, for instance by the build job, is reused: the comparator
+      # builds Challenge and Solution itself, inside landrun.
+      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+        with:
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: "1.24.0"
+          cache: false
+      - name: Run the pinned comparator
+        run: ./scripts/verify-comparator.sh
