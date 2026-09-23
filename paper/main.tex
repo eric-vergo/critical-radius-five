@@ -13,6 +13,7 @@
 \usepackage{subcaption}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{thmtools}
@@ -543,11 +544,18 @@ frames of the animations in \texttt{animations/}, rendered by \texttt{animations
 All names live in the namespace \texttt{CriticalRadiusFive}; \texttt{Cyc} is $\Lam$ with
 coordinates in the basis $1,\zeta,\zeta^2,\zeta^3$.
 
-\begin{center}\small
-\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.3\textwidth}>{\raggedright\arraybackslash}X@{}}
+{\small
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.29\textwidth}>{\raggedright\arraybackslash}p{0.67\textwidth}@{}}
   \toprule
   Paper & Lean \\
   \midrule
+  \endfirsthead
+  \toprule
+  Paper & Lean \\
+  \midrule
+  \endhead
+  \bottomrule
+  \endfoot
   $a$, $b$, $\GG_5(r)$, $\rc(5)$ & \leanname{turn}, \leanname{genA}, \leanname{genB}, \leanname{GG}, \leanname{criticalRadius} \\
   \Cref{prop:mono} & \leanname{orbit\_subset\_orbit\_of\_le} \\
   \Cref{prop:bounded} & \leanname{finite\_of\_encard\_orbit\_le} \\
@@ -572,9 +580,8 @@ coordinates in the basis $1,\zeta,\zeta^2,\zeta^3$.
   $V$ is small & \leanname{abs\_psiGold\_le}, \leanname{mem\_box\_of\_abs\_le}, \leanname{box}, \leanname{mem\_box\_of\_mem\_cutSet} \\
   \Cref{prop:lower} & \leanname{finite\_GG\_five\_of\_lt} \\
   \Cref{thm:main} & \leanname{finite\_GG\_five\_iff}, \leanname{criticalRadius\_five} \\
-  \bottomrule
-\end{tabularx}
-\end{center}
+\end{longtable}
+}
 
 % =================================================================================================
 \begin{thebibliography}{9}
