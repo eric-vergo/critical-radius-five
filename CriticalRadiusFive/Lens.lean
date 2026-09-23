@@ -15,7 +15,7 @@ direction of `g` and tall — of half-height `√(r² - 1)` — in the perpendic
 
 `abs_re_mul_add_le` bounds a real linear functional `z ↦ Re(U z)` on the lens. When `U` is close
 enough to perpendicular to `g` — precisely, `|Re(U g)| √(r² - 1) ≤ |Im(U g)|` — the maximum is
-attained at the tips of the lens, and `|Re(U (w + w'))| ≤ 2 |Im(U g)| √(r² - 1)`.
+attained at the vertices of the lens, and `|Re(U (w + w'))| ≤ 2 |Im(U g)| √(r² - 1)`.
 
 This is where the critical radius enters the lower bound: a step of the orbit invariant forces both
 of its endpoints into a disk, so a lattice point lies in a window of width
@@ -28,7 +28,7 @@ open Complex ComplexConjugate
 namespace CriticalRadiusFive
 
 /-- The lens, algebraically: for `X, Y ≥ 0` with `(X + 1)² + Y² ≤ K² + 1` and `C K ≤ D`, the
-maximum of `C X + D Y` is `D K`, attained at the tip `X = 0`, `Y = K`. -/
+maximum of `C X + D Y` is `D K`, attained at the vertex `X = 0`, `Y = K`. -/
 theorem lens_linear_le {X Y C D K : ℝ} (hX : 0 ≤ X) (hY : 0 ≤ Y) (hC : 0 ≤ C) (hK : 0 ≤ K)
     (hXY : (X + 1) ^ 2 + Y ^ 2 ≤ K ^ 2 + 1) (hCD : C * K ≤ D) : C * X + D * Y ≤ D * K := by
   rcases hK.eq_or_lt with rfl | hK

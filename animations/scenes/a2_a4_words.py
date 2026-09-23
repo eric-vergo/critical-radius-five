@@ -13,7 +13,7 @@ from manim import *  # noqa: F401,F403
 
 from lib.geometry import ANGLE, CC, CENTRE, E, PIECES, RC, chord_point, segment_trace
 from lib.style import (
-    CHORD_C, FAINT, HOT, INK, LEFT_C, LENS_C, MUTED, PIECE_C, RIGHT_C, Frame, M, T, disk,
+    BG, CHORD_C, FAINT, HOT, INK, LEFT_C, LENS_C, MUTED, PIECE_C, RIGHT_C, Frame, M, T, disk,
     hold, lens_shape, seg,
 )
 from lib.anim import turn_arrow
@@ -91,7 +91,8 @@ class WordScene(Scene):
                     rings.add(Circle(radius=0.16, color=HOT, stroke_width=4).move_to(fr(z)))
             if len(rings):
                 if contact_note is None:
-                    contact_note = T("on the rim", 22, HOT)
+                    contact_note = T("on the rim", 22, HOT).add_background_rectangle(
+                        color=BG, opacity=0.9, buff=0.05)
                 note = contact_note.copy().next_to(rings[0], UP, buff=0.08)
                 self.play(Create(rings), FadeIn(note), run_time=0.45)
                 hold(self, note)

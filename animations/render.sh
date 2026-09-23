@@ -17,6 +17,16 @@ BUILD=build                      # manim working directories (not committed)
 OUT=renders
 mkdir -p "$OUT/mp4" "$OUT/gif" "$OUT/stills/dark" "$OUT/stills/light" ../paper/figures
 
+# The README shows a copy of one GIF that starts at its first informative frame (the opening
+# seconds of the scene show only the title): output-name and start time in seconds.
+README_GIF=a5_exchange
+README_GIF_START=6.9
+
+# The GIF filter: 1280 px wide at the given frame rate, with an optimised palette.
+gif_filter() {
+  echo "fps=$1,scale=1280:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle"
+}
+
 # scene-file  scene-class  output-name
 SCENES=(
   "scenes/a1_setting.py   A1Setting    a1_setting"
@@ -52,13 +62,16 @@ for entry in "${SCENES[@]}"; do
   # 2. the GIF preview: 1280 px wide, 12 fps (10 fps if that would exceed 25 MB), optimised palette
   gif="$OUT/gif/$name.gif"
   for fps in 12 10; do
-    ffmpeg -loglevel error -y -i "$OUT/mp4/$name.mp4" -vf \
-      "fps=$fps,scale=1280:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle" \
-      -loop 0 "$gif"
+    ffmpeg -loglevel error -y -i "$OUT/mp4/$name.mp4" -vf "$(gif_filter "$fps")" -loop 0 "$gif"
     size=$(( $(wc -c < "$gif") ))
     echo "  $name.gif: $fps fps, $size bytes"
     [ "$size" -le $((25 * 1024 * 1024)) ] && break
   done
+  if [ "$name" = "$README_GIF" ]; then
+    ffmpeg -loglevel error -y -ss "$README_GIF_START" -i "$OUT/mp4/$name.mp4" -vf "$(gif_filter "$fps")" \
+      -loop 0 "$OUT/gif/${name}_readme.gif"
+    echo "  ${name}_readme.gif: from ${README_GIF_START} s, $fps fps"
+  fi
 
   # 3. the last frame as a still, in both themes
   for theme in dark light; do

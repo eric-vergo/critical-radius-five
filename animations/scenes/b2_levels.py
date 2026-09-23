@@ -50,11 +50,9 @@ class B2Levels(Scene):
         self.play(FadeIn(defs), run_time=1.2)
         hold(self, defs, at_least=2.0)
         steps = VGroup(
-            row("A step from a left centre changes", "$\\ell$", "by", "$+3$", "or", "$-2$,",
-                size=20),
-            row("one from a right centre by", "$-3$", "or", "$+2$;", size=20),
-            row("left centres:", "$\\ell\\equiv 0$,", "right centres:", "$\\ell\\equiv 3 \\pmod 5$",
-                size=20),
+            row("A step from a pivot changes", "$\\ell$", "by", "$+3$", "or", "$-2$,", size=20),
+            row("one from a tip by", "$-3$", "or", "$+2$;", size=20),
+            row("pivots:", "$\\ell\\equiv 0$,", "tips:", "$\\ell\\equiv 3 \\pmod 5$", size=20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.12).next_to(defs, DOWN, aligned_edge=LEFT,
                                                               buff=0.35)
         self.play(FadeIn(steps), run_time=1.2)
@@ -90,7 +88,7 @@ class B2Levels(Scene):
                     teeth.add(Line([X(x), Y(5 * q) - 0.13, 0], [X(x), Y(5 * q) + 0.13, 0],
                                    color=INK, stroke_width=3))
         tcap = VGroup(
-            row("teeth: the possible values of", "$\\psi$", "for left centres on row", "$5q$",
+            row("teeth: the possible values of", "$\\psi$", "for pivots on row", "$5q$",
                 size=18, color=MUTED, buff=0.08),
             row("(spacing", "$\\delta = 3-\\varphi$,", "shifted by", "$\\delta/\\varphi$",
                 "from row to row)", size=18, color=MUTED, buff=0.08),
@@ -110,9 +108,9 @@ class B2Levels(Scene):
         pts = VGroup(*[
             Dot([X(x), Y(l), 0], radius=0.075, color=LEFT_C if c == 0 else RIGHT_C)
             for (x, l), c in win.items()])
-        wcap = VGroup(Dot(radius=0.06, color=LEFT_C), T("left", 18),
+        wcap = VGroup(Dot(radius=0.06, color=LEFT_C), T("pivots", 18),
                       Dot(radius=0.06, color=RIGHT_C),
-                      T(f"right centres in the window, orbit of p ({len(states)} positions)", 18)
+                      T(f"tips in the window, orbit of p ({len(states)} positions)", 18)
                       ).arrange(RIGHT, buff=0.1)
         wcap.next_to(tcap, DOWN, aligned_edge=LEFT, buff=0.14)
         self.play(LaggedStart(*[FadeIn(d, scale=1.6) for d in pts], lag_ratio=0.08),
@@ -122,17 +120,17 @@ class B2Levels(Scene):
         # ---------------- the strip: the lens bound ----------------------------------------------
         self.play(FadeOut(steps), run_time=0.5)
         lensc = VGroup(
-            T("To climb (+3) from a left centre to a right centre", 20),
-            T("that is also in the window, the point must lie in", 20),
+            T("To climb (+3) from a pivot to a tip that is", 20),
+            T("also in the window, the point must lie in", 20),
             row("the lens of both disks. Projected on", "$u$:", size=20),
             M(r"|\psi - Z| \le L(r) = \tfrac12\sqrt{7-4\varphi}\,\sqrt{r^2-1},", 26),
-            T("attained at the lens tips.", 20),
+            T("attained at the vertices of the lens.", 20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.1).next_to(defs, DOWN, aligned_edge=LEFT,
                                                              buff=0.35)
-        # the lens tips and their projection onto the u direction (inset)
+        # the vertices of the lens and their projection onto the u direction (inset)
         h = math.sqrt(r * r - 1)
-        tips = VGroup(Dot(fr(complex(0, h)), radius=0.05, color=GOOD),
-                      Dot(fr(complex(0, -h)), radius=0.05, color=GOOD))
+        verts = VGroup(Dot(fr(complex(0, h)), radius=0.05, color=GOOD),
+                       Dot(fr(complex(0, -h)), radius=0.05, color=GOOD))
         ud = U / abs(U)
         uline = Line(fr(-2.3 * ud), fr(2.3 * ud), color=GOOD, stroke_width=2)
         proj = [complex(0, h), complex(0, -h)]
@@ -143,7 +141,7 @@ class B2Levels(Scene):
         ulab = M("u", 24, GOOD).next_to(fr(2.3 * ud), DOWN, buff=0.05)
         self.play(FadeIn(lensc), Create(uline), FadeIn(ulab), run_time=1.0)
         hold(self, lensc, ulab)
-        self.play(FadeIn(tips), Create(drops), Create(bracket), run_time=1.0)
+        self.play(FadeIn(verts), Create(drops), Create(bracket), run_time=1.0)
         strip = Rectangle(width=X(Z + L) - X(Z - L), height=Y(27) - Y(-27), stroke_width=0)
         strip.set_fill(GOOD, opacity=0.13).move_to([(X(Z - L) + X(Z + L)) / 2, (Y(27) + Y(-27)) / 2,
                                                     0])
@@ -167,9 +165,9 @@ class B2Levels(Scene):
         self.play(FadeOut(lensc), run_time=0.4)
         cutc = VGroup(
             T("A cut level has no tooth inside the strip: no", 20),
-            T("left centre on it can climb to a right centre in", 20),
-            T("the window, so the walk's points in the window", 20),
-            T("never pass it (and likewise from below).", 20),
+            T("pivot on it can climb to a tip in the window, so", 20),
+            T("the walk's points in the window never pass it", 20),
+            T("(and likewise from below).", 20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.1).next_to(defs, DOWN, aligned_edge=LEFT,
                                                              buff=0.35)
         self.play(Create(walls), FadeIn(wlabels), FadeIn(cutc), run_time=1.2)
@@ -194,7 +192,7 @@ class B2Levels(Scene):
         concl = VGroup(
             row("The same with", "$\\zeta u$", "gives a second band.", size=20),
             T("Two bands and the window leave finitely many", 20),
-            T("lattice points: every orbit has at most N(r)", 20),
+            T("lattice points: every orbit has at most M(r)", 20),
             T("points, so GG₅(r) is finite.", 20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.1).next_to(why, DOWN, aligned_edge=LEFT,
                                                              buff=0.3)

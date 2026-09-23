@@ -17,12 +17,23 @@ from lib.geometry import (
 )
 from lib.style import (
     row, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, BG, Frame, M, T, disk, hold,
-    lens_shape,
+    lens_shape, reads_as,
 )
 
 P0 = -0.1722 + 0.0773j
 R0 = 2.0
 DEMO = "abab"
+# where the label "p" sits relative to the point: just below its halo, and clear of every centre
+# of the final frame (by at least 0.05)
+P_LABEL = np.array([0.04, -0.32, 0.0])
+
+
+def named(word, tex):
+    """'(word tex)' in muted type: the name of the lattice point behind a centre."""
+    g = VGroup(T("(" + word, 20, MUTED), M(tex, 26, MUTED), T(")", 20, MUTED))
+    g[1].next_to(g[0], RIGHT, buff=0.1)
+    g[2].next_to(g[1], RIGHT, buff=0.03)
+    return reads_as(g, g[0].read_words + g[1].read_words, g[1].read_eqs)
 
 
 class B1Lattice(Scene):
@@ -41,7 +52,7 @@ class B1Lattice(Scene):
         self.play(FadeIn(L), FadeIn(R), run_time=0.8)
         pd = Dot(fr(p), radius=0.08, color=INK)
         halo = Circle(radius=0.16, color=INK, stroke_width=2).move_to(fr(p))
-        plab = M("p", 30).next_to(pd, DR, buff=0.12)
+        plab = M("p", 30).move_to(fr(p) + P_LABEL)
         self.play(FadeIn(pd), Create(halo), FadeIn(plab), run_time=0.6)
         hold(self, plab)
 
@@ -62,7 +73,7 @@ class B1Lattice(Scene):
             dm = L if c < 0 else R
             self.play(Rotate(dm.marks, ANGLE[letter], about_point=fr(complex(c, 0))),
                       MoveAlongPath(VGroup(pd, halo), arc), Create(arc),
-                      plab.animate.next_to(fr(znew), DR, buff=0.12), run_time=1.0)
+                      plab.animate.move_to(fr(znew) + P_LABEL), run_time=1.0)
             z = znew
         word = M(r"a\,b\,a\,b", 34).next_to(rlab, DOWN, aligned_edge=RIGHT, buff=0.3)
         self.play(FadeIn(word), run_time=0.4)
@@ -72,7 +83,7 @@ class B1Lattice(Scene):
         cap2 = T("The point's view: the point stays; the pair of disks turns about a centre.", 19,
                  MUTED).move_to([-2.9, -3.7, 0])
         self.play(FadeOut(trail), VGroup(pd, halo).animate.move_to(fr(p)),
-                  plab.animate.next_to(fr(p), DR, buff=0.12), FadeOut(cap), run_time=1.0)
+                  plab.animate.move_to(fr(p) + P_LABEL), FadeOut(cap), run_time=1.0)
         cap = cap2
         self.play(FadeIn(cap), run_time=0.5)
         hold(self, cap)
@@ -106,9 +117,10 @@ class B1Lattice(Scene):
 
         # ---- 3. the centres are lattice points ------------------------------------------------
         box = VGroup(
-            VGroup(T("left centre", 22, LEFT_C), M(r"2\nu-1", 28)).arrange(RIGHT, buff=0.2),
-            VGroup(T("right centre", 22, RIGHT_C), M(r"2\nu-1+2\bar m", 28)).arrange(RIGHT,
-                                                                                    buff=0.2),
+            VGroup(T("left centre", 22, LEFT_C), M(r"2\nu-1", 28),
+                   named("pivot", r"\nu")).arrange(RIGHT, buff=0.2),
+            VGroup(T("right centre", 22, RIGHT_C), M(r"2\nu-1+2\bar m", 28),
+                   named("tip", r"\nu+\bar m")).arrange(RIGHT, buff=0.2),
             M(r"\nu\in\mathbb{Z}[\zeta],\quad m\in\{1,\zeta,\dots,\zeta^4\}", 28),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.14)
         box.move_to([1.2, 2.05, 0], aligned_edge=LEFT)

@@ -48,13 +48,12 @@ its endpoints. Induct along the word.
 :::
 
 :::lemma_ "lemma:words" (parent := "upper-bound") (lean := "CriticalRadiusFive.piece₁, CriticalRadiusFive.piece₂, CriticalRadiusFive.piece₃")
-*Three words translate the three pieces.* At $`r = \sqrt{3+\varphi}`, write $`A = a^{-1}` and
-$`B = b^{-1}` for the inverse turns of {uses "def:turns"}[]. On the chord $`E'E` of
-{uses "def:points"}[], the three words (read left to right)
+*Three words translate the three pieces.* At $`r = \sqrt{3+\varphi}`, on the chord $`E'E` of
+{uses "def:points"}[], the three words in the turns of {uses "def:turns"}[] (read left to right)
 
-* $`A\,A\,B\,A\,B` translates $`[E', F']` by $`+2F`,
-* $`a\,b\,a\,b\,b` translates $`[F', G']` by $`+2F`,
-* $`a\,b\,a\,B\,A\,B` translates $`[G', E]` by $`2F - 2E`.
+* $`a^{-1}a^{-1}b^{-1}a^{-1}b^{-1}` translates $`[E', F']` by $`+2F`,
+* $`abab^2` translates $`[F', G']` by $`+2F`,
+* $`abab^{-1}a^{-1}b^{-1}` translates $`[G', E]` by $`2F - 2E`.
 :::
 
 :::proof "lemma:words"
@@ -89,10 +88,10 @@ is carried to the point with parameter $`\operatorname{rot}(t)` by an element of
 :::theorem "thm:engine" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_orbit_of_irrational_rotation, CriticalRadiusFive.infinite_of_infinite_orbit")
 *An irrational rotation makes the group infinite.* Let $`\alpha, \beta \ge 0` with $`\alpha + \beta > 0`
 and $`\alpha/(\alpha+\beta) \notin \mathbb{Q}`, let $`x : [0, \alpha+\beta) \to \mathbb{C}` be
-injective, and let $`G \le \operatorname{Perm}(\mathbb{C})` contain, for every
+injective, and let $`\Gamma \le \operatorname{Perm}(\mathbb{C})` contain, for every
 $`t \in [0, \alpha+\beta)`, an element carrying $`x(t)` to $`x(\operatorname{rot} t)`. Then for every
-$`t_0 \in [0, \alpha+\beta)` the orbit of $`x(t_0)` under $`G` is infinite; in particular $`G` is
-infinite.
+$`t_0 \in [0, \alpha+\beta)` the orbit of $`x(t_0)` under $`\Gamma` is infinite; in particular
+$`\Gamma` is infinite.
 :::
 
 :::proof "thm:engine"

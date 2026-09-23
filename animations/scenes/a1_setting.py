@@ -31,8 +31,10 @@ class A1Setting(Scene):
         R = disk(fr, 1, r, RIGHT_C)
         self.play(FadeIn(L[0]), Create(L[1]), FadeIn(R[0]), Create(R[1]), run_time=1.6)
         self.play(FadeIn(L.marks), FadeIn(R.marks), run_time=0.6)
-        cl = M("-1", 28, LEFT_C).next_to(fr(-1 + 0j), UP, buff=0.1)
-        cr = M("+1", 28, RIGHT_C).next_to(fr(1 + 0j), DOWN, buff=0.1)
+        # each label sits on the lens side of its centre: the other disk's rim passes just
+        # outside the centre (at distance r - 2 = 0.149)
+        cl = M("-1", 28, LEFT_C).next_to(fr(-1 + 0j), UR, buff=0.1)
+        cr = M("+1", 28, RIGHT_C).next_to(fr(1 + 0j), DL, buff=0.1)
         self.play(FadeIn(cl), FadeIn(cr), run_time=0.5)
         hold(self, cl, cr)
 

@@ -12,7 +12,9 @@ pdflatex main && pdflatex main
 
 Packages used (all part of TeX Live): `newpx` (with `newtx`, `txfonts`, `fontaxes`, `kastrup`),
 `inconsolata`, `microtype`, `mathtools`, `amsthm`, `thmtools`, `caption`, `subcaption`, `booktabs`,
-`tabularx`, `enumitem`, `xcolor`, `hyperref`, `cleveref`, `fancyvrb`, `newunicodechar`, `geometry`.
+`tabularx`, `longtable`, `enumitem`, `xcolor`, `hyperref`, `cleveref`, `fancyvrb`, `newunicodechar`,
+`geometry`; and pdfTeX's `glyphtounicode.tex`, which gives the PDF a text layer in which `√` and `°`
+copy and search as themselves.
 
 The figures in `figures/` are crops of the final frames of the animations (light theme); they are
 produced by `../animations/render.sh` (see `../animations/crop_figures.py`).

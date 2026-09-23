@@ -1,3 +1,8 @@
+% The text layer: map every glyph to Unicode, including the big radical signs of the math font,
+% so that copying, searching and screen readers see "√" rather than "p".
+\input{glyphtounicode}\pdfgentounicode=1
+\pdfglyphtounicode{radicalbig}{221A}\pdfglyphtounicode{radicalBig}{221A}
+\pdfglyphtounicode{radicalbigg}{221A}\pdfglyphtounicode{radicalBigg}{221A}
 \documentclass[11pt,a4paper]{article}
 
 % ---------------------------------------------------------------- packages
@@ -69,19 +74,20 @@
 
 \begin{abstract}
 \noindent
-Two closed disks of radius $r$, centred at $-1$ and $+1$ and each turned clockwise by $72^\circ$,
-generate a group $\GG_5(r)$ of piecewise rotations of the plane: the group of an idealised two-disk
-circle puzzle. Hearn, Kretschmer, Rokicki, Streeter and Vergo proved that $\GG_5(\sqrt{3+\varphi})$ is
-infinite, where $\varphi$ is the golden ratio, and their numerical estimate of the radius at which
-the group becomes infinite agrees with $\sqrt{3+\varphi}$ to six decimals. We prove that
-$\GG_5(r)$ is finite for every $r<\sqrt{3+\varphi}$. Hence the group is finite exactly when
-$r<\sqrt{3+\varphi}$, and the critical radius is $\sqrt{3+\varphi}=2.1489611417\ldots$ The finiteness
-proof reads off, from every position of a point, a lattice point of $\Z[e^{2\pi i/5}]$ and follows
-an integer-valued \emph{level}, which can pass a multiple of $5$ only at a turn that leaves the point
-in the lens where the two disks overlap; below $\sqrt{3+\varphi}$ the lens is too thin for the level
-to pass certain multiples of $5$. Both halves are formalised in Lean~4 with Mathlib, and a
-comparator, replaying the proof in two independent kernels, checks that it proves exactly the
-statements of a short file that depends on Mathlib alone.
+Two closed disks of radius $r$, centred at $-1$ and $+1$ and each turned clockwise by
+72\textdegree{}, generate a group $\GG_5(r)$ of piecewise rotations of the plane: the group of an
+idealised two-disk circle puzzle. Hearn, Kretschmer, Rokicki, Streeter and Vergo proved that
+$\GG_5(\sqrt{3+\varphi})$ is infinite, where $\varphi$ is the golden ratio, and their numerical
+estimate of the radius at which the group becomes infinite agrees with $\sqrt{3+\varphi}$ to six
+decimals. We prove that $\GG_5(r)$ is finite for every $r<\sqrt{3+\varphi}$. Hence the group is
+finite exactly when $r<\sqrt{3+\varphi}$, and the critical radius is
+$\sqrt{3+\varphi}=2.1489611417\ldots$. The finiteness proof reads off, from every position of a
+point, a lattice point of $\Z[e^{2\pi i/5}]$ and follows an integer-valued \emph{level}. Among the
+lattice points about which the turns can act, the level can pass a multiple of $5$ only at a turn
+that leaves the point in the lens where the two disks overlap, and below $\sqrt{3+\varphi}$ the lens
+is too thin for it to pass certain multiples of $5$. Both halves are formalised in Lean~4 with
+Mathlib, and a comparator, replaying the proof in two independent kernels, checks that it proves
+exactly the statements of a short file that depends on Mathlib alone.
 \end{abstract}
 
 % =================================================================================================
@@ -101,7 +107,7 @@ The \emph{turns} are the maps
   a(z)=\begin{cases}\zeta^{-1}(z+1)-1, & z\in D_-,\\ z, & \text{otherwise,}\end{cases}\qquad
   b(z)=\begin{cases}\zeta^{-1}(z-1)+1, & z\in D_+,\\ z, & \text{otherwise.}\end{cases}
 \]
-Each rotates its closed disk clockwise by $72^\circ$ and fixes every other point, so it is a
+Each rotates its closed disk clockwise by 72\textdegree{} and fixes every other point, so it is a
 bi{}jection of~$\C$. As on a puzzle, words are read from left to right: $ab$ means ``first $a$, then
 $b$''. The group
 \[
@@ -116,7 +122,8 @@ $\GG_5(r)$ is finite form an initial segment of $\R$, and its supremum
   \rc(5) = \sup\{r\in\R : \GG_5(r)\text{ is finite}\}
 \]
 is the \emph{critical radius}. For $0<r<1$ the disks are disjoint and $\GG_5(r)\cong C_5\times C_5$~\cite{hkrsv};
-as $r$ grows the orbits grow (\cref{fig:orbit}), and at the critical radius they become infinite.
+as $r$ grows the orbits grow (\cref{fig:orbit}), and at the critical radius some of them become
+infinite.
 
 \begin{figure}[t]
   \centering
@@ -147,7 +154,7 @@ $\GG_5(r)$ is finite if and only if $r<\rs$. In particular $\rc(5)=\rs=\sqrt{3+\
 \end{enumerate}
 \end{theorem}
 
-Both statements of the first sentence are formal theorems (\cref{sec:formal}):
+The first two sentences of \cref{thm:main} are formal theorems (\cref{sec:formal}):
 \begin{Verbatim}[fontsize=\small,xleftmargin=1.5em]
 theorem finite_GG_five_iff (r : ℝ) : Finite (GG 5 r) ↔ r < √(3 + φ)
 theorem criticalRadius_five : criticalRadius 5 = √(3 + φ)
@@ -166,7 +173,8 @@ because the point lies in its radius-$r$ disk, hence in the concentric radius-$r
 radius-$r'$ letter moves it in the same way. A letter that fixes the current point is dropped.
 \end{proof}
 
-Note that $\GG_5(r)$ is not a subgroup of $\GG_5(r')$: the comparison is made point by point.
+Note that $\GG_5(r)$ is in general not a subgroup of $\GG_5(r')$: the comparison is made point by
+point.
 
 \begin{proposition}[bounded orbits]\label{prop:bounded}
 Let $\Gamma$ be a group of permutations of a set $X$ generated by a finite set. If every
@@ -223,9 +231,9 @@ A word acts on a segment as the composition of the rotations of its letters as l
 intermediate image of the segment lies in the disk of the next letter. Disks are convex, so it is
 enough to check the two endpoints of each intermediate segment. These endpoints are explicit
 elements of $\Z[\zeta]$, and for $x\in\Z[\zeta]$ the number $|x\pm1|^2$ lies in $\Z[\varphi]$, so
-each check is an exact comparison $m+n\varphi\le 3+\varphi$ with $m,n\in\Z$. In each word the
-rotation angles add up to a multiple of $360^\circ$, so the composition is a translation, and the
-endpoints go where stated (\cref{fig:words}).
+each check is an exact comparison $x+y\varphi\le 3+\varphi$ with $x,y\in\Z$. In each word the
+rotation angles add up to a multiple of 360\textdegree{}, so the composition is a translation, and
+the endpoints go where stated (\cref{fig:words}).
 \end{proof}
 
 \begin{figure}[t]
@@ -244,8 +252,8 @@ endpoints go where stated (\cref{fig:words}).
 
 \begin{remark}
 Several of these comparisons are equalities: the endpoints touch the rims, at $\pm E$, at
-$\pm\bar E$ and at the two tips $\pm(\zeta-\zeta^{-1})=\pm i\sqrt{2+\varphi}$ of the lens (the red
-dots in \cref{fig:words}). For any smaller radius the same words would split the pieces.
+$\pm\bar E$ and at the two vertices $\pm(\zeta-\zeta^{-1})=\pm i\sqrt{2+\varphi}$ of the lens (the
+red dots in \cref{fig:words}). For any smaller radius the same words would split the pieces.
 \end{remark}
 
 \begin{proposition}\label{prop:upper}
@@ -267,10 +275,12 @@ every $r\ge\rs$, and an infinite orbit makes the group infinite.
 \begin{figure}[t]
   \centering
   \includegraphics[width=0.66\textwidth]{figures/a5_exchange.png}
-  \caption{Top: the exchange of the three pieces on the chord, $I_1I_2I_3\mapsto I_3I_1I_2$. Bottom:
-    gluing $E'$ to $E$ turns it into a rotation of a circle by $1/\varphi$ of a turn. The marks
-    outside the circle (and above the chord) are the first $300$ points of the orbit of $0$,
-    coloured by the piece they lie in; the orbit never closes.}
+  \caption{Top: the three pieces on the chord and their translations; the exchange is
+    $I_1I_2I_3\mapsto I_3I_1I_2$. Bottom: gluing $E'$ to $E$ turns it into a rotation of a circle by
+    $1/\varphi$ of a turn; the faint arcs show the pieces after one turn ($I_3$, $I_1$, $I_2$
+    clockwise from $E'\equiv E$). The marks outside the circle (and above the chord) are the first
+    $300$ points of the orbit of $0$ (the first nine as dots, $0$ in black), coloured by the piece
+    they lie in; the orbit never closes.}
   \label{fig:exchange}
 \end{figure}
 
@@ -284,7 +294,7 @@ $\mu_5=\{1,\zeta,\dots,\zeta^4\}$.
 
 \subsection{The point's-eye view}
 
-An element $g$ of the group acts on $p$ through the rotations of those letters that actually move
+An element $g$ of the group acts on $p$ through the rotations of those letters whose disks contain
 the current point, so $g(p)=T(p)$ for an isometry $T(z)=mz+\tau$ with $m\in\mu_5$ and
 $\tau\in\Lam$. Each of the four rotations maps $-1+2\Lam$ onto itself; hence
 $T^{-1}(-1)=2\nu-1$ with $\nu\in\Lam$, and
@@ -294,8 +304,8 @@ $T^{-1}(-1)=2\nu-1$ with $\nu\in\Lam$, and
 Read from the point's side, $T^{-1}$ carries the centres $-1$ and $+1$ of the disks to
 $2\nu-1$ and $2(\nu+\bm)-1$: relative to the point the puzzle has moved, and its two centres now sit
 at lattice points. We call $\nu$ the \emph{pivot} and $\nu+\bm$ the \emph{tip}; the segment joining
-them is a \emph{dumbbell} of length~$1$. The next letter $a^{\pm1}$ moves $g(p)$ if and only if the
-pivot lies in the \emph{window}
+them is a \emph{dumbbell} of length~$1$. The next letter $a^{\pm1}$ acts on $g(p)$ if and only if
+the pivot lies in the \emph{window}
 \[
   \Win_p=\{v\in\Lam : |p+1-2v|\le r\},
 \]
@@ -389,7 +399,7 @@ the point $\xi$ lies in the lens of two disks of radius $r$ about $\pm1$, that i
 $(|x|+1)^2+y^2\le r^2$. Now $\re(U(w+w'))=2\re(Ue\,\xi)$ is at most $2(c|x|+d|y|)$ in absolute
 value, and on the lens $c|x|+d|y|\le d\sqrt{r^2-1}$: the function
 $x\mapsto cx+d\sqrt{r^2-(1+x)^2}$ is concave on $[0,r-1]$ with non-positive slope at $0$, so its
-maximum is taken at the tips $x=0$, $y=\pm\sqrt{r^2-1}$.
+maximum is taken at the vertices $x=0$, $y=\pm\sqrt{r^2-1}$ of the lens.
 \end{proof}
 
 Apply this to an active step $v\to v+e$ whose ends both lie in the window, with $w=p+1-2v$,
@@ -433,9 +443,10 @@ and $5/\delta=2+\varphi$ is irrational --- a golden rotation.
   \includegraphics[width=0.66\textwidth]{figures/b2_levels.png}
   \caption{Levels of the orbit of \cref{fig:lattice} ($r=2$). Vertical: the level $\ell$; horizontal:
     $\psi$. On each row $5q$ the teeth mark the progression $-5q+\delta\Z$; the green strip is
-    $[Z_p-L(r),Z_p+L(r)]$. Rows whose teeth all miss the strip are cut levels (red): no active step
-    within the window leaves them upwards, so the pivots (blue) and tips (orange) that lie in the
-    window stay in the band between the two nearest cut levels.}
+    $[Z_p-L(r),Z_p+L(r)]$. Rows whose teeth all miss the strip are cut levels (red; on row $20$ the
+    nearest tooth misses the strip by $0.016$): no active step within the window leaves them
+    upwards, so the pivots (blue) and tips (orange) that lie in the window stay in the band between
+    the two nearest cut levels.}
   \label{fig:levels}
 \end{figure}
 
@@ -480,8 +491,8 @@ The two halves meet at the same radius for visible reasons (\cref{fig:threshold}
 \cref{lem:words} act on the whole chord only if $E'E$ lies in the lens, that is $|E+1|\le r$; the
 cut needs the strip, of width $2L(r)$, to be narrower than the period $\delta$. Both conditions
 switch at
-$r^2=3+\varphi$. In both halves the decisive points are the tips of the lens: the maximum in
-\cref{lem:lens} is attained there, and at $r=\rs$ the tips are the lattice points
+$r^2=3+\varphi$. In both halves the decisive points are the vertices of the lens: the maximum in
+\cref{lem:lens} is attained there, and at $r=\rs$ the vertices are the lattice points
 $\pm(\zeta-\zeta^{-1})$, where the three words touch the rims.
 
 \begin{figure}[t]
@@ -545,13 +556,17 @@ process. On a fresh clone at tag \texttt{v1.0} (macOS, unsandboxed run with the 
 comparator \texttt{d03acab}, \texttt{lean4export} \texttt{076e8e5}, \texttt{nanoda} \texttt{68d5ca9})
 the comparator reported ``nanoda kernel accepts the solution'', ``Lean default kernel accepts the
 solution'' and ``Your solution is okay!''. The sandboxed Linux run, the \texttt{comparator} job of
-the repository's continuous integration, passed on commit \texttt{39b3e01}.
+the repository's continuous integration, passed on commit \texttt{0ac0fdd} (tag \texttt{v1.0})
+with the same three messages, in the same run as the build, lint and axiom-audit job
+(\url{https://github.com/eric-vergo/critical-radius-five/actions/runs/35881089165}).
 
 \paragraph{Scope.}
 Every numbered statement of \cref{sec:result,sec:upper,sec:lower} and equations \eqref{eq:normal}
 and \eqref{eq:window} are formalised (Appendix~\ref{app:lean}); the uniform orbit bound of
 \cref{thm:main}(b) is proved inside \leanname{finite\_GG\_five\_of\_lt}, which needs no separate
-case $r<1$. Not formalised, because nothing depends on them: the isomorphism
+case $0\le r<1$ (it splits off only $r<0$, where both turns are the identity). Not formalised,
+because nothing depends on them: the minimal polynomial $x^4-7x^2+11$ and the decimal value of
+$\rs$; the remark after \cref{prop:mono}; the isomorphism
 $\GG_5(r)\cong C_5\times C_5$ for $0<r<1$; the remark in \cref{sec:upper} and the length ratio
 $1:\varphi$ of the pieces; the density of $\Lam$; that $\mathfrak p$ is a prime of norm $5$ (the
 formal proof uses only the class map $\cls$); the ``only if'' of $2L(r)<\delta\iff r^2<3+\varphi$;
@@ -618,18 +633,18 @@ coordinates in the basis $1,\zeta,\zeta^2,\zeta^3$.
 \bibitem{hkrsv} R.~A. Hearn, W.~Kretschmer, T.~Rokicki, B.~Streeter, E.~Vergo,
   \emph{Two-disk compound symmetry groups}, in: Proceedings of Bridges 2023: Mathematics, Art,
   Music, Architecture, Culture, Tessellations Publishing, Phoenix, 2023, 29--36;
-  arXiv:2302.12950.
+  \href{https://arxiv.org/abs/2302.12950}{arXiv:2302.12950}.
 \bibitem{lean4} L.~de~Moura, S.~Ullrich, \emph{The Lean~4 theorem prover and programming language},
   in: Automated Deduction -- CADE 28, LNCS 12699, Springer, 2021, 625--635.
 \bibitem{mathlib} The mathlib Community, \emph{The Lean mathematical library}, in: Proceedings of
   CPP 2020, ACM, 2020, 367--381.
 \bibitem{comparator} Lean FRO, \emph{comparator}: checking a Lean solution against a challenge,
   \url{https://github.com/leanprover/comparator}, commit \texttt{d03acab}.
-\bibitem{lean4export} \emph{lean4export}: plain-text declaration export for Lean~4,
+\bibitem{lean4export} Lean FRO, \emph{lean4export}: plain-text declaration export for Lean~4,
   \url{https://github.com/leanprover/lean4export}, commit \texttt{076e8e5}.
 \bibitem{nanoda} C.~Bailey, \emph{nanoda\_lib}: type checking based on the Lean theorem prover,
-  \url{https://github.com/ammkrn/nanoda_lib}; used here in the fork by R.~J.~Simmons,
-  \url{https://github.com/robsimmons/nanoda_lib}, commit \texttt{68d5ca9}.
+  \url{https://github.com/ammkrn/nanoda_lib}, commit \texttt{68d5ca9} (fetched from the fork
+  \url{https://github.com/robsimmons/nanoda_lib}, whose \texttt{master} is that commit).
 \bibitem{landrun} A.~Ranjbar, \emph{landrun}: unprivileged sandboxing of Linux processes with
   Landlock, \url{https://github.com/Zouuup/landrun}, commit \texttt{811cfff}.
 \end{thebibliography}

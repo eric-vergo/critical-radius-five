@@ -103,9 +103,9 @@ class B3Threshold(Scene):
                 if Z - span / 2 < x < Z + span / 2:
                     teeth.add(Line([X(x), Y(q) - 0.05, 0], [X(x), Y(q) + 0.05, 0], color=INK,
                                    stroke_width=3.5))
-        lab_q = VGroup(M("q=25", 18, MUTED).next_to([xl, Y(25), 0], LEFT, buff=0.1),
-                       M("0", 18, MUTED).next_to([xl, Y(0), 0], LEFT, buff=0.1),
-                       M("-25", 18, MUTED).next_to([xl, Y(-25), 0], LEFT, buff=0.1))
+        lab_q = VGroup(M("q=25", 28, MUTED).next_to([xl, Y(25), 0], LEFT, buff=0.1),
+                       M("0", 28, MUTED).next_to([xl, Y(0), 0], LEFT, buff=0.1),
+                       M("-25", 28, MUTED).next_to([xl, Y(-25), 0], LEFT, buff=0.1))
         hdr = T("rows of teeth (levels 5q) and the strip", 20, MUTED).move_to(
             [(xl + xr) / 2, Y(25) + 0.35, 0])
         self.play(FadeIn(rows), FadeIn(teeth), FadeIn(lab_q), FadeIn(hdr), run_time=1.2)
@@ -159,7 +159,7 @@ class B3Threshold(Scene):
         ringEp = Circle(radius=0.16, color=HOT, stroke_width=4).move_to(fr(-E))
         crit = VGroup(
             row("$r = \\sqrt{3+\\varphi}$:", size=22),
-            T("E and E′ reach the rims, E′E fits the lens;", 20),
+            row("$E$", "and", "$E'$", "reach the rims,", "$E'E$", "fits the lens;", size=20),
             T("the strip is exactly one period wide:", 20),
             T("every row has a tooth inside, no cut is left.", 20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.08).move_to([-6.75, -3.2, 0], aligned_edge=LEFT)

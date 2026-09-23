@@ -114,13 +114,14 @@ unity and preserves classes, the same holds for $`\ell_2`.
 
 :::lemma_ "lemma:lens-bound" (parent := "lower-bound") (lean := "CriticalRadiusFive.abs_re_mul_add_le")
 *The lens bound.* Let $`U, g \in \mathbb{C}` with $`|g| = 1`, and put
-$`C = |\operatorname{Re}(Ug)|`, $`D = |\operatorname{Im}(Ug)|`. If $`|w| \le r`, $`|w'| \le r` and
+$`c = |\operatorname{Re}(Ug)|`, $`d = |\operatorname{Im}(Ug)|`. If $`|w| \le r`, $`|w'| \le r` and
 $`w - w' = 2g`, that is, the midpoint $`(w + w')/2` ranges over the lens of two disks of radius $`r`
 at distance $`2`, then
 
-$$`|\operatorname{Re}(U(w + w'))| \le 2D\sqrt{r^2 - 1},`
+$$`|\operatorname{Re}(U(w + w'))| \le 2d\sqrt{r^2 - 1},`
 
-provided $`C^2(r^2 - 1) \le D^2`; under this condition the tip of the lens is the maximiser.
+provided $`c^2(r^2 - 1) \le d^2`; under this condition the maximum is attained at the vertices of
+the lens.
 :::
 
 :::proof "lemma:lens-bound"
@@ -128,9 +129,9 @@ Write $`\xi := \tfrac12(w + w')\,\overline{g} = x + iy`. Then $`w\overline{g} = 
 $`w'\overline{g} = \xi - 1`, so the two disk conditions give $`(|x| + 1)^2 + y^2 \le r^2`; in
 particular $`r \ge 1`. Moreover
 $`\operatorname{Re}(U(w + w')) = 2\operatorname{Re}(Ug\,\xi) = 2(\operatorname{Re}(Ug)\,x - \operatorname{Im}(Ug)\,y)`,
-whose absolute value is at most $`2(C|x| + D|y|)`. On the region $`(|x| + 1)^2 + y^2 \le r^2` the
-linear form $`C|x| + D|y|` is maximised at the tip $`x = 0`, $`|y| = \sqrt{r^2 - 1}` as soon as
-$`C\sqrt{r^2 - 1} \le D`, which gives the bound $`2D\sqrt{r^2 - 1}`.
+whose absolute value is at most $`2(c|x| + d|y|)`. On the region $`(|x| + 1)^2 + y^2 \le r^2` the
+function $`c|x| + d|y|` is maximised at the vertices $`x = 0`, $`|y| = \sqrt{r^2 - 1}` of the lens
+as soon as $`c\sqrt{r^2 - 1} \le d`, which gives the bound $`2d\sqrt{r^2 - 1}`.
 :::
 
 :::lemma_ "lemma:window" (parent := "lower-bound") (lean := "CriticalRadiusFive.abs_psi_sub_cutCenter_le, CriticalRadiusFive.psi_add_level")
@@ -139,8 +140,8 @@ $`D_5 := \tfrac12\sqrt{5 - 2\sqrt5}` and $`L(r) := D_5\sqrt{r^2 - 1}` (with $`L(
 $`r < 1`). If $`v` and $`v + e` lie in $`W_p(r)` for an active direction $`e`, then $`\psi_u(v)`
 lies within $`L(r)` of the centre $`Z_p := \langle u, p + 1\rangle - \tfrac12(3 - 2\varphi)`, which
 depends only on $`p`. At level $`5q` the values of $`\psi_u` form a progression of period
-$`\delta` rotated by the golden number: $`\psi_u(v) = \delta P - \delta\alpha q` with
-$`P \in \mathbb{Z}` and $`\alpha = 1/\varphi`. The same holds for $`\psi_{\zeta u}` and $`\ell_2`,
+$`\delta` rotated by the golden number: $`\psi_u(v) = \delta P - \delta q/\varphi` with
+$`P \in \mathbb{Z}`. The same holds for $`\psi_{\zeta u}` and $`\ell_2`,
 with the centre $`Z'_p := \langle \zeta u, p + 1\rangle - \tfrac12(3 - 2\varphi)`.
 :::
 
@@ -148,13 +149,13 @@ with the centre $`Z'_p := \langle \zeta u, p + 1\rangle - \tfrac12(3 - 2\varphi)
 Apply {uses "lemma:lens-bound"}[] with $`U = \overline{u}`, $`g = e`, $`w = p + 1 - 2v` and
 $`w' = p + 1 - 2(v + e)`, so that $`w - w' = 2e` and $`|w|, |w'| \le r`. By
 {uses "lemma:step-table"}[], $`\operatorname{Re}(\overline{u}e) = \tfrac12\psi_u(e) = \tfrac12(3 - 2\varphi)`,
-so $`C = \tfrac12(\sqrt5 - 2)` and $`D = \sqrt{|u|^2 - C^2} = D_5`; the side condition
-$`C^2(r^2 - 1) \le D^2` holds for $`r^2 \le 6 + 2\sqrt5`, in particular for $`r^2 < 3 + \varphi`. Since
+so $`c = \tfrac12(\sqrt5 - 2)` and $`d = \sqrt{|u|^2 - c^2} = D_5`; the side condition
+$`c^2(r^2 - 1) \le d^2` holds for $`r^2 \le 6 + 2\sqrt5`, in particular for $`r^2 < 3 + \varphi`. Since
 $`\operatorname{Re}(\overline{u}(w + w')) = 2\langle u, p + 1\rangle - 2\psi_u(v) - \psi_u(e) = 2(Z_p - \psi_u(v))`,
 the lens bound gives $`|\psi_u(v) - Z_p| \le D_5\sqrt{r^2 - 1} = L(r)`. For the progression: writing
 $`\psi_u(v) = A + B\varphi`, we have $`\psi_u(v) + \ell(v) = (\varphi - 3)B = -\delta B`, so at level
-$`5q`, $`\psi_u(v) = -\delta B - 5q = \delta P - \delta\alpha q` with $`P := -B - 3q`, because
-$`\delta(3 + \alpha) = 5`.
+$`5q`, $`\psi_u(v) = -\delta B - 5q = \delta P - \delta q/\varphi` with $`P := -B - 3q`, because
+$`\delta(3 + \varphi^{-1}) = 5`.
 :::
 
 :::lemma_ "lemma:window-lt-period" (parent := "lower-bound") (lean := "CriticalRadiusFive.two_mul_lensWidth_lt")
@@ -172,8 +173,8 @@ $`r^2 - 1 < 2 + \varphi`.
 
 :::lemma_ "lemma:cut-levels" (parent := "lower-bound") (lean := "CriticalRadiusFive.exists_cut_levels")
 *Cut levels under the golden rotation.* Let $`\delta > 0`, $`0 \le L < \delta/2`, and let
-$`s \in \mathbb{R}` be irrational; in our application $`s = -\alpha` with $`\alpha = 1/\varphi`, the
-golden rotation. Call $`q \in \mathbb{Z}` a _cut level_ for $`Z \in \mathbb{R}` if
+$`s \in \mathbb{R}` be irrational; in our application $`s = -\varphi^{-1}`, the golden
+rotation. Call $`q \in \mathbb{Z}` a _cut level_ for $`Z \in \mathbb{R}` if
 $`|\delta P + \delta s q - Z| > L` for all $`P \in \mathbb{Z}`, that is, if the point
 $`qs - Z/\delta` of $`\mathbb{R}/\mathbb{Z}` avoids the arc $`[-\eta, \eta]`, $`\eta = L/\delta < \tfrac12`.
 There is $`N`, depending only on $`\eta` and $`s`, such that for every $`Z` there are cut levels
@@ -184,8 +185,9 @@ $`q_+ \in [1, N]` and $`q_- \in [-N, -1]`: on both sides of $`0`, uniformly in $
 Dividing by $`\delta` turns the condition into $`qs - Z/\delta \notin [-\eta, \eta] + \mathbb{Z}`.
 First find a small step: an integer $`k \ge 1` for which $`ks` lies within a prescribed
 $`\varepsilon > 0` of an integer, and not at an integer, since $`s` is irrational. For the golden
-rotation the Fibonacci approximations $`F_{m+1}\alpha - F_m = (-1)^m\alpha^{m+1}` provide such steps;
-for any irrational $`s`, Dirichlet's approximation theorem does, and this is the route of the formal
+rotation the Fibonacci numbers $`f_n` provide such steps, as
+$`f_{n+1}\varphi^{-1} - f_n = (-1)^n\varphi^{-(n+1)}`; for any irrational $`s`, Dirichlet's
+approximation theorem does, and this is the route of the formal
 proof. Take $`\varepsilon < 1 - 2\eta` and march from the level $`1` (or $`-1`) through the multiples
 of $`k`: the points move around $`\mathbb{R}/\mathbb{Z}` in steps shorter than the complementary arc,
 which has length $`1 - 2\eta,` so one of a bounded number of them lands in it. The bound depends on
@@ -195,7 +197,7 @@ $`\eta` and $`s` only, not on $`Z`.
 :::lemma_ "lemma:active-step" (parent := "lower-bound") (lean := "CriticalRadiusFive.level_mem_band, CriticalRadiusFive.level_ne_of_isCutLevel")
 *No step of the walk crosses a cut level.* Let $`r^2 < 3 + \varphi`, and let $`q_+` and $`q_-` be
 cut levels in the sense of {uses "lemma:cut-levels"}[] for the centre $`Z_p` of
-{uses "lemma:window"}[], with $`\delta = 3 - \varphi`, $`s = -\alpha` and $`L = L(r)`. Let
+{uses "lemma:window"}[], with $`\delta = 3 - \varphi`, $`s = -\varphi^{-1}` and $`L = L(r)`. Let
 $`v, v' \in W_p(r)` be joined by a typed step: $`v' = v + e` with $`\operatorname{cl}(v) = 0`, or
 $`v' = v - e` with $`\operatorname{cl}(v) = 1`, for some $`e \in \mu_5`. If
 $`5q_- < \ell(v) \le 5q_+`, then $`5q_- < \ell(v') \le 5q_+`. The same holds for $`\ell_2`, with the
@@ -213,7 +215,7 @@ $`\ell(e) = 3` and $`\ell(v) = 5q_- + 3`, in which case the step arrives at the 
 $`v - e` at level exactly $`5q_-`. So in both exceptional cases an active step $`e` joins a point
 $`w` at level $`5q`, with $`q = q_+` or $`q = q_-`, to the point $`w + e`. The statement concerns
 only steps between two points of the window, so both $`w` and $`w + e` lie in $`W_p(r)`, and by
-{uses "lemma:window"}[] the value $`\psi_u(w) = \delta P - \delta\alpha q` lies within $`L(r)` of
+{uses "lemma:window"}[] the value $`\psi_u(w) = \delta P - \delta q/\varphi` lies within $`L(r)` of
 $`Z_p`: then $`q` is not a cut level, a contradiction. The same argument, with $`\psi_{\zeta u}` and
 $`Z'_p`, applies to $`\ell_2`.
 :::
@@ -234,7 +236,7 @@ declarations linked here are its ingredients.)
 If $`p` lies outside both disks, its orbit is $`\{p\}`; otherwise $`|p| \le 1 + r`. Let
 $`Z_p^{(1)} := Z_p` and $`Z_p^{(2)} := Z'_p` be the centres of {uses "lemma:window"}[] for the two
 functionals. By {uses "lemma:window-lt-period"}[], $`2L(r) < \delta`, so {uses "lemma:cut-levels"}[]
-(with $`s = -\alpha` and $`L = L(r)`) gives $`N`, depending only on $`r`, and cut levels
+(with $`s = -\varphi^{-1}` and $`L = L(r)`) gives $`N`, depending only on $`r`, and cut levels
 $`q_+^{(i)} \in [1, N]` and $`q_-^{(i)} \in [-N, -1]` for $`Z_p^{(1)}` and $`Z_p^{(2)}`.
 
 Let $`V` consist of the lattice points $`v` of the window, of class $`0` or $`1`, with

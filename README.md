@@ -15,7 +15,7 @@ This is the value found numerically by Hearn, Kretschmer, Rokicki, Streeter and 
 proved that the group is infinite at √(3 + φ) (their Theorem 2). That the group is finite for every
 smaller radius is proved here.
 
-![Three pieces of the chord E′E are exchanged and glued into a circle: a rotation by 1/φ of a turn](animations/renders/gif/a5_exchange.gif)
+![Three pieces of the chord E′E are exchanged and glued into a circle: a rotation by 1/φ of a turn](animations/renders/gif/a5_exchange_readme.gif)
 
 *At r = √(3 + φ) three words exchange the three pieces of a chord; glued into a circle, the
 exchange is a rotation by 1/φ of a turn, so the orbit of the origin never closes
@@ -120,9 +120,9 @@ orbit of the origin is infinite.
 
 [`Check.lean`](Check.lean) unfolds the five definitions of `Challenge.lean` (`turn_apply_check`,
 `genA_apply_check`, `genB_apply_check`, `genA_apply_of_not_check`, `genB_apply_of_not_check`,
-`GG_check`, `criticalRadius_check`) and restates the two theorems in fully elementary terms
-(`finite_iff_check`, `criticalRadius_check_five`); every proof there is `rfl`, a one-line unfolding,
-or a direct appeal to the library. `lake build` compiles it (it is a default target).
+`GG_check`, `criticalRadius_check`) and restates the two theorems with `GG` and `criticalRadius`
+unfolded (`finite_iff_check`, `criticalRadius_check_five`); every proof there is `rfl`, a one-line
+unfolding, or a direct appeal to the library. `lake build` compiles it (it is a default target).
 
 The proof architecture, with every statement linked to its Lean declaration and an interactive
 dependency graph, is the Verso blueprint in [`blueprint/`](blueprint/), published at
@@ -184,7 +184,7 @@ comparator's own process. It checks four things:
   environments, so the library's definitions *are* the challenge's;
 - the statements coincide;
 - the proofs use only `propext`, `Quot.sound` and `Classical.choice`;
-- the Lean kernel and the independent [nanoda](https://github.com/robsimmons/nanoda_lib) kernel both
+- the Lean kernel and the independent [nanoda](https://github.com/ammkrn/nanoda_lib) kernel both
   accept the solution when they replay it.
 
 ```sh
@@ -208,8 +208,17 @@ lost.
 
 **Continuous integration** ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) builds the
 project, runs the linters and the axiom audit, runs the comparator under landrun, and checks that no
-`sorry` occurs outside `Challenge.lean`. The sandboxed Linux comparator job and the hygiene job
-passed on commit `39b3e01`; the build job and the Pages deployment are re-run on every push.
+`sorry` occurs outside `Challenge.lean`. On the release commit `0ac0fdd` (tag `v1.0`), all three
+jobs of [CI run 35881089165](https://github.com/eric-vergo/critical-radius-five/actions/runs/35881089165) passed:
+
+- [source hygiene and the sandbox wrapper](https://github.com/eric-vergo/critical-radius-five/actions/runs/35881089165/job/107249411546);
+- [the build, the per-module lint and the axiom audit](https://github.com/eric-vergo/critical-radius-five/actions/runs/35881089165/job/107249411306);
+- [the comparator under landrun](https://github.com/eric-vergo/critical-radius-five/actions/runs/35881089165/job/107249411079), which printed
+  `nanoda kernel accepts the solution`, `Lean default kernel accepts the solution` and
+  `Your solution is okay!`.
+
+The Blueprint workflow rebuilds and deploys the site on every push; for `0ac0fdd` this was
+[run 35881089173](https://github.com/eric-vergo/critical-radius-five/actions/runs/35881089173).
 
 ## Repository layout
 
