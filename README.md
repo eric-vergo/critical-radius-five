@@ -154,7 +154,7 @@ The script builds pinned revisions of the comparator, lean4export, nanoda and la
 comparison, the axiom check and both kernel replays are unchanged in that mode; only the sandbox is
 lost.
 
-**Verified so far** (macOS, unsandboxed mode):
+**Verified so far** (macOS, unsandboxed mode, on a fresh clone whose `.lake` held only Mathlib):
 
 - `lake build` and `lake lint` pass.
 - The axiom audit passes.

@@ -22,7 +22,7 @@ project:
     - "The critical-radius-five authors"
 
 classification:
-  arxiv: ["math.GR", "math.DS"]
+  arxiv: ["math.GR", "math.MG"]
   msc2020: ["20B07", "37E05", "37E10", "11R18"]
 
 sources:
