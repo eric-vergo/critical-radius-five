@@ -11,36 +11,37 @@ import CriticalRadiusFive.PivotWalk
 /-!
 # The lower bound: `GG₅` is finite below `√(3 + φ)`
 
-Fix `r < √(3 + φ)`. By the pivot walk (`PivotWalk.lean`) it suffices to trap the pivots and tips
-of every orbit in a set `V` of lattice points that is closed under the typed steps inside the
-window and whose size is bounded in terms of `r` alone. The set is cut out by a real functional
-and its *level*.
+Fix `r < √(3 + φ)` and a point `p`. By the pivot walk (`PivotWalk.lean`) it suffices to trap the
+pivots and tips of the orbit of `p` in a set `V` of lattice points that is closed under the typed
+steps inside the window and whose size is bounded in terms of `r` alone. The set is cut out by a
+real functional and its *level*.
 
 **The cut functional.** Let `u = 1 - ζ + ζ²` and `ψ(ν) = 2 Re(ū ν)`. On the lattice
 `ψ(ν) = A(ν) + B(ν) φ` with integers `A`, `B`, and the *level* `ℓ(ν) = -A(ν) - 3 B(ν)` satisfies
 
 `ψ(ν) + ℓ(ν) = -δ B(ν)`,  `δ = 3 - φ`  (`psi_add_level`),
 
-so the values of `ψ` at level `ℓ` form the progression `-ℓ + δ ℤ`. Along a step `e ∈ μ₅` the level
-changes by `ℓ(e) ∈ {3, -2}`, and `ℓ ≡ 3 · class (mod 5)`: pivots sit at levels `≡ 0`, tips at
-levels `≡ 3`. The level can therefore only overshoot a bound `5q` through an *active* step
-(`ℓ(e) = 3`) leaving a pivot at level exactly `5q` (or, going down, arriving at one).
+so the values of `ψ` at level `ℓ` lie in the progression `-ℓ + δ ℤ`. A step `e ∈ μ₅` changes the
+level by `ℓ(e) ∈ {3, -2}`, and `ℓ ≡ 3 · class (mod 5)`: pivots sit at levels `≡ 0`, tips at levels
+`≡ 3`. The level can therefore only overshoot a bound `5q` through an *active* step (`ℓ(e) = 3`)
+from a pivot at level exactly `5q`, and only undershoot `5q` through an active step back to a
+pivot at level `5q`.
 
-**The lens.** Both endpoints of such a step lie in the window, so by the lens bound `ψ` of the pivot
-lies within `L(r) = √((7 - 4φ)/4) · √(r² - 1)` of a centre depending only on `p`
-(`abs_psi_sub_cutCenter_le`). For `r < √(3 + φ)` the window is shorter than the period:
+**The lens.** Both endpoints of such a step lie in the window, so by the lens bound `ψ` of the
+pivot lies within `L(r) = √((7 - 4φ)/4) · √(r² - 1)` of a centre that depends on `p` only
+(`abs_psi_sub_cutCenter_le`). For `r < √(3 + φ)` this window is shorter than the period:
 `2 L(r) < δ` (`two_mul_lensWidth_lt`), with equality exactly at `r = √(3 + φ)`.
 
-**Cut levels.** The progressions `-5q + δ ℤ` rotate with `q` by the irrational number
-`5 / δ ≡ 1/φ (mod 1)`, so there are *cut levels* `qTop ≥ 1` and `qBot ≤ -1` at which the window misses
-the progression, within a bound `N` depending on `r` only (`exists_cut_levels`). No step of the
-walk crosses a cut level, so the level stays in the band `(5qBot, 5qTop]` (`level_mem_band`). The same
-holds for the rotated functional `ψ ∘ ζ⁻¹`.
+**Cut levels.** The progressions `-5q + δ ℤ` move with `q` by the irrational rotation
+`-5/δ = -(2 + φ)`, so there are *cut levels* `q₊ ≥ 1` and `q₋ ≤ -1` at which the window misses the
+progression, within a bound `N` that depends on `r` only (`exists_cut_levels`). No step of the walk
+crosses a cut level, so the level stays in the band `(5q₋, 5q₊]` (`level_mem_band`). The same holds
+for the turned functional `ψ ∘ ζ⁻¹`.
 
-**Discreteness.** In the window `ψ` and `ψ ∘ ζ⁻¹` are bounded; in the bands so are the two levels;
-together they bound the coordinates of the lattice point (`abs_coords_le`). So all pivots lie in a
-box whose size depends on `r` only, every orbit has at most `5 · |box|` points, and the group is
-finite (`finite_of_encard_orbit_le`).
+**Discreteness.** In the window `ψ` and `ψ ∘ ζ⁻¹` are bounded, and in the bands so are the two
+levels; together they bound the coordinates of the lattice point (`mem_box_of_abs_le`). So all
+pivots lie in a box whose size depends on `r` only, every orbit has at most `5 · |box|` points, and
+the group is finite (`finite_GG_five_of_lt`).
 -/
 
 noncomputable section
@@ -74,6 +75,7 @@ def level : Cyc → ℤ
 /-- The cut functional `ψ(ν) = 2 Re(ū ν) = A(ν) + B(ν) φ`. -/
 def psi (v : Cyc) : ℝ := psiRat v + psiGold v * φ
 
+/-- The cut functional is `ψ(ν) = 2 Re(ū ν)` with `u = 1 - ζ + ζ²`. -/
 theorem psi_eq (v : Cyc) : psi v = 2 * (toC (bar cutU) * toC v).re := by
   have h : (psi v : ℂ) = toC (bar cutU) * toC v + toC cutU * toC (bar v) := by
     have hφ := zeta_five_add_pow_four
@@ -89,12 +91,14 @@ theorem psi_eq (v : Cyc) : psi v = 2 * (toC (bar cutU) * toC v).re := by
   rw [h', add_conj] at h
   exact_mod_cast h
 
+/-- The level is additive. -/
 theorem level_add (v w : Cyc) : level (v + w) = level v + level w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
   simp only [level]
   ring
 
+/-- The level commutes with subtraction. -/
 theorem level_sub (v w : Cyc) : level (v - w) = level v - level w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
@@ -208,7 +212,13 @@ theorem abs_psi_sub_cutCenter_le {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {v
 
 /-! ### Cut levels -/
 
-/-- The progressions `-5q + δ ℤ` rotate with `q` by `-5/δ = -(2 + φ)`, an irrational number. -/
+/-- `q` is a *cut level* for the window centre `w₀` at radius `r`: the lens window of `ψ`, of
+half-width `L(r)` about `cutCenter w₀`, misses the progression `-5q + δ ℤ` of the values of `ψ` at
+level `5q`. -/
+def IsCutLevel (r : ℝ) (w₀ : ℂ) (q : ℤ) : Prop :=
+  ∀ P : ℤ, lensWidth r < |(3 - φ) * P + -5 * q - cutCenter w₀|
+
+/-- The progressions `-5q + δ ℤ` move with `q` by the irrational rotation `-5/δ = -(2 + φ)`. -/
 theorem irrational_neg_five_div : Irrational (-5 / (3 - φ)) := by
   have := goldenRatio_lt
   have h : -5 / (3 - φ) = -(φ + (2 : ℕ)) := by
@@ -217,12 +227,21 @@ theorem irrational_neg_five_div : Irrational (-5 / (3 - φ)) := by
   rw [h]
   exact (Real.goldenRatio_irrational.add_natCast 2).neg
 
+/-- **Cut levels exist, uniformly.** For `r < √(3 + φ)` there is a bound `N` such that every window
+centre has a cut level in `[1, N]` and a cut level in `[-N, -1]`. -/
+theorem exists_isCutLevel {r : ℝ} (hr : r ^ 2 < 3 + φ) :
+    ∃ N : ℕ, ∀ w₀ : ℂ, (∃ q : ℤ, 1 ≤ q ∧ q ≤ N ∧ IsCutLevel r w₀ q) ∧
+      (∃ q : ℤ, -N ≤ q ∧ q ≤ -1 ∧ IsCutLevel r w₀ q) := by
+  have := goldenRatio_lt
+  obtain ⟨N, hN⟩ := exists_cut_levels (δ := 3 - φ) (t := -5) (by linarith)
+    irrational_neg_five_div (two_mul_lensWidth_lt hr)
+  exact ⟨N, fun w₀ => hN (cutCenter w₀)⟩
+
 /-- A pivot on a cut level cannot take an active step inside the window: its value of `ψ` would lie
 both in the lens window and in the progression that the window misses. -/
-theorem level_ne_of_cut {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {q : ℤ}
-    (hq : ∀ P : ℤ, lensWidth r < |(3 - φ) * P + -5 * q - cutCenter w₀|) {x e : Cyc}
-    (he : e ∈ units) (hlev : level e = 3) (hx : ‖w₀ - 2 * toC x‖ ≤ r)
-    (hxe : ‖w₀ - 2 * toC (x + e)‖ ≤ r) : level x ≠ 5 * q := by
+theorem level_ne_of_isCutLevel {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {q : ℤ}
+    (hq : IsCutLevel r w₀ q) {x e : Cyc} (he : e ∈ units) (hlev : level e = 3)
+    (hx : ‖w₀ - 2 * toC x‖ ≤ r) (hxe : ‖w₀ - 2 * toC (x + e)‖ ≤ r) : level x ≠ 5 * q := by
   intro hxq
   have h₁ := abs_psi_sub_cutCenter_le hr he hlev hx hxe
   have h₂ := psi_add_level x
@@ -233,36 +252,99 @@ theorem level_ne_of_cut {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {q : ℤ}
     linarith] at h₃
   linarith
 
-/-- **No step of the walk crosses a cut level.** If `qTop` and `qBot` are cut levels for the window
+/-- **No step of the walk crosses a cut level.** If `qhi` and `qlo` are cut levels for the window
 centre `w₀`, a typed step between two points of the window — from a pivot (class `0`) by `+e`, or
-from a tip (class `1`) by `-e` — keeps the level in the band `(5 qBot, 5 qTop]`. -/
-theorem level_mem_band {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {qTop qBot : ℤ}
-    (hqTop : ∀ P : ℤ, lensWidth r < |(3 - φ) * P + -5 * qTop - cutCenter w₀|)
-    (hqBot : ∀ P : ℤ, lensWidth r < |(3 - φ) * P + -5 * qBot - cutCenter w₀|)
+from a tip (class `1`) by `-e` — keeps the level in the band `(5 qlo, 5 qhi]`. -/
+theorem level_mem_band {w₀ : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {qhi qlo : ℤ}
+    (hqhi : IsCutLevel r w₀ qhi) (hqlo : IsCutLevel r w₀ qlo)
     {v v' e : Cyc} (he : e ∈ units) (hv : ‖w₀ - 2 * toC v‖ ≤ r) (hv' : ‖w₀ - 2 * toC v'‖ ≤ r)
     (hstep : cls v % 5 = 0 ∧ v' = v + e ∨ cls v % 5 = 1 ∧ v' = v - e)
-    (hband : 5 * qBot < level v ∧ level v ≤ 5 * qTop) :
-    5 * qBot < level v' ∧ level v' ≤ 5 * qTop := by
+    (hband : 5 * qlo < level v ∧ level v ≤ 5 * qhi) :
+    5 * qlo < level v' ∧ level v' ≤ 5 * qhi := by
   have hmod := level_emod_five v
   rcases hstep with ⟨hc, rfl⟩ | ⟨hc, rfl⟩
-  · -- From a pivot: the level can only overshoot `5 qTop` from `5 qTop` itself, by an active step.
+  · -- From a pivot the level can overshoot `5 qhi` only from `5 qhi` itself, by an active step.
     rw [level_add]
     rcases level_of_mem_units e he with h3 | h2
-    · have := level_ne_of_cut hr hqTop he h3 hv hv'
+    · have := level_ne_of_isCutLevel hr hqhi he h3 hv hv'
       omega
     · omega
-  · -- From a tip: the level can only undershoot `5 qBot` by landing on a pivot at `5 qBot`.
+  · -- From a tip the level can undershoot `5 qlo` only by an active step back to a pivot at
+    -- `5 qlo`.
     rw [level_sub]
     rcases level_of_mem_units e he with h3 | h2
-    · have := level_ne_of_cut hr hqBot he h3 hv' (by rwa [sub_add_cancel])
+    · have := level_ne_of_isCutLevel hr hqlo he h3 hv' (by rwa [sub_add_cancel])
       rw [level_sub] at this
       omega
     · omega
 
+/-! ### The invariant set -/
+
+/-- The window of the walk turned by `ζ⁻¹`: `‖ζ⁻¹ (p + 1) - 2 ζ⁻¹ ν‖ = ‖p + 1 - 2 ν‖`. -/
+theorem norm_window_mulZetaInv (p : ℂ) (v : Cyc) :
+    ‖ζ⁻¹ * (p + 1) - 2 * toC (mulZetaInv v)‖ = ‖p + 1 - 2 * toC v‖ := by
+  rw [toC_mulZetaInv, show ζ⁻¹ * (p + 1) - 2 * (ζ⁻¹ * toC v) = ζ⁻¹ * (p + 1 - 2 * toC v) by ring,
+    norm_mul, norm_inv, norm_zeta, inv_one, one_mul]
+
+/-- The invariant set for the orbit of `p`: the lattice points of the window, of class `0` or `1`,
+whose levels for `ψ` and for the turned functional `ψ ∘ ζ⁻¹` lie in the bands `(5 q₁', 5 q₁]` and
+`(5 q₂', 5 q₂]`. -/
+def cutSet (p : ℂ) (r : ℝ) (q₁ q₁' q₂ q₂' : ℤ) : Set Cyc :=
+  {v | Window p r v ∧ (cls v % 5 = 0 ∨ cls v % 5 = 1) ∧
+    (5 * q₁' < level v ∧ level v ≤ 5 * q₁) ∧
+    (5 * q₂' < level (mulZetaInv v) ∧ level (mulZetaInv v) ≤ 5 * q₂)}
+
+/-- Between cut levels, the invariant set is closed under the typed steps inside the window. -/
+theorem edgeClosed_cutSet {p : ℂ} {r : ℝ} (hr : r ^ 2 < 3 + φ) {q₁ q₁' q₂ q₂' : ℤ}
+    (hc₁ : IsCutLevel r (p + 1) q₁) (hc₁' : IsCutLevel r (p + 1) q₁')
+    (hc₂ : IsCutLevel r (ζ⁻¹ * (p + 1)) q₂) (hc₂' : IsCutLevel r (ζ⁻¹ * (p + 1)) q₂') :
+    EdgeClosed p r (cutSet p r q₁ q₁' q₂ q₂') := by
+  -- Both bands are preserved by `level_mem_band`, the second one for the walk turned by `ζ⁻¹`.
+  have key {v v' e : Cyc} (he : e ∈ units) (hv : v ∈ cutSet p r q₁ q₁' q₂ q₂')
+      (hv' : Window p r v') (hstep : cls v % 5 = 0 ∧ v' = v + e ∨ cls v % 5 = 1 ∧ v' = v - e) :
+      (5 * q₁' < level v' ∧ level v' ≤ 5 * q₁) ∧
+        (5 * q₂' < level (mulZetaInv v') ∧ level (mulZetaInv v') ≤ 5 * q₂) := by
+    obtain ⟨hw, -, hb₁, hb₂⟩ := hv
+    refine ⟨level_mem_band hr hc₁ hc₁' he hw hv' hstep hb₁,
+      level_mem_band hr hc₂ hc₂' (mulZetaInv_mem_units e he) ?_ ?_ ?_ hb₂⟩
+    · rw [norm_window_mulZetaInv]; exact hw
+    · rw [norm_window_mulZetaInv]; exact hv'
+    · rw [cls_mulZetaInv_emod]
+      rcases hstep with ⟨hc, rfl⟩ | ⟨hc, rfl⟩
+      exacts [.inl ⟨hc, mulZetaInv_add v e⟩, .inr ⟨hc, mulZetaInv_sub v e⟩]
+  constructor
+  · intro v hv hc e he hve
+    have := cls_of_mem_units e he
+    exact ⟨hve, .inr (by rw [cls_add]; omega), key he hv hve (.inl ⟨hc, rfl⟩)⟩
+  · intro v hv hc e he hve
+    have := cls_of_mem_units e he
+    exact ⟨hve, .inl (by rw [cls_sub]; omega), key he hv hve (.inr ⟨hc, rfl⟩)⟩
+
+/-- If `p` lies in one of the disks, the initial state — pivot `0`, tip `1` — is good for the
+invariant set between cut levels `q₊ ≥ 1` and `q₋ ≤ -1`. -/
+theorem good_cutSet {p : ℂ} {r : ℝ} (hp : ‖p + 1‖ ≤ r ∨ ‖p - 1‖ ≤ r) {q₁ q₁' q₂ q₂' : ℤ}
+    (hq₁ : 1 ≤ q₁) (hq₁' : q₁' ≤ -1) (hq₂ : 1 ≤ q₂) (hq₂' : q₂' ≤ -1) :
+    Good p r (cutSet p r q₁ q₁' q₂ q₂') (1, 0, 0, 0) 0 := by
+  have htip : (0 : Cyc) + bar (1, 0, 0, 0) = (1, 0, 0, 0) := by decide
+  have h₀ : Window p r 0 → 0 ∈ cutSet p r q₁ q₁' q₂ q₂' := fun hw => ⟨hw, .inl (by decide),
+    by rw [show level 0 = 0 by decide]; omega,
+    by rw [show level (mulZetaInv 0) = 0 by decide]; omega⟩
+  have h₁ : Window p r (1, 0, 0, 0) → (1, 0, 0, 0) ∈ cutSet p r q₁ q₁' q₂ q₂' := fun hw =>
+    ⟨hw, .inr (by decide), by rw [show level (1, 0, 0, 0) = 3 by decide]; omega,
+      by rw [show level (mulZetaInv (1, 0, 0, 0)) = -2 by decide]; omega⟩
+  refine ⟨by decide, by decide, h₀, fun hw => ?_, ?_⟩
+  · rw [htip] at hw ⊢
+    exact h₁ hw
+  · rw [htip]
+    rcases hp with hp | hp
+    · exact .inl (h₀ (by simpa [Window] using hp))
+    · refine .inr (h₁ ?_)
+      rwa [Window, toC_one, show p + 1 - 2 * 1 = p - 1 by ring]
+
 /-! ### Discreteness -/
 
-theorem lensWidth_nonneg (r : ℝ) : 0 ≤ lensWidth r :=
-  mul_nonneg (Real.sqrt_nonneg _) (Real.sqrt_nonneg _)
+/-- The box `[-K, K]⁴` of lattice points. -/
+def box (K : ℤ) : Finset Cyc := Finset.Icc (-K, -K, -K, -K) (K, K, K, K)
 
 /-- In the window of a point `p` of one of the disks, lattice points have norm at most `1 + r`. -/
 theorem norm_toC_le_of_window {p : ℂ} {r : ℝ} (hp : ‖p‖ ≤ 1 + r) {v : Cyc} (hv : Window p r v) :
@@ -275,7 +357,7 @@ theorem norm_toC_le_of_window {p : ℂ} {r : ℝ} (hp : ‖p‖ ≤ 1 + r) {v : 
   unfold Window at hv
   linarith
 
-/-- `|ψ(ν)| ≤ 2 ‖ν‖`, as `‖u‖ = 2 - φ ≤ 1`. -/
+/-- `|ψ(ν)| ≤ 2 ‖ν‖`, since `‖u‖ = 2 - φ ≤ 1`. -/
 theorem abs_psi_le (v : Cyc) : |psi v| ≤ 2 * ‖toC v‖ := by
   have h : ‖toC (bar cutU)‖ ≤ 1 := by
     have := goldenRatio_gt
@@ -288,7 +370,7 @@ theorem abs_psi_le (v : Cyc) : |psi v| ≤ 2 * ‖toC v‖ := by
     _ ≤ 2 * ‖toC v‖ := by
         rw [norm_mul]; gcongr; exact mul_le_of_le_one_left (norm_nonneg _) h
 
-/-- The golden part of `ψ` is controlled by `ψ` and the level: `δ B = -(ψ + ℓ)`. -/
+/-- The golden part of `ψ` is controlled by `ψ` and the level, as `δ B = -(ψ + ℓ)` and `δ > 1`. -/
 theorem abs_psiGold_le (v : Cyc) : |(psiGold v : ℝ)| ≤ |psi v| + |(level v : ℝ)| := by
   have := goldenRatio_lt
   have h := psi_add_level v
@@ -299,41 +381,55 @@ theorem abs_psiGold_le (v : Cyc) : |(psiGold v : ℝ)| ≤ |psi v| + |(level v :
 
 /-- **Discreteness.** A lattice point is determined by the golden parts and the levels of its two
 cut functionals `ψ` and `ψ ∘ ζ⁻¹`: the integer matrix of these four coordinates has
-determinant `-5`, so bounding them by `M` bounds the point's coordinates by `2M`. -/
+determinant `-5`, so bounding them by `M` bounds the coordinates of the point by `2M`. -/
 theorem mem_box_of_abs_le {v : Cyc} {M : ℤ} (h₁ : |psiGold v| ≤ M) (h₂ : |level v| ≤ M)
-    (h₃ : |psiGold (mulZetaInv v)| ≤ M) (h₄ : |level (mulZetaInv v)| ≤ M) :
-    v ∈ Finset.Icc (-(2 * M), -(2 * M), -(2 * M), -(2 * M)) (2 * M, 2 * M, 2 * M, 2 * M) := by
+    (h₃ : |psiGold (mulZetaInv v)| ≤ M) (h₄ : |level (mulZetaInv v)| ≤ M) : v ∈ box (2 * M) := by
   obtain ⟨a, b, c, d⟩ := v
   simp only [psiGold, level, mulZetaInv, abs_le] at h₁ h₂ h₃ h₄
-  simp only [Finset.mem_Icc, Prod.mk_le_mk]
+  simp only [box, Finset.mem_Icc, Prod.mk_le_mk]
   omega
+
+/-- For a point `p` of one of the disks and cut levels in `[-N, N]`, the invariant set lies in the
+box `[-2M, 2M]⁴` with `M = ⌈2 + 2r⌉ + 5N`, a bound that depends on `r` and `N` only. -/
+theorem mem_box_of_mem_cutSet {p : ℂ} {r : ℝ} (hp : ‖p‖ ≤ 1 + r) {N : ℕ} {q₁ q₁' q₂ q₂' : ℤ}
+    (hq₁ : q₁ ≤ N) (hq₁' : -N ≤ q₁') (hq₂ : q₂ ≤ N) (hq₂' : -N ≤ q₂') {v : Cyc}
+    (hv : v ∈ cutSet p r q₁ q₁' q₂ q₂') : v ∈ box (2 * (⌈2 + 2 * r⌉₊ + 5 * N : ℕ)) := by
+  obtain ⟨hw, -, hb₁, hb₂⟩ := hv
+  set M : ℕ := ⌈2 + 2 * r⌉₊ + 5 * N with hM
+  have hM' : (2 + 2 * r) + 5 * N ≤ (M : ℝ) := by
+    have := Nat.le_ceil (2 + 2 * r)
+    push_cast [M]
+    linarith
+  -- Both functionals are bounded by `2 + 2r` on the window, both levels by `5N` in the bands.
+  have hgold (x : Cyc) (hx : ‖toC x‖ ≤ 1 + r) (q q' : ℤ) (hq : q ≤ N) (hq' : -N ≤ q')
+      (hb : 5 * q' < level x ∧ level x ≤ 5 * q) : |psiGold x| ≤ M ∧ |level x| ≤ M := by
+    have hl : |level x| ≤ 5 * N := abs_le.2 ⟨by omega, by omega⟩
+    have hl' : |(level x : ℝ)| ≤ 5 * N := by exact_mod_cast hl
+    have := (abs_psiGold_le x).trans (add_le_add (abs_psi_le x) hl')
+    have : |(psiGold x : ℝ)| ≤ M := by linarith
+    exact ⟨by exact_mod_cast this, by omega⟩
+  have hnorm' : ‖toC (mulZetaInv v)‖ ≤ 1 + r := by
+    rw [toC_mulZetaInv, norm_mul, norm_inv, norm_zeta, inv_one, one_mul]
+    exact norm_toC_le_of_window hp hw
+  obtain ⟨h₁, h₂⟩ := hgold v (norm_toC_le_of_window hp hw) q₁ q₁' hq₁ hq₁' hb₁
+  obtain ⟨h₃, h₄⟩ := hgold _ hnorm' q₂ q₂' hq₂ hq₂' hb₂
+  exact mem_box_of_abs_le h₁ h₂ h₃ h₄
 
 /-! ### Finiteness below `√(3 + φ)` -/
 
-/-- The window of the turned walk: `‖ζ⁻¹ (p + 1) - 2 ζ⁻¹ ν‖ = ‖p + 1 - 2 ν‖`. -/
-theorem norm_window_mulZetaInv (p : ℂ) (v : Cyc) :
-    ‖ζ⁻¹ * (p + 1) - 2 * toC (mulZetaInv v)‖ = ‖p + 1 - 2 * toC v‖ := by
-  rw [toC_mulZetaInv, show ζ⁻¹ * (p + 1) - 2 * (ζ⁻¹ * toC v) = ζ⁻¹ * (p + 1 - 2 * toC v) by ring,
-    norm_mul, norm_inv, norm_zeta, inv_one, one_mul]
-
-/-- **The lower bound.** `GG 5 r` is finite for every `r < √(3 + φ)`. -/
+/-- **The lower bound.** `GG 5 r` is finite for every `r < √(3 + φ)`: every orbit has at most
+`5 · |box|` points, where the box depends on `r` only. -/
 theorem finite_GG_five_of_lt {r : ℝ} (hr : r < √(3 + φ)) : Finite (GG 5 r) := by
   rcases lt_or_ge r 0 with hr₀ | hr₀
   · rw [GG_eq_bot_of_neg hr₀]
     infer_instance
-  have := goldenRatio_gt
-  have := goldenRatio_lt
   have hr₂ : r ^ 2 < 3 + φ := by
+    have := goldenRatio_gt
     have := Real.sq_sqrt (show (0 : ℝ) ≤ 3 + φ by linarith)
     nlinarith [Real.sqrt_nonneg (3 + φ)]
-  -- Cut levels, within a bound `N` depending on `r` only.
-  obtain ⟨N, hN⟩ := exists_cut_levels (δ := 3 - φ) (t := -5) (by linarith)
-    irrational_neg_five_div (lensWidth_nonneg r) (two_mul_lensWidth_lt hr₂)
-  -- Every orbit lies in the image of `μ₅ × box`.
-  set M : ℕ := ⌈2 + 2 * r⌉₊ + 5 * N with hMdef
-  set K : ℤ := 2 * M + 1 with hK
-  set box : Finset Cyc := Finset.Icc (-K, -K, -K, -K) (K, K, K, K)
-  refine finite_of_encard_orbit_le rfl (toFinite {genA 5 r, genB 5 r}) (units ×ˢ box).card
+  obtain ⟨N, hN⟩ := exists_isCutLevel hr₂
+  set K : ℤ := 2 * (⌈2 + 2 * r⌉₊ + 5 * N : ℕ) + 1 with hK
+  refine finite_of_encard_orbit_le rfl (Set.toFinite {genA 5 r, genB 5 r}) (units ×ˢ box K).card
     fun p => ?_
   by_cases hp : ‖p + 1‖ ≤ r ∨ ‖p - 1‖ ≤ r
   swap
@@ -344,90 +440,27 @@ theorem finite_GG_five_of_lt {r : ℝ} (hr : r < √(3 + φ)) : Finite (GG 5 r) 
     refine ⟨((1, 0, 0, 0), (0, 0, 0, 0)), Finset.mem_product.2 ⟨by decide, ?_⟩⟩
     simp only [box, Finset.mem_Icc, Prod.mk_le_mk]
     omega
+  -- A point of a disk: the orbit is trapped by the invariant set between cut levels.
   have hpn : ‖p‖ ≤ 1 + r := by
     rcases hp with hp | hp
     · simpa using (norm_sub_le (p + 1) 1).trans (by rw [norm_one]; linarith)
     · simpa using (norm_add_le (p - 1) 1).trans (by rw [norm_one]; linarith)
-  obtain ⟨⟨q₁, hq₁, hq₁N, hc₁⟩, ⟨q₁', hq₁'N, hq₁', hc₁'⟩⟩ := hN (cutCenter (p + 1))
-  obtain ⟨⟨q₂, hq₂, hq₂N, hc₂⟩, ⟨q₂', hq₂'N, hq₂', hc₂'⟩⟩ := hN (cutCenter (ζ⁻¹ * (p + 1)))
-  -- The invariant set: lattice points of the window, of class `0` or `1`, whose levels for `ψ`
-  -- and for `ψ ∘ ζ⁻¹` lie between the cut levels.
-  set V : Set Cyc := {v | Window p r v ∧ (cls v % 5 = 0 ∨ cls v % 5 = 1) ∧
-    (5 * q₁' < level v ∧ level v ≤ 5 * q₁) ∧
-    (5 * q₂' < level (mulZetaInv v) ∧ level (mulZetaInv v) ≤ 5 * q₂)}
-  have hV : EdgeClosed p r V := by
-    constructor
-    · rintro v ⟨hw, -, hb₁, hb₂⟩ hc e he hwe
-      have hce := cls_of_mem_units e he
-      refine ⟨hwe, .inr (by rw [cls_add]; omega),
-        level_mem_band hr₂ hc₁ hc₁' he hw hwe (.inl ⟨hc, rfl⟩) hb₁, ?_⟩
-      refine level_mem_band hr₂ hc₂ hc₂' (mulZetaInv_mem_units e he) ?_ ?_
-        (.inl ⟨by rwa [cls_mulZetaInv_emod], (mulZetaInv_add v e)⟩) hb₂
-      · rw [norm_window_mulZetaInv]; exact hw
-      · rw [norm_window_mulZetaInv]; exact hwe
-    · rintro v ⟨hw, -, hb₁, hb₂⟩ hc e he hwe
-      have hce := cls_of_mem_units e he
-      refine ⟨hwe, .inl (by rw [cls_sub]; omega),
-        level_mem_band hr₂ hc₁ hc₁' he hw hwe (.inr ⟨hc, rfl⟩) hb₁, ?_⟩
-      refine level_mem_band hr₂ hc₂ hc₂' (mulZetaInv_mem_units e he) ?_ ?_
-        (.inr ⟨by rwa [cls_mulZetaInv_emod], (mulZetaInv_sub v e)⟩) hb₂
-      · rw [norm_window_mulZetaInv]; exact hw
-      · rw [norm_window_mulZetaInv]; exact hwe
-  -- The initial state: pivot `0`, tip `1`.
-  have h₀ : Good p r V (1, 0, 0, 0) 0 := by
-    have htip : (0 : Cyc) + bar (1, 0, 0, 0) = (1, 0, 0, 0) := by decide
-    have hmem₀ : Window p r 0 → 0 ∈ V := fun hw => ⟨hw, .inl (by decide),
-      by rw [show level 0 = 0 by decide]; omega,
-      by rw [show level (mulZetaInv 0) = 0 by decide]; omega⟩
-    have hmem₁ : Window p r (1, 0, 0, 0) → (1, 0, 0, 0) ∈ V := fun hw => ⟨hw, .inr (by decide),
-      by rw [show level (1, 0, 0, 0) = 3 by decide]; omega,
-      by rw [show level (mulZetaInv (1, 0, 0, 0)) = -2 by decide]; omega⟩
-    refine ⟨by decide, by decide, hmem₀, fun hw => ?_, ?_⟩
-    · rw [htip] at hw ⊢
-      exact hmem₁ hw
-    · rw [htip]
-      rcases hp with hp | hp
-      · exact .inl (hmem₀ (by simpa [Window] using hp))
-      · refine .inr (hmem₁ ?_)
-        rw [Window, toC_one, show p + 1 - 2 * 1 = p - 1 by ring]
-        exact hp
-  -- Points of `V` lie in the box `[-2M, 2M]⁴`.
-  have hM : (2 + 2 * r) + 5 * N ≤ (M : ℝ) := by
-    have := Nat.le_ceil (2 + 2 * r)
-    push_cast [M]
-    linarith
-  have hbox : ∀ w ∈ V,
-      w ∈ Finset.Icc (-(2 * M : ℤ), -(2 * M : ℤ), -(2 * M : ℤ), -(2 * M : ℤ))
-        ((2 * M : ℤ), (2 * M : ℤ), (2 * M : ℤ), (2 * M : ℤ)) := by
-    rintro w ⟨hw, -, hb₁, hb₂⟩
-    have hnorm := norm_toC_le_of_window hpn hw
-    have hnorm' : ‖toC (mulZetaInv w)‖ ≤ 1 + r := by
-      rwa [toC_mulZetaInv, norm_mul, norm_inv, norm_zeta, inv_one, one_mul]
-    have hlev (x : Cyc) (q q' : ℤ) (hq : q ≤ N) (hq' : -N ≤ q')
-        (hb : 5 * q' < level x ∧ level x ≤ 5 * q) : |(level x : ℝ)| ≤ 5 * N := by
-      have : |level x| ≤ 5 * N := abs_le.2 ⟨by omega, by omega⟩
-      exact_mod_cast this
-    have hgold (x : Cyc) (hx : ‖toC x‖ ≤ 1 + r) (hl : |(level x : ℝ)| ≤ 5 * N) :
-        |psiGold x| ≤ M := by
-      have := (abs_psiGold_le x).trans (add_le_add (abs_psi_le x) hl)
-      have : |(psiGold x : ℝ)| ≤ M := by linarith
-      exact_mod_cast this
-    have h₁ := hlev w q₁ q₁' (by omega) (by omega) hb₁
-    have h₂ := hlev (mulZetaInv w) q₂ q₂' (by omega) (by omega) hb₂
-    exact mem_box_of_abs_le (hgold w hnorm h₁) (abs_le.2 ⟨by omega, by omega⟩)
-      (hgold _ hnorm' h₂) (abs_le.2 ⟨by omega, by omega⟩)
-  -- Every pivot lies in the box: it or its tip is in `V`, and a tip step has coordinates in
-  -- `[-1, 1]`.
-  have himg : Reach p r V ⊆ ((units ×ˢ box).image
+  obtain ⟨⟨q₁, hq₁, hq₁N, hc₁⟩, ⟨q₁', hq₁'N, hq₁', hc₁'⟩⟩ := hN (p + 1)
+  obtain ⟨⟨q₂, hq₂, hq₂N, hc₂⟩, ⟨q₂', hq₂'N, hq₂', hc₂'⟩⟩ := hN (ζ⁻¹ * (p + 1))
+  have hsub := orbit_subset_reach (edgeClosed_cutSet hr₂ hc₁ hc₁' hc₂ hc₂')
+    (good_cutSet hp hq₁ hq₁' hq₂ hq₂')
+  -- Every pivot lies in the box: it or its tip lies in the invariant set, and the step between
+  -- them has coordinates in `[-1, 1]`.
+  have himg : reach p r (cutSet p r q₁ q₁' q₂ q₂') ⊆ ((units ×ˢ box K).image
       fun fv : Cyc × Cyc => toC fv.1 * (p + 1 - 2 * toC fv.2) - 1 : Set ℂ) := by
     rintro _ ⟨f, v, hfv, rfl⟩
     refine Finset.mem_coe.2 (Finset.mem_image.2 ⟨(f, v), Finset.mem_product.2 ⟨hfv.unit, ?_⟩, rfl⟩)
     rcases hfv.mem with hv | hv
-    · have := hbox v hv
+    · have := mem_box_of_mem_cutSet hpn hq₁N hq₁'N hq₂N hq₂'N hv
       obtain ⟨a, b, c, d⟩ := v
       simp only [box, Finset.mem_Icc, Prod.mk_le_mk] at this ⊢
       omega
-    · have h₁ := hbox _ hv
+    · have h₁ := mem_box_of_mem_cutSet hpn hq₁N hq₁'N hq₂N hq₂'N hv
       have h₂ := mem_Icc_of_mem_units _ (bar_mem_units _ hfv.unit)
       generalize bar f = t at h₁ h₂
       obtain ⟨a, b, c, d⟩ := v
@@ -435,10 +468,10 @@ theorem finite_GG_five_of_lt {r : ℝ} (hr : r < √(3 + φ)) : Finite (GG 5 r) 
       simp only [box, Finset.mem_Icc, Prod.mk_le_mk, Prod.mk_add_mk] at h₁ h₂ ⊢
       omega
   calc (orbit (GG 5 r) p).encard
-      ≤ ((units ×ˢ box).image
+      ≤ ((units ×ˢ box K).image
           fun fv : Cyc × Cyc => toC fv.1 * (p + 1 - 2 * toC fv.2) - 1 : Set ℂ).encard :=
-        encard_le_encard ((orbit_subset_reach hV h₀).trans himg)
-    _ ≤ (units ×ˢ box).card := by
+        encard_le_encard (hsub.trans himg)
+    _ ≤ (units ×ˢ box K).card := by
         rw [encard_coe_eq_coe_finsetCard]
         exact_mod_cast Finset.card_image_le
 

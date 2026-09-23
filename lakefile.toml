@@ -2,6 +2,7 @@ name = "CriticalRadiusFive"
 version = "0.1.0"
 keywords = ["math"]
 defaultTargets = ["CriticalRadiusFive", "Challenge", "Solution", "Test"]
+lintDriver = "batteries/runLinter"
 
 [leanOptions]
 pp.unicode.fun = true

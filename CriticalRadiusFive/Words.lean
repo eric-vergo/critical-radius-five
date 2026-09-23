@@ -15,10 +15,10 @@ plane — its *formal action*, an isometry of `ℂ` — provided every letter fi
 inside its disk. We then call the point *admissible* for the word.
 
 Disks are convex and the formal action of a letter is affine, so a word that is admissible at the
-two endpoints of a segment is admissible along the whole segment
-(`Letter.admissible_of_mem_segment`): on that segment the word acts as a single isometry. For the
-three words behind the upper bound this isometry is a translation, and admissibility at the
-endpoints is a finite computation.
+two endpoints of a segment is admissible along the whole segment (`admissible_of_mem_segment`), and
+on that segment it acts as a single isometry. If that isometry moves both endpoints by the same
+vector, the word translates the whole segment (`wordPerm_apply_of_mem_segment`). This is how the
+three words behind the upper bound are handled: everything is checked at the endpoints.
 -/
 
 noncomputable section
@@ -33,7 +33,6 @@ inductive Letter
   | A
   | b
   | B
-  deriving DecidableEq
 
 namespace Letter
 
@@ -60,6 +59,7 @@ def perm (n : ℕ) (r : ℝ) : Letter → Equiv.Perm ℂ
 /-- The formal action of a letter: the rotation of the whole plane about the letter's centre. -/
 def act (n : ℕ) (l : Letter) (z : ℂ) : ℂ := l.center + l.rot n * (z - l.center)
 
+/-- Every letter is an element of `GG n r`. -/
 theorem perm_mem_GG (n : ℕ) (r : ℝ) (l : Letter) : l.perm n r ∈ GG n r := by
   cases l
   exacts [genA_mem_GG n r, inv_mem (genA_mem_GG n r), genB_mem_GG n r, inv_mem (genB_mem_GG n r)]
@@ -99,6 +99,7 @@ def Admissible (n : ℕ) (r : ℝ) : List Letter → ℂ → Prop
 
 variable {n : ℕ} {r : ℝ}
 
+/-- Every word is an element of `GG n r`. -/
 theorem wordPerm_mem_GG (n : ℕ) (r : ℝ) : ∀ w : List Letter, wordPerm n r w ∈ GG n r
   | [] => one_mem _
   | l :: w => mul_mem (wordPerm_mem_GG n r w) (l.perm_mem_GG n r)
@@ -132,10 +133,17 @@ theorem formalAct_eq : ∀ (w : List Letter) (z : ℂ),
     simp only [List.map_cons, List.prod_cons, Letter.act]
     ring
 
-/-- A word whose rotation factors multiply to `1` acts on admissible points as a translation. -/
-theorem wordPerm_apply_of_admissible_of_prod_eq_one {w : List Letter} {z : ℂ}
-    (hz : Admissible n r w z) (hw : (w.map (Letter.rot n)).prod = 1) :
-    wordPerm n r w z = z + formalAct n w 0 := by
-  rw [wordPerm_apply_of_admissible hz, formalAct_eq, hw, one_mul, add_comm]
+/-- **A word that translates the endpoints of a segment translates the whole segment.** If a word
+is admissible at `P` and at `Q` and its formal action moves both by `τ`, then the word moves every
+point of the segment `[P, Q]` by `τ`. -/
+theorem wordPerm_apply_of_mem_segment {w : List Letter} {P Q z τ : ℂ} (hP : Admissible n r w P)
+    (hQ : Admissible n r w Q) (hτP : formalAct n w P = P + τ) (hτQ : formalAct n w Q = Q + τ)
+    (hz : z ∈ segment ℝ P Q) : wordPerm n r w z = z + τ := by
+  rw [wordPerm_apply_of_admissible (admissible_of_mem_segment hP hQ hz)]
+  obtain ⟨s, t, -, -, hst, rfl⟩ := hz
+  have hst' : (s : ℂ) + t = 1 := by exact_mod_cast hst
+  rw [formalAct_eq] at hτP hτQ ⊢
+  simp only [real_smul]
+  linear_combination (s : ℂ) * hτP + (t : ℂ) * hτQ - (formalAct n w 0 - τ) * hst'
 
 end CriticalRadiusFive

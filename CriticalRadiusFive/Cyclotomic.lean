@@ -35,9 +35,11 @@ local notation "ζ" => zeta 5
 
 /-! ### The fifth root of unity -/
 
+/-- `ζ = exp(2πi/5)` is a primitive fifth root of unity. -/
 theorem isPrimitiveRoot_zeta_five : IsPrimitiveRoot ζ 5 := by
   simpa [zeta] using isPrimitiveRoot_exp 5 (by norm_num)
 
+/-- `ζ⁵ = 1`. -/
 theorem zeta_five_pow_five : ζ ^ 5 = 1 :=
   isPrimitiveRoot_zeta_five.pow_eq_one
 
@@ -46,9 +48,11 @@ theorem cyclotomic_zeta_five : 1 + ζ + ζ ^ 2 + ζ ^ 3 + ζ ^ 4 = 0 := by
   simpa [Finset.sum_range_succ, add_assoc] using
     isPrimitiveRoot_zeta_five.geom_sum_eq_zero (by norm_num)
 
+/-- `ζ⁻¹ = ζ⁴`. -/
 theorem zeta_five_inv : ζ⁻¹ = ζ ^ 4 :=
   inv_eq_of_mul_eq_one_right (by rw [← pow_succ', zeta_five_pow_five])
 
+/-- `ζ̄ = ζ⁴`. -/
 theorem conj_zeta_five : conj ζ = ζ ^ 4 := by
   rw [← zeta_five_inv, zeta, ← exp_conj, ← exp_neg]
   congr 1
@@ -109,6 +113,7 @@ def normRat : Cyc → ℤ
 def normGold : Cyc → ℤ
   | (a, b, c, d) => a * b + b * c + c * d - a * c - b * d - a * d
 
+/-- `toC` is additive. -/
 theorem toC_add (v w : Cyc) : toC (v + w) = toC v + toC w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
@@ -116,27 +121,33 @@ theorem toC_add (v w : Cyc) : toC (v + w) = toC v + toC w := by
   push_cast
   ring
 
+/-- `toC` commutes with negation. -/
 theorem toC_neg (v : Cyc) : toC (-v) = -toC v := by
   obtain ⟨a, b, c, d⟩ := v
   simp only [toC]
   push_cast
   ring
 
+/-- `toC` commutes with subtraction. -/
 theorem toC_sub (v w : Cyc) : toC (v - w) = toC v - toC w := by
   rw [sub_eq_add_neg, toC_add, toC_neg, sub_eq_add_neg]
 
+/-- `toC 0 = 0`. -/
 @[simp] theorem toC_zero : toC 0 = 0 := by
   simp [toC]
 
+/-- `toC (1, 0, 0, 0) = 1`. -/
 @[simp] theorem toC_one : toC (1, 0, 0, 0) = 1 := by
   simp [toC]
 
+/-- `mulZeta` is multiplication by `ζ`. -/
 theorem toC_mulZeta (v : Cyc) : toC (mulZeta v) = ζ * toC v := by
   obtain ⟨a, b, c, d⟩ := v
   simp only [toC, mulZeta]
   push_cast
   linear_combination (-(d : ℂ)) * cyclotomic_zeta_five
 
+/-- `mulZetaInv` is multiplication by `ζ⁻¹`. -/
 theorem toC_mulZetaInv (v : Cyc) : toC (mulZetaInv v) = ζ⁻¹ * toC v := by
   obtain ⟨a, b, c, d⟩ := v
   simp only [toC, mulZetaInv, zeta_five_inv]
@@ -144,6 +155,7 @@ theorem toC_mulZetaInv (v : Cyc) : toC (mulZetaInv v) = ζ⁻¹ * toC v := by
   linear_combination (-(a : ℂ) + b - b * ζ + c * ζ - c * ζ ^ 2 + d * ζ ^ 2 - d * ζ ^ 3) *
     cyclotomic_zeta_five
 
+/-- `bar` is complex conjugation. -/
 theorem toC_bar (v : Cyc) : toC (bar v) = conj (toC v) := by
   obtain ⟨a, b, c, d⟩ := v
   simp only [toC, bar, map_add, map_mul, map_intCast, map_pow, conj_zeta_five]
@@ -151,24 +163,28 @@ theorem toC_bar (v : Cyc) : toC (bar v) = conj (toC v) := by
   linear_combination (-(b : ℂ) - c * ζ ^ 4 + c * ζ ^ 3 - d * ζ ^ 8 + d * ζ ^ 7 - d * ζ ^ 3 +
     d * ζ ^ 2) * cyclotomic_zeta_five
 
+/-- Multiplication by `ζ⁻¹` is additive. -/
 theorem mulZetaInv_add (v w : Cyc) : mulZetaInv (v + w) = mulZetaInv v + mulZetaInv w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
   simp only [mulZetaInv, Prod.mk_add_mk, Prod.mk.injEq]
   omega
 
+/-- Multiplication by `ζ⁻¹` commutes with subtraction. -/
 theorem mulZetaInv_sub (v w : Cyc) : mulZetaInv (v - w) = mulZetaInv v - mulZetaInv w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
   simp only [mulZetaInv, Prod.mk_sub_mk, Prod.mk.injEq]
   omega
 
+/-- The class is additive. -/
 theorem cls_add (v w : Cyc) : cls (v + w) = cls v + cls w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
   simp only [cls]
   ring
 
+/-- The class commutes with subtraction. -/
 theorem cls_sub (v w : Cyc) : cls (v - w) = cls v - cls w := by
   obtain ⟨a, b, c, d⟩ := v
   obtain ⟨a', b', c', d'⟩ := w
@@ -192,23 +208,28 @@ theorem norm_toC_sq (v : Cyc) : ‖toC v‖ ^ 2 = normRat v + normGold v * φ :=
   rw [toC_bar, mul_conj, ← Complex.sq_norm] at h
   exact_mod_cast h
 
+/-- Roots of unity have absolute value `1`. -/
 theorem norm_toC_of_mem_units {e : Cyc} (he : e ∈ units) : ‖toC e‖ = 1 := by
   have h : normRat e = 1 ∧ normGold e = 0 := by revert e he; decide
   rw [← sq_eq_sq₀ (norm_nonneg _) zero_le_one, norm_toC_sq, h.1, h.2]
   simp
 
+/-- For a root of unity `e`, `e ē = 1`. -/
 theorem toC_mul_toC_bar_of_mem_units {e : Cyc} (he : e ∈ units) :
     toC e * toC (bar e) = 1 := by
   rw [toC_bar, mul_conj, ← Complex.sq_norm, norm_toC_of_mem_units he]
   norm_num
 
+/-- Multiplication by `ζ` permutes the fifth roots of unity. -/
 theorem mulZeta_mem_units : ∀ e ∈ units, mulZeta e ∈ units := by decide
 
+/-- Multiplication by `ζ⁻¹` permutes the fifth roots of unity. -/
 theorem mulZetaInv_mem_units : ∀ e ∈ units, mulZetaInv e ∈ units := by decide
 
+/-- Conjugation permutes the fifth roots of unity. -/
 theorem bar_mem_units : ∀ e ∈ units, bar e ∈ units := by decide
 
-/-- Multiplication by a unit does not change the class, as `ζ ≡ 1` modulo `1 - ζ`. -/
+/-- Multiplication by `ζ⁻¹` does not change the class, as `ζ ≡ 1` modulo `1 - ζ`. -/
 theorem cls_mulZetaInv_emod (v : Cyc) : cls (mulZetaInv v) % 5 = cls v % 5 := by
   obtain ⟨a, b, c, d⟩ := v
   simp only [cls, mulZetaInv]
@@ -225,11 +246,13 @@ end Cyc
 
 /-! ### The golden ratio -/
 
+/-- `1.618 < φ`. -/
 theorem goldenRatio_gt : 1.618 < φ := by
   have h := Real.sq_sqrt (show (0 : ℝ) ≤ 5 by norm_num)
   rw [Real.goldenRatio]
   nlinarith [Real.sqrt_nonneg 5]
 
+/-- `φ < 1.6181`. -/
 theorem goldenRatio_lt : φ < 1.6181 := by
   have h := Real.sq_sqrt (show (0 : ℝ) ≤ 5 by norm_num)
   rw [Real.goldenRatio]
@@ -244,6 +267,7 @@ def goldenNonpos (x y : ℤ) : Bool :=
   (2 * x + y ≤ 0 && (y ≤ 0 || 5 * y ^ 2 ≤ (2 * x + y) ^ 2)) ||
     (y < 0 && (2 * x + y) ^ 2 ≤ 5 * y ^ 2)
 
+/-- Soundness of the integer test: `goldenNonpos x y` implies `x + y φ ≤ 0`. -/
 theorem add_mul_goldenRatio_nonpos {x y : ℤ} (h : goldenNonpos x y = true) : x + y * φ ≤ 0 := by
   have h5 : √5 ^ 2 = 5 := Real.sq_sqrt (by norm_num)
   have h5' : 0 ≤ √5 := Real.sqrt_nonneg 5

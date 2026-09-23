@@ -11,7 +11,7 @@ import Mathlib
 Two elementary facts about the rotation by `α` of the circle `ℝ ⧸ L ℤ` with `α / L` irrational are
 the one-dimensional engines of the two halves of the main theorem.
 
-* **No return** (`iterate_injective_of_irrational`, `orbit_infinite_of_irrational_rotation`): the
+* **No return** (`iterate_injective_of_irrational`, `infinite_orbit_of_irrational_rotation`): the
   rotation never revisits a point. If a group of permutations of `ℂ` realises the rotation along a
   curve, the orbits of the points of the curve are infinite. This is how `GG₅(√(3+φ))` is shown to
   be infinite: three words of the group act on a chord as a rotation with irrational rotation
@@ -54,13 +54,13 @@ theorem iterate_injective_of_irrational {L α : ℝ} (hα : Irrational (α / L))
   push_cast
   linear_combination hj - hi + this
 
-/-- **Irrational rotations give infinite orbits.** Suppose that a group `G` of permutations of `ℂ`
+/-- **Irrational rotations give infinite orbits.** Suppose that a group `G` of permutations of `X`
 carries the point `x t` to `x (T t)` for every `t` in a set `W` which `T` maps into itself, that
 `x` is injective on `W`, and that `T` moves every point by `α` modulo `L`, with `α / L`
 irrational. Then the `G`-orbit of `x t₀` is infinite for every `t₀ ∈ W`. -/
-theorem orbit_infinite_of_irrational_rotation {G : Subgroup (Equiv.Perm ℂ)} {L α : ℝ}
+theorem infinite_orbit_of_irrational_rotation {X : Type*} {G : Subgroup (Equiv.Perm X)} {L α : ℝ}
     (hα : Irrational (α / L)) {T : ℝ → ℝ} (hT : ∀ t, ∃ m : ℤ, T t = t + α + m * L)
-    {W : Set ℝ} (hTW : MapsTo T W W) {x : ℝ → ℂ} (hx : InjOn x W)
+    {W : Set ℝ} (hTW : MapsTo T W W) {x : ℝ → X} (hx : InjOn x W)
     (hG : ∀ t ∈ W, ∃ g ∈ G, g (x t) = x (T t)) {t₀ : ℝ} (ht₀ : t₀ ∈ W) :
     (orbit G (x t₀)).Infinite := by
   have hW (k : ℕ) : T^[k] t₀ ∈ W := hTW.iterate k ht₀
@@ -103,7 +103,8 @@ theorem exists_march {ε η y : ℝ} (hε : ε ≠ 0) (h : 2 * η + |ε| < 1) :
     linarith
   have hprev := Nat.find_min hex (Nat.sub_lt hpos' one_pos)
   rw [Nat.cast_pred hpos'] at hprev
-  refine ⟨Nat.find hex, Nat.find_min' hex ?_, k₀ + 1, by push_cast; linarith, by push_cast; linarith⟩
+  refine ⟨Nat.find hex, Nat.find_min' hex ?_, k₀ + 1, by push_cast; linarith,
+    by push_cast; linarith⟩
   have h₁ : 1 / ε ≤ ⌈1 / ε⌉₊ := Nat.le_ceil _
   have h₂ : 1 / ε * ε = 1 := by field_simp
   have h₃ := Int.floor_le (y - η)
@@ -129,18 +130,16 @@ theorem lt_abs_of_mem_gap {δ t L Z : ℝ} (hδ : 0 < δ) {q k : ℤ}
   have e : δ * P + t * q - Z = δ * (P + (t / δ * q - Z / δ)) := by field_simp; ring
   rwa [e, abs_mul, abs_of_pos hδ, ← div_lt_iff₀' hδ]
 
-/-- **Cut levels.** Let `δ > 0` and let `t / δ` be irrational. For every half-width `L ≥ 0` with
+/-- **Cut levels.** Let `δ > 0` and let `t / δ` be irrational. For every half-width `L` with
 `2 L < δ` there is a bound `N` such that every window `[Z - L, Z + L]` misses the progression
 `δ ℤ + t q` for some level `q` with `1 ≤ q ≤ N`, and also for some level `q` with
 `-N ≤ q ≤ -1`. -/
-theorem exists_cut_levels {δ t L : ℝ} (hδ : 0 < δ) (ht : Irrational (t / δ)) (hL : 0 ≤ L)
-    (hLδ : 2 * L < δ) :
+theorem exists_cut_levels {δ t L : ℝ} (hδ : 0 < δ) (ht : Irrational (t / δ)) (hLδ : 2 * L < δ) :
     ∃ N : ℕ, ∀ Z : ℝ,
       (∃ q : ℤ, 1 ≤ q ∧ q ≤ N ∧ ∀ P : ℤ, L < |δ * P + t * q - Z|) ∧
       (∃ q : ℤ, -N ≤ q ∧ q ≤ -1 ∧ ∀ P : ℤ, L < |δ * P + t * q - Z|) := by
   set θ := t / δ
   set η := L / δ
-  have hη : 0 ≤ η := div_nonneg hL hδ.le
   have hη' : 2 * η < 1 := by rw [mul_div_assoc', div_lt_one hδ]; exact hLδ
   -- A small nonzero step `ε = a θ - b`, by Dirichlet's approximation theorem.
   obtain ⟨n, hn⟩ := exists_nat_gt (1 / (1 - 2 * η))
@@ -163,27 +162,23 @@ theorem exists_cut_levels {δ t L : ℝ} (hδ : 0 < δ) (ht : Irrational (t / δ
       rw [div_lt_iff₀ (by linarith)] at hn
       nlinarith
     linarith
-  -- March from the levels `1` and `-1` in steps of `a` levels.
+  -- March from the levels `1` and `-1`, `a` levels at a time.
   set J := ⌈1 / |ε|⌉₊ + 1
   refine ⟨1 + J * a, fun Z => ⟨?_, ?_⟩⟩
   · obtain ⟨j, hj, k, h₁, h₂⟩ := exists_march (y := θ - Z / δ) hε hεη
     have hja : j * a ≤ J * a := Nat.mul_le_mul_right a hj
     have e : θ * ((1 + j * a : ℕ) : ℤ) - Z / δ = θ - Z / δ + j * ε + (j * b : ℤ) := by
       push_cast; ring
-    refine ⟨1 + j * a, by omega, by push_cast; omega, lt_abs_of_mem_gap hδ (k := k + j * b) ?_ ?_⟩
-    · rw [show ((1 + j * a : ℕ) : ℤ) = 1 + j * a by push_cast; ring] at e
-      rw [e]; push_cast; linarith
-    · rw [show ((1 + j * a : ℕ) : ℤ) = 1 + j * a by push_cast; ring] at e
-      rw [e]; push_cast; linarith
+    refine ⟨(1 + j * a : ℕ), by omega, by omega, lt_abs_of_mem_gap hδ (k := k + j * b) ?_ ?_⟩ <;>
+      rw [e] <;> push_cast <;> linarith
   · obtain ⟨j, hj, k, h₁, h₂⟩ :=
       exists_march (ε := -ε) (y := -θ - Z / δ) (neg_ne_zero.2 hε) (by rwa [abs_neg])
     rw [abs_neg] at hj
     have hja : j * a ≤ J * a := Nat.mul_le_mul_right a hj
-    have e : θ * (-1 - j * a : ℤ) - Z / δ = -θ - Z / δ + j * -ε - (j * b : ℤ) := by
+    have e : θ * ((-((1 + j * a : ℕ) : ℤ) : ℤ) : ℝ) - Z / δ =
+        -θ - Z / δ + j * -ε - (j * b : ℤ) := by
       push_cast; ring
-    refine ⟨-1 - j * a, by push_cast; omega, by omega,
-      lt_abs_of_mem_gap hδ (k := k - j * b) ?_ ?_⟩
-    · rw [e]; push_cast; linarith
-    · rw [e]; push_cast; linarith
+    refine ⟨-((1 + j * a : ℕ) : ℤ), by omega, by omega,
+      lt_abs_of_mem_gap hδ (k := k - j * b) ?_ ?_⟩ <;> rw [e] <;> push_cast <;> linarith
 
 end CriticalRadiusFive

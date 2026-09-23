@@ -36,8 +36,6 @@ open Complex Set MulAction
 
 namespace CriticalRadiusFive
 
-local notation "ζ" => zeta 5
-
 open Cyc
 
 variable (p : ℂ) (r : ℝ) (V : Set Cyc)
@@ -49,32 +47,40 @@ def Window (v : Cyc) : Prop := ‖p + 1 - 2 * toC v‖ ≤ r
 /-- `V` is closed under the typed steps of the walk that stay inside the window: adding a fifth root
 of unity to a point of class `0`, and subtracting one from a point of class `1`. -/
 structure EdgeClosed : Prop where
+  /-- From a pivot of `V`, a step `+e` inside the window stays in `V`. -/
   add_mem : ∀ v ∈ V, cls v % 5 = 0 → ∀ e ∈ units, Window p r (v + e) → v + e ∈ V
+  /-- From a tip in `V`, a step `-e` inside the window stays in `V`. -/
   sub_mem : ∀ v ∈ V, cls v % 5 = 1 → ∀ e ∈ units, Window p r (v - e) → v - e ∈ V
 
 /-- The invariant of a state `(m, ν) = (toC f, toC v)`: the pivot has class `0`, the pivot and the
 tip `ν + m̄` belong to `V` whenever they are in the window, and at least one of them does. -/
 structure Good (f v : Cyc) : Prop where
+  /-- The rotation part `m` is a fifth root of unity. -/
   unit : f ∈ units
+  /-- The pivot has class `0`. -/
   cls_pivot : cls v % 5 = 0
+  /-- The pivot belongs to `V` when it lies in the window. -/
   pivot_mem : Window p r v → v ∈ V
+  /-- The tip belongs to `V` when it lies in the window. -/
   tip_mem : Window p r (v + bar f) → v + bar f ∈ V
+  /-- The pivot or the tip belongs to `V`. -/
   mem : v ∈ V ∨ v + bar f ∈ V
 
 /-- The points `m (p + 1 - 2ν) - 1` represented by good states. -/
-def Reach : Set ℂ := {x | ∃ f v, Good p r V f v ∧ x = toC f * (p + 1 - 2 * toC v) - 1}
+def reach : Set ℂ := {x | ∃ f v, Good p r V f v ∧ x = toC f * (p + 1 - 2 * toC v) - 1}
 
 variable {p r V}
 
+/-- The point of a good state lies in `reach p r V`. -/
 theorem mem_reach {f v : Cyc} (h : Good p r V f v) :
-    toC f * (p + 1 - 2 * toC v) - 1 ∈ Reach p r V :=
+    toC f * (p + 1 - 2 * toC v) - 1 ∈ reach p r V :=
   ⟨f, v, h, rfl⟩
 
 /-- A letter turning the left disk by `κ ∈ {ζ, ζ⁻¹}` keeps the pivot and turns the state. -/
 theorem mapsTo_reach_left (hV : EdgeClosed p r V) {g : Equiv.Perm ℂ} {κ : ℂ} {ρ : Cyc → Cyc}
     (hρ : ∀ f ∈ units, ρ f ∈ units) (hρκ : ∀ f, toC (ρ f) = κ * toC f)
     (hg : ∀ x, ‖x + 1‖ ≤ r → g x = κ * (x + 1) - 1) (hg' : ∀ x, ¬‖x + 1‖ ≤ r → g x = x) :
-    MapsTo g (Reach p r V) (Reach p r V) := by
+    MapsTo g (reach p r V) (reach p r V) := by
   rintro _ ⟨f, v, hfv, rfl⟩
   have hnorm : ‖toC f * (p + 1 - 2 * toC v) - 1 + 1‖ = ‖p + 1 - 2 * toC v‖ := by
     rw [sub_add_cancel, norm_mul, norm_toC_of_mem_units hfv.unit, one_mul]
@@ -90,7 +96,7 @@ theorem mapsTo_reach_left (hV : EdgeClosed p r V) {g : Equiv.Perm ℂ} {κ : ℂ
 theorem mapsTo_reach_right (hV : EdgeClosed p r V) {g : Equiv.Perm ℂ} {κ : ℂ} {ρ : Cyc → Cyc}
     (hρ : ∀ f ∈ units, ρ f ∈ units) (hρκ : ∀ f, toC (ρ f) = κ * toC f)
     (hg : ∀ x, ‖x - 1‖ ≤ r → g x = κ * (x - 1) + 1) (hg' : ∀ x, ¬‖x - 1‖ ≤ r → g x = x) :
-    MapsTo g (Reach p r V) (Reach p r V) := by
+    MapsTo g (reach p r V) (reach p r V) := by
   rintro _ ⟨f, v, hfv, rfl⟩
   -- Seen from the right disk, the state is `m (p + 1 - 2 (ν + m̄)) + 1`.
   have hmm := toC_mul_toC_bar_of_mem_units hfv.unit
@@ -130,7 +136,7 @@ theorem mapsTo_reach_right (hV : EdgeClosed p r V) {g : Equiv.Perm ℂ} {κ : �
 initial state (pivot `0`, tip `1`) is good, then every point of the orbit of `p` has the form
 `m (p + 1 - 2ν) - 1` with `m ∈ μ₅` and the pivot `ν` or its tip `ν + m̄` in `V`. -/
 theorem orbit_subset_reach (hV : EdgeClosed p r V) (h₀ : Good p r V (1, 0, 0, 0) 0) :
-    orbit (GG 5 r) p ⊆ Reach p r V := by
+    orbit (GG 5 r) p ⊆ reach p r V := by
   refine orbit_subset_of_mapsTo ?_ ?_ ?_ ?_ ⟨_, _, h₀, by simp⟩
   · exact mapsTo_reach_left hV mulZetaInv_mem_units toC_mulZetaInv
       (fun _ => genA_apply_of_le) (fun _ => genA_apply_of_not_le)

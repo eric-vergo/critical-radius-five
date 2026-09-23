@@ -53,8 +53,9 @@ theorem finite_of_encard_orbit_le {G : Subgroup (Equiv.Perm X)} {s : Set (Equiv.
   -- The action on the orbit of `x`, transported to `Fin N`.
   let ψ (x : X) : G →* Equiv.Perm (Fin N) :=
     (Equiv.Perm.viaEmbeddingHom (hemb x).some).comp (toPermHom G (orbit G x))
-  -- A homomorphism out of `G` is determined by its values on the generators.
   subst hG
+  -- A homomorphism out of `G` is determined by its values on the generators, so only finitely
+  -- many `ψ x` occur.
   have hgen : Function.Injective fun (φ : Subgroup.closure s →* Equiv.Perm (Fin N)) (g : s) =>
       φ ⟨g, Subgroup.subset_closure g.2⟩ := by
     intro φ φ' h
@@ -66,7 +67,8 @@ theorem finite_of_encard_orbit_le {G : Subgroup (Equiv.Perm X)} {s : Set (Equiv.
   refine Finite.of_injective (fun g (φ : range ψ) => φ.1 g) fun g h hgh => ?_
   refine Subtype.ext (Equiv.ext fun x => ?_)
   have h₁ : ψ x g = ψ x h := congrFun hgh ⟨ψ x, x, rfl⟩
-  exact congrArg Subtype.val congr($(Equiv.Perm.viaEmbeddingHom_injective _ h₁) ⟨x, mem_orbit_self x⟩)
+  have h₂ := congr($(Equiv.Perm.viaEmbeddingHom_injective _ h₁) ⟨x, mem_orbit_self x⟩)
+  exact congrArg Subtype.val h₂
 
 end BoundedOrbits
 
@@ -113,7 +115,7 @@ theorem orbit_subset_orbit_of_le (n : ℕ) (hr : r ≤ r') (p : ℂ) :
   exact ⟨⟨h, hh⟩, hp⟩
 
 /-- An infinite orbit makes the group infinite. -/
-theorem infinite_of_orbit_infinite {G : Subgroup (Equiv.Perm ℂ)} {p : ℂ}
+theorem infinite_of_infinite_orbit {X : Type*} {G : Subgroup (Equiv.Perm X)} {p : X}
     (h : (orbit G p).Infinite) : Infinite G := by
   by_contra hG
   rw [not_infinite_iff_finite] at hG
