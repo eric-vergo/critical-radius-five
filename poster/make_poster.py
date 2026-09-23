@@ -216,7 +216,11 @@ def read_manifest(path: Path, source: Graph) -> Graph:
     if set(edges) != set(source.edges):
         print("warning: edges differ between the manifest and the chapter files (rebuild the blueprint?):",
               sorted(set(edges) ^ set(source.edges)))
-    return Graph(nodes, edges, f"the blueprint manifest ({path.relative_to(ROOT)})")
+    try:
+        shown = path.resolve().relative_to(ROOT)
+    except ValueError:
+        shown = path
+    return Graph(nodes, edges, f"the blueprint manifest ({shown})")
 
 
 # ---------------------------------------------------------------------------

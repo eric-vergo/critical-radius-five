@@ -19,10 +19,13 @@ shortTitle := "The theorem"
 
 $$`r_c(5) = \sqrt{3 + \varphi} = 2.1489611417\ldots,`
 
-a root of $`x^4 - 7x^2 + 11`.
+a root of $`x^4 - 7x^2 + 11`. More precisely, $`G_5(r)` is finite if and only if
+$`r < \sqrt{3 + \varphi}`.
 :::
 
 :::proof "thm:main"
-Combine the upper bound {uses "thm:upper"}[] and the lower bound {uses "thm:lower"}[]. The formal proof
-uses only the axioms `propext`, `Classical.choice` and `Quot.sound`.
+Combine the upper bound {uses "thm:upper"}[] and the lower bound {uses "thm:lower"}[]. For the
+equivalence: if $`G_5(r)` were finite for some $`r \ge \sqrt{3+\varphi}`, then $`G_5(\sqrt{3+\varphi})`
+would be finite too, by {bpref "lemma:finite-mono"}[]. The formal proof uses only the axioms
+`propext`, `Classical.choice` and `Quot.sound`.
 :::

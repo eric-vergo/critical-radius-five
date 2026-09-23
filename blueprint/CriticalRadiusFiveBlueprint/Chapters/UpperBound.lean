@@ -33,7 +33,7 @@ coordinate $`z = sE` the points $`E', F', G', E` sit at
 $`s = -1,\ -\varphi^{-1},\ 1 - 2\varphi^{-1},\ 1`.
 :::
 
-:::lemma_ "lemma:convex-words" (parent := "upper-bound") (lean := "CriticalRadiusFive.admissible_of_mem_segment, CriticalRadiusFive.wordPerm_apply_of_admissible")
+:::lemma_ "lemma:convex-words" (parent := "upper-bound") (lean := "CriticalRadiusFive.admissible_of_mem_segment, CriticalRadiusFive.wordPerm_apply_of_mem_segment")
 *Words act on segments through their endpoints.* Let a word in the turns be applied to a segment.
 If, at every letter, both endpoints of the current image segment lie in the closed disk of that
 letter, then the word acts on the whole segment as the corresponding composition of rotations; in
@@ -76,12 +76,13 @@ of the circle $`\mathbb{R}/2\mathbb{Z}`, with $`\alpha = 2\varphi^{-1}` and
 $`\beta = 2 - 2\varphi^{-1}`, so $`\alpha + \beta = 2`.
 :::
 
-:::theorem "thm:engine" (parent := "upper-bound") (lean := "CriticalRadiusFive.orbit_infinite_of_irrational_rotation, CriticalRadiusFive.infinite_of_orbit_infinite")
+:::theorem "thm:engine" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_orbit_of_irrational_rotation, CriticalRadiusFive.infinite_of_infinite_orbit")
 *An irrational rotation makes the group infinite.* Let $`\alpha, \beta \ge 0` with $`\alpha + \beta > 0`
 and $`\alpha/(\alpha+\beta) \notin \mathbb{Q}`, let $`x : [0, \alpha+\beta) \to \mathbb{C}` be
 injective, and let $`G \le \operatorname{Perm}(\mathbb{C})` contain, for every
 $`t \in [0, \alpha+\beta)`, an element carrying $`x(t)` to $`x(\operatorname{rot} t)`. Then for every
-$`t_0` the orbit of $`x(t_0)` under $`G` is infinite; in particular $`G` is infinite.
+$`t_0 \in [0, \alpha+\beta)` the orbit of $`x(t_0)` under $`G` is infinite; in particular $`G` is
+infinite.
 :::
 
 :::proof "thm:engine"
@@ -91,7 +92,7 @@ $`x` is injective, the points $`x(\operatorname{rot}^k t_0)` are pairwise distin
 in the orbit of $`x(t_0)`, being reached by products of the given elements.
 :::
 
-:::theorem "thm:upper" (parent := "upper-bound") (lean := "CriticalRadiusFive.orbit_zero_infinite, CriticalRadiusFive.infinite_GG_five")
+:::theorem "thm:upper" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_orbit_zero, CriticalRadiusFive.infinite_GG_five")
 *The upper bound.* $`G_5(\sqrt{3+\varphi})` is infinite; hence $`r_c(5) \le \sqrt{3+\varphi}`.
 :::
 

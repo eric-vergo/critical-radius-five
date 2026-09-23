@@ -112,7 +112,7 @@ $`\operatorname{lv}_2(v) = \operatorname{lv}_1(\zeta^{-1}v)` and multiplication 
 permutes the fifth roots of unity and preserves classes, the same holds for $`\operatorname{lv}_2`.
 :::
 
-:::lemma_ "lemma:active-step" (parent := "lower-bound") (lean := "CriticalRadiusFive.level_mem_band")
+:::lemma_ "lemma:active-step" (parent := "lower-bound") (lean := "CriticalRadiusFive.level_mem_band, CriticalRadiusFive.level_ne_of_isCutLevel")
 *Only active steps break a level bound.* Let $`q \in \mathbb{Z}`. Along the typed walk, the invariant
 "$`\operatorname{lv}(v) \le 5q` for all visited $`v`" can only be destroyed by an active step
 ($`\operatorname{lv}(e) = 3`) leaving a class-$`0` point at level exactly $`5q`; symmetrically, the
@@ -195,7 +195,7 @@ $`\tfrac{15 - 5\sqrt5}{2(5 - 2\sqrt5)} = \tfrac{5 + \sqrt5}{2} = 2 + \varphi`. S
 $`r^2 - 1 < 2 + \varphi`.
 :::
 
-:::lemma_ "lemma:cut-levels" (parent := "lower-bound") (lean := "CriticalRadiusFive.exists_cut_levels")
+:::lemma_ "lemma:cut-levels" (parent := "lower-bound") (lean := "CriticalRadiusFive.exists_cut_levels, CriticalRadiusFive.IsCutLevel, CriticalRadiusFive.exists_isCutLevel")
 *Cut levels under the golden rotation.* Let $`\delta > 0`, $`0 \le L < \delta/2`, and let
 $`s \in \mathbb{R}` be irrational; in our application $`s = -\alpha` with $`\alpha = 1/\varphi`, the
 golden rotation. Call $`q \in \mathbb{Z}` a _cut level_ for $`Z \in \mathbb{R}` if
@@ -218,7 +218,7 @@ which has length $`1 - 2\eta`, so one of a bounded number of them lands in it. T
 $`\eta` and $`s` only, not on $`Z`.
 :::
 
-:::theorem "thm:confinement" (parent := "lower-bound") (lean := "CriticalRadiusFive.level_ne_of_cut, CriticalRadiusFive.mem_box_of_abs_le")
+:::theorem "thm:confinement" (parent := "lower-bound") (lean := "CriticalRadiusFive.edgeClosed_cutSet, CriticalRadiusFive.good_cutSet, CriticalRadiusFive.mem_box_of_mem_cutSet")
 *Confinement.* Let $`0 \le r < \sqrt{3+\varphi}`. For every $`p`, the typed walk of $`p` stays in
 two bands, $`5q_-^{(i)} < \operatorname{lv}_i \le 5q_+^{(i)}` for $`i = 1, 2`, between cut levels of
 the two functionals $`u` and $`\zeta u`, where $`|q_\pm^{(i)}| \le N` for an $`N` depending only on

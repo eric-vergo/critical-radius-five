@@ -101,7 +101,8 @@ $`r_c(5) \le r_0`, where $`r_c(5)` is {uses "def:criticalRadius"}[].
 
 :::proof "lemma:crit-upper"
 By {uses "lemma:finite-mono"}[] every $`r \ge r_0` gives an infinite group, so
-$`\{\, r \mid G_5(r) \text{ finite} \,\} \subseteq (-\infty, r_0)`, and its supremum is at most $`r_0`.
+$`\{\, r \mid G_5(r) \text{ finite} \,\} \subseteq (-\infty, r_0)`. The set is not empty (for $`r < 0`
+both turns are the identity), so its supremum is at most $`r_0`.
 :::
 
 :::lemma_ "lemma:crit-lower" (parent := "setup") (lean := "CriticalRadiusFive.criticalRadius_eq_of_forall_lt")

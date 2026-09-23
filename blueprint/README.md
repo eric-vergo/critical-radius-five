@@ -54,7 +54,9 @@ blueprint/
 
 Each statement is a `:::definition`, `:::lemma_`, or `:::theorem` block with a label such as
 `thm:upper`, its Lean declarations in `(lean := "…")`, and its dependencies as `{uses "…"}[]`
-references (in the statement or in the `:::proof` block).
+references (in the statement or in the `:::proof` block). The chapters import the library, and the
+package sets `verso.blueprint.externalCode.strictResolve`: a `(lean := "…")` name that does not exist
+in the library is a build error, so renaming a declaration means updating the blueprint.
 
 ## Dependencies
 
