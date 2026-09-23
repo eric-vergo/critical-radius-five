@@ -22,6 +22,7 @@ import argparse
 import html
 import json
 import math
+import os
 import re
 import subprocess
 import sys
@@ -354,8 +355,10 @@ def to_dot(graph: Graph) -> str:
 
 
 def run(cmd: list[str], **kw) -> subprocess.CompletedProcess:
+    # A fixed timestamp makes the PDF byte-for-byte reproducible (cairo honours SOURCE_DATE_EPOCH).
+    env = {**os.environ, "SOURCE_DATE_EPOCH": os.environ.get("SOURCE_DATE_EPOCH", "0")}
     try:
-        return subprocess.run(cmd, check=True, capture_output=True, **kw)
+        return subprocess.run(cmd, check=True, capture_output=True, env=env, **kw)
     except FileNotFoundError:
         sys.exit(f"error: `{cmd[0]}` not found on PATH")
     except subprocess.CalledProcessError as err:
