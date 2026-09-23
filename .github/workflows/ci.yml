@@ -129,7 +129,7 @@ jobs:
       # default targets are the library, Challenge, Solution, Test and Check.
       # The GitHub cache of .lake stays off, as in the comparator job below;
       # Mathlib comes from the Mathlib build cache.
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+      - uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596 # v1.6.0
         with:
           build: true
           lint: false
@@ -160,7 +160,7 @@ jobs:
       # GitHub cache of .lake stays off so that no output built outside the
       # sandbox, for instance by the build job, is reused: the comparator
       # builds Challenge and Solution itself, inside landrun.
-      - uses: leanprover/lean-action@38fbc41a8c28c4cbaec22d7f7de508ec2e7c0dd9 # v1.5.0
+      - uses: leanprover/lean-action@50fcf42d2e460296f1a34b402e990d1b24f8b596 # v1.6.0
         with:
           build: false
           test: false
