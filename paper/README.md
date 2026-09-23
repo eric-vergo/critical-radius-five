@@ -19,3 +19,10 @@ produced by `../animations/render.sh` (see `../animations/crop_figures.py`).
 
 Items still to be supplied are typeset in red: the authors, the date, and the confirmation of the
 comparator run.
+
+`check_lean_names.py` lists the Lean names cited in `main.tex` (`\leanname{…}`) that the library
+does not declare; run it from the repository root after the library changes:
+
+```sh
+python3 paper/check_lean_names.py
+```
