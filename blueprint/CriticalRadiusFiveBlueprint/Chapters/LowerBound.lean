@@ -181,7 +181,7 @@ $`\delta(3 + \alpha) = 5`.
 :::
 
 :::lemma_ "lemma:window-lt-period" (parent := "lower-bound") (lean := "CriticalRadiusFive.lensL5_lt")
-*The window is shorter than the period exactly below the critical radius.* For $`r \ge 1`,
+*The window is shorter than the period.* For $`r \ge 1`,
 $`2D_5\sqrt{r^2 - 1} < \delta` exactly when $`r^2 < 3 + \varphi`. This is where $`\sqrt{3+\varphi}`
 enters.
 :::
