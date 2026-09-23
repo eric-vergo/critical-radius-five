@@ -527,10 +527,11 @@ accept the solution; on Linux it runs every build and replay in a sandbox.
 \placeholder{Confirm the comparator run and its output before publication.}
 
 \paragraph{Scope.}
-Every numbered statement of \cref{sec:result,sec:upper,sec:lower} is formalised
-(\cref{app:lean}). The remarks, the sentence about the lattice being dense, the explanation of
-\cref{sec:lower}'s last subsection and all figures are illustrations; the figures were computed in
-floating point.
+Every numbered statement of \cref{sec:result,sec:upper,sec:lower} and the two displayed equations
+are formalised (\cref{app:lean}); the uniform orbit bound of \cref{thm:main}(b) is proved inside
+\leanname{finite\_GG\_five\_of\_lt}. Not formalised, because nothing depends on them: the remark
+in \cref{sec:upper}, the density of $\Lam$, and the discussion in the last subsection of
+\cref{sec:lower}. The figures were computed in floating point and illustrate; they prove nothing.
 
 \paragraph{Reproducing.}
 \texttt{lake exe cache get \&\& lake build} builds the library, the challenge, the solution and the
