@@ -27,7 +27,7 @@ The generated data can be queried after a build, for example
 ```bash
 lake exe vbp query labels            # all nodes
 lake exe vbp query uses thm:main     # what a node depends on
-lake exe vbp query used-by thm:T1    # what depends on a node
+lake exe vbp query used-by thm:bounded-orbits    # what depends on a node
 ```
 
 The machine-readable node and edge data is in
@@ -44,7 +44,8 @@ blueprint/
   CriticalRadiusFiveBlueprint/
     Blueprint.lean              top level: title, introduction, chapters, graph, summary
     Chapters/
-      Setup.lean                the turns, the group, the critical radius, monotonicity, bounded orbits
+      Setup.lean                the turns, the group, the critical radius, monotonicity, bounded
+                                orbits, the critical radius as a threshold
       UpperBound.lean           the chord E′E, three words, an irrational rotation
       LowerBound.lean           the pivot walk, levels, the lens bound, cut levels, confinement
       MainTheorem.lean          r_c(5) = √(3 + φ)

@@ -14,18 +14,17 @@ file := "main-theorem"
 shortTitle := "The theorem"
 %%%
 
-:::theorem "thm:main" (lean := "CriticalRadiusFive.criticalRadius_five, CriticalRadiusFive.finite_GG_five_iff")
+:::theorem "thm:main" (lean := "CriticalRadiusFive.criticalRadius_five, CriticalRadiusFive.finite_GG_five_iff") (uses := "def:group, def:criticalRadius")
 *The critical radius of GG₅.*
 
 $$`r_c(5) = \sqrt{3 + \varphi} = 2.1489611417\ldots,`
 
-a root of $`x^4 - 7x^2 + 11`. More precisely, $`G_5(r)` is finite if and only if
+a root of $`x^4 - 7x^2 + 11`. More precisely, $`\mathrm{GG}_5(r)` is finite if and only if
 $`r < \sqrt{3 + \varphi}`.
 :::
 
 :::proof "thm:main"
-Combine the upper bound {uses "thm:upper"}[] and the lower bound {uses "thm:lower"}[]. For the
-equivalence: if $`G_5(r)` were finite for some $`r \ge \sqrt{3+\varphi}`, then $`G_5(\sqrt{3+\varphi})`
-would be finite too, by {bpref "lemma:finite-mono"}[]. The formal proof uses only the axioms
-`propext`, `Classical.choice` and `Quot.sound`.
+By {uses "thm:upper"}[] and {uses "thm:lower"}[], {uses "lemma:threshold"}[] applies with
+$`R = \sqrt{3+\varphi}`. The formal proof uses only the axioms `propext`, `Classical.choice` and
+`Quot.sound`.
 :::

@@ -15,7 +15,7 @@ shortTitle := "Upper bound"
 %%%
 
 :::group "upper-bound"
-Upper bound: at r = √(3+φ) three words realise an irrational rotation
+Upper bound
 :::
 
 In this chapter $`r = \sqrt{3+\varphi}`. The group jumbles at this radius because three explicit
@@ -66,7 +66,7 @@ exact comparison in $`\mathbb{Z}[\varphi]`. The composition of the rotations is 
 the stated translation.
 :::
 
-:::lemma_ "lemma:rotation" (parent := "upper-bound") (lean := "CriticalRadiusFive.chordRot, CriticalRadiusFive.exists_mem_GG_apply_smul_chordE")
+:::lemma_ "lemma:rotation" (parent := "upper-bound") (lean := "CriticalRadiusFive.chordRot, CriticalRadiusFive.exists_mem_GG_apply_smul_chordE") (uses := "def:points")
 *The exchange is a circle rotation.* In the coordinate $`z = sE`, $`t = s + 1 \in [0, 2)`, the three
 translations of {uses "lemma:words"}[] together act as the rotation
 
@@ -74,6 +74,16 @@ $$`\operatorname{rot}(t) = \begin{cases} t + \alpha & (t < \beta), \\ t - \beta 
 
 of the circle $`\mathbb{R}/2\mathbb{Z}`, with $`\alpha = 2\varphi^{-1}` and
 $`\beta = 2 - 2\varphi^{-1}`, so $`\alpha + \beta = 2`.
+:::
+
+:::proof "lemma:rotation"
+The points $`E', F', G', E` sit at $`t = 0,\ 1 - \varphi^{-1},\ \beta,\ 2`, so the pieces
+$`[E', F']` and $`[F', G']` make up $`0 \le t \le \beta` and the piece $`[G', E]` makes up
+$`\beta \le t \le 2`. By {uses "lemma:words"}[], the pieces $`[E', F']` and $`[F', G']`
+($`t < \beta`) move by $`+2F`, which is $`t \mapsto t + \alpha` since $`2F = 2\varphi^{-1}E = \alpha E`,
+and the piece $`[G', E]` ($`t \ge \beta`) moves by $`2F - 2E`, which is
+$`t \mapsto t + \alpha - 2 = t - \beta`. So every point of the chord with parameter $`t \in [0, 2)`
+is carried to the point with parameter $`\operatorname{rot}(t)` by an element of the group.
 :::
 
 :::theorem "thm:engine" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_orbit_of_irrational_rotation, CriticalRadiusFive.infinite_of_infinite_orbit")
@@ -92,8 +102,8 @@ $`x` is injective, the points $`x(\operatorname{rot}^k t_0)` are pairwise distin
 in the orbit of $`x(t_0)`, being reached by products of the given elements.
 :::
 
-:::theorem "thm:upper" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_orbit_zero, CriticalRadiusFive.infinite_GG_five")
-*The upper bound.* $`G_5(\sqrt{3+\varphi})` is infinite; hence $`r_c(5) \le \sqrt{3+\varphi}`.
+:::theorem "thm:upper" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_orbit_zero, CriticalRadiusFive.infinite_GG_five") (uses := "def:group")
+*The upper bound.* $`\mathrm{GG}_5(\sqrt{3+\varphi})` is infinite.
 :::
 
 :::proof "thm:upper"
@@ -101,6 +111,5 @@ By {uses "lemma:rotation"}[], the words of the previous lemmas realise, on the c
 rotation by $`\alpha = 2\varphi^{-1}` of a circle of length $`\alpha + \beta = 2`, with
 $`x(t) = (t-1)E` injective. The rotation number $`\alpha/(\alpha+\beta) = \varphi^{-1}` is
 irrational, so by {uses "thm:engine"}[] the orbit of the origin ($`t = 1`) is infinite and
-$`G_5(\sqrt{3+\varphi})` is infinite. Then {uses "lemma:crit-upper"}[] gives
-$`r_c(5) \le \sqrt{3+\varphi}`.
+$`\mathrm{GG}_5(\sqrt{3+\varphi})` is infinite.
 :::

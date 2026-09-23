@@ -14,6 +14,10 @@ Outputs, next to this script:
 
 Requires `dot` (graphviz) and `rsvg-convert` (librsvg) on PATH, and the fonts Avenir Next,
 Menlo and STIX Two Text (all shipped with macOS); other systems fall back to similar fonts.
+
+The PDF is dated with $SOURCE_DATE_EPOCH if it is set, and otherwise with the date of the last
+commit that changed the poster's inputs (this script and the chapter files), so that the same
+inputs give the same PDF, byte for byte.
 """
 
 from __future__ import annotations
@@ -24,9 +28,11 @@ import json
 import math
 import os
 import re
+import struct
 import subprocess
 import sys
 import textwrap
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -37,6 +43,9 @@ CHAPTERS = ["Setup", "UpperBound", "LowerBound", "MainTheorem"]
 MANIFEST = ROOT / "blueprint" / "_out" / "site" / "html-multi" / "-verso-data" / "blueprint-manifest.json"
 NAMESPACE = "CriticalRadiusFive."
 MAIN = "thm:main"
+UPPER = "thm:upper"  # Theorem 2 of Hearn, Kretschmer, Rokicki, Streeter and Vergo
+TITLE = "The critical radius of GG₅: dependency graph of the proof"
+AUTHOR = "The critical-radius-five authors"
 
 # ---------------------------------------------------------------------------
 # Visual design
@@ -78,15 +87,15 @@ FAMILIES = {
                  cluster="#ffffff", outline="#ffffff", swatch="#0f172a"),
 }
 
-# Cluster titles; `_c` marks a subscript c.
+# Cluster titles: what each part proves (`GG₅` and `r_c` are set with subscripts).
 CLUSTER_TITLES = {
-    "upper-bound": "Upper bound:  r_c(5) ≤ √(3 + φ)",
+    "upper-bound": "Upper bound:  GG₅(√(3 + φ)) is infinite",
     "setup": "Setup",
-    "lower-bound": "Lower bound:  √(3 + φ) ≤ r_c(5)",
+    "lower-bound": "Lower bound:  GG₅(r) is finite for r < √(3 + φ)",
 }
 CLUSTER_ORDER = ["upper-bound", "setup", "lower-bound"]
 # Where each cluster title sits, clear of the edges that leave the cluster at the top.
-CLUSTER_LABEL_SIDE = {"upper-bound": "l", "setup": "c", "lower-bound": "r"}
+CLUSTER_LABEL_SIDE = {"upper-bound": "r", "setup": "c", "lower-bound": "l"}
 
 KIND_NAMES = {"definition": "Definition", "lemma": "Lemma", "theorem": "Theorem",
               "proposition": "Proposition", "corollary": "Corollary"}
@@ -354,15 +363,59 @@ def to_dot(graph: Graph) -> str:
 # The poster page
 
 
+def source_date_epoch() -> int:
+    """$SOURCE_DATE_EPOCH, or else the date of the last commit that changed the poster's inputs."""
+    if os.environ.get("SOURCE_DATE_EPOCH"):
+        return int(os.environ["SOURCE_DATE_EPOCH"])
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%ct", "--", str(HERE / "make_poster.py"),
+                              str(CHAPTER_DIR)], cwd=ROOT, capture_output=True, text=True, check=True)
+        return int(out.stdout.strip() or 0)
+    except (OSError, ValueError, subprocess.CalledProcessError):
+        return 0
+
+
+EPOCH = source_date_epoch()
+
+
 def run(cmd: list[str], **kw) -> subprocess.CompletedProcess:
     # A fixed timestamp makes the PDF byte-for-byte reproducible (cairo honours SOURCE_DATE_EPOCH).
-    env = {**os.environ, "SOURCE_DATE_EPOCH": os.environ.get("SOURCE_DATE_EPOCH", "0")}
+    env = {**os.environ, "SOURCE_DATE_EPOCH": str(EPOCH)}
     try:
         return subprocess.run(cmd, check=True, capture_output=True, env=env, **kw)
     except FileNotFoundError:
         sys.exit(f"error: `{cmd[0]}` not found on PATH")
     except subprocess.CalledProcessError as err:
         sys.exit(f"error: {' '.join(cmd)} failed:\n{err.stderr.decode(errors='replace')}")
+
+
+def pdf_text(value: str) -> bytes:
+    """A PDF text string: UTF-16BE with a byte order mark, written in hexadecimal."""
+    return b"<FEFF" + value.encode("utf-16-be").hex().upper().encode() + b">"
+
+
+def set_pdf_info(path: Path, title: str, author: str, epoch: int) -> None:
+    """Give the PDF a title, an author and dates. rsvg-convert writes an empty document information
+    dictionary, so this appends a standard incremental update (PDF 1.7, 7.5.6): a new information
+    dictionary, and a cross-reference stream that points to it and back to cairo's."""
+    data = path.read_bytes()
+    prev = int(data[data.rindex(b"startxref"):].split()[1])
+    xref = data[prev:data.index(b"stream", prev)]
+    size = re.search(rb"/Size (\d+)", xref)
+    root = re.search(rb"/Root (\d+ \d+ R)", xref)
+    if b"/Type /XRef" not in xref or not size or not root:
+        sys.exit("error: unexpected PDF from rsvg-convert (no cross-reference stream)")
+    n = int(size.group(1))
+    date = time.strftime("(D:%Y%m%d%H%M%S+00'00')", time.gmtime(epoch)).encode()
+    info = (f"{n} 0 obj\n<< /Title ".encode() + pdf_text(title) + b" /Author " + pdf_text(author)
+            + b" /Creator " + pdf_text("poster/make_poster.py (Graphviz, rsvg-convert)")
+            + b" /CreationDate " + date + b" /ModDate " + date + b" >>\nendobj\n")
+    rows = struct.pack(">BIH", 1, len(data), 0) + struct.pack(">BIH", 1, len(data) + len(info), 0)
+    xref_stream = (f"{n + 1} 0 obj\n<< /Type /XRef /Size {n + 2} /W [1 4 2] /Index [{n} 2] "
+                   f"/Root {root.group(1).decode()} /Info {n} 0 R /Prev {prev} /Length {len(rows)} >>\n"
+                   "stream\n").encode() + rows + b"\nendstream\nendobj\n"
+    path.write_bytes(data + info + xref_stream
+                     + f"startxref\n{len(data) + len(info)}\n%%EOF\n".encode())
 
 
 def graph_svg(dot_source: str) -> tuple[str, float, float]:
@@ -518,10 +571,13 @@ def poster(graph: Graph, inner: str, gw: float, gh: float) -> tuple[str, float]:
     legend_rule = (f'<line x1="{MARGIN:.1f}" y1="{legend_y - 34:.1f}" x2="{PAGE_W - MARGIN:.1f}" '
                    f'y2="{legend_y - 34:.1f}" stroke="{RULE}" stroke-width="1.5"/>')
     footer_y = PAGE_H - MARGIN + 2
+    upper = graph.nodes.get(UPPER)
     footer = text(MARGIN, footer_y,
                   "The formal proof uses only the axioms propext, Classical.choice and Quot.sound.   "
-                  "The value was conjectured by R. Hearn, W. Kretschmer, T. Rokicki, B. Streeter and E. Vergo, "
-                  "“Two-Disk Compound Symmetry Groups”, arXiv:2302.12950.",
+                  f"{upper.number if upper and upper.number else 'The upper bound'} is Theorem 2 of "
+                  "R. Hearn, W. Kretschmer, T. Rokicki, B. Streeter and E. Vergo, "
+                  "“Two-Disk Compound Symmetry Groups” (Bridges 2023, arXiv:2302.12950), "
+                  "who also found the value numerically.",
                   13, fill=FAINT)
     count = text(PAGE_W - MARGIN, footer_y,
                  f"critical-radius-five · {len(graph.nodes)} nodes · {len(graph.edges)} edges",
@@ -533,7 +589,7 @@ def poster(graph: Graph, inner: str, gw: float, gh: float) -> tuple[str, float]:
         '<?xml version="1.0" encoding="UTF-8" standalone="no"?>',
         '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
         f'width="{PAGE_W_MM}mm" height="{PAGE_H_MM}mm" viewBox="0 0 {PAGE_W:.2f} {PAGE_H:.2f}">',
-        "<title>The critical radius of GG5: dependency graph of the proof</title>",
+        f"<title>{esc(TITLE)}</title>",
         f'<rect width="{PAGE_W:.2f}" height="{PAGE_H:.2f}" fill="#ffffff"/>',
         title, formula, statement, subline, figure, caption, rule,
         body,
@@ -568,6 +624,7 @@ def main() -> None:
     svg_path = args.out / "proof-graph.svg"
     svg_path.write_text(svg, encoding="utf-8")
     run(["rsvg-convert", "-f", "pdf", "-o", str(args.out / "proof-graph.pdf"), str(svg_path)])
+    set_pdf_info(args.out / "proof-graph.pdf", TITLE, AUTHOR, EPOCH)
     print(f"graph scaled by {scale:.2f} onto an A1 landscape page")
     print(f"wrote proof-graph.dot, proof-graph.svg, proof-graph.pdf in {args.out}")
 

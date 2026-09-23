@@ -29,3 +29,7 @@ that the blueprint build could not find.
 Requirements: Python 3.8 or later (standard library only), Graphviz (`dot`), librsvg (`rsvg-convert`),
 and the fonts Avenir Next, Menlo and STIX Two Text, which come with macOS; other systems substitute
 similar fonts. `proof-graph.dot` is the Graphviz input, kept for reference.
+
+The PDF carries a title and an author, and is dated with the date of the last commit that changed
+its inputs (`make_poster.py` or the chapter files), or with `$SOURCE_DATE_EPOCH` if that is set; the
+same inputs therefore give the same PDF, byte for byte.
