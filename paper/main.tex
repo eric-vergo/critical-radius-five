@@ -1,0 +1,589 @@
+\documentclass[11pt,a4paper]{article}
+
+% ---------------------------------------------------------------- packages
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{newpxtext,newpxmath}
+\usepackage[scaled=0.92]{inconsolata}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{microtype}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage[font=small,labelfont=bf,labelsep=period]{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{thmtools}
+\usepackage[colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage[capitalize,nameinlink]{cleveref}
+\usepackage{fancyvrb}
+\usepackage{newunicodechar}
+% Unicode in quoted Lean code
+\newunicodechar{ℝ}{\ensuremath{\mathbb{R}}}
+\newunicodechar{↔}{\ensuremath{\leftrightarrow}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{φ}{\ensuremath{\varphi}}
+\newunicodechar{₁}{\textsubscript{1}}
+\newunicodechar{₂}{\textsubscript{2}}
+\newunicodechar{₃}{\textsubscript{3}}
+
+% ---------------------------------------------------------------- theorems
+\declaretheorem[name=Theorem]{theorem}
+\declaretheorem[name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[name=Remark,style=remark,numbered=no]{remark}
+
+% ---------------------------------------------------------------- notation
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\GG}{\mathrm{GG}}
+\newcommand{\rc}{r_{\mathrm c}}
+\newcommand{\rs}{r_{\ast}}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\Or}{\mathcal{O}}
+\newcommand{\cls}{\operatorname{cl}}
+\newcommand{\Win}{W}
+\newcommand{\bm}{\bar m}
+\newcommand{\sym}{\operatorname{Sym}}
+\newcommand{\re}{\operatorname{Re}}
+\newcommand{\im}{\operatorname{Im}}
+% Lean declarations
+\newcommand{\leanname}[1]{\texttt{\small #1}}
+% Items the authors still have to supply.
+\newcommand{\placeholder}[1]{\textcolor{red!70!black}{[#1]}}
+
+\title{\textbf{The critical radius of the five-fold two-disk puzzle}}
+\author{\placeholder{Authors}}
+\date{\placeholder{Date}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Two closed disks of radius $r$, centred at $-1$ and $+1$ and each turned clockwise by $72^\circ$,
+generate a group $\GG_5(r)$ of piecewise rotations of the plane: the group of an idealised two-disk
+circle puzzle. Hearn, Kretschmer, Rokicki, Streeter and Vergo proved that $\GG_5(\sqrt{3+\varphi})$ is
+infinite, where $\varphi$ is the golden ratio, and their numerical estimate of the radius at which
+the group becomes infinite agrees with $\sqrt{3+\varphi}$ to six decimals. We prove that
+$\GG_5(r)$ is finite for every $r<\sqrt{3+\varphi}$. Hence the group is finite exactly when
+$r<\sqrt{3+\varphi}$, and the critical radius is $\sqrt{3+\varphi}=2.1489611417\ldots$ The finiteness
+proof reads every position of a point off a lattice point of $\Z[e^{2\pi i/5}]$ and follows an
+integer-valued \emph{level} that can only move while the point lies in the lens where the two disks
+overlap; below $\sqrt{3+\varphi}$ the lens is too thin for the level to pass certain values. Both
+halves are formalised in Lean~4 with Mathlib, and the formal statement is checked against an
+independent, elementary restatement.
+\end{abstract}
+
+% =================================================================================================
+\section{The puzzle and the number}\label{sec:intro}
+
+A two-disk circle puzzle such as Gizmo Gears consists of two overlapping disks that turn
+independently; a turn carries along everything in the turning disk, including the part of the other
+disk that it covers. Whether the puzzle can be cut into finitely many pieces that the turns merely
+permute depends on the overlap: with a small overlap it can, but past a critical overlap the turns
+cut ever smaller pieces and the puzzle \emph{jumbles}. Hearn, Kretschmer, Rokicki, Streeter and
+Vergo~\cite{hkrsv} turned this into a question about groups. Let $r\in\R$ and
+\[
+  D_- = \{z\in\C : |z+1|\le r\},\qquad D_+ = \{z\in\C : |z-1|\le r\},\qquad \zeta = e^{2\pi i/5}.
+\]
+The \emph{turns} are the maps
+\[
+  a(z)=\begin{cases}\zeta^{-1}(z+1)-1, & z\in D_-,\\ z, & \text{otherwise,}\end{cases}\qquad
+  b(z)=\begin{cases}\zeta^{-1}(z-1)+1, & z\in D_+,\\ z, & \text{otherwise.}\end{cases}
+\]
+Each rotates its closed disk clockwise by $72^\circ$ and fixes every other point, so it is a
+bijection of~$\C$. As on a puzzle, words are read from left to right: $ab$ means ``first $a$, then
+$b$''. The group
+\[
+  \GG_5(r) = \langle a, b\rangle \le \sym(\C)
+\]
+is the \emph{two-disk group}; its elements are piecewise rotations, not rotations. The
+\emph{orbit} $\Or_r(p)=\{g(p): g\in\GG_5(r)\}$ is the set of places a sticker at $p$ can reach.
+Enlarging the disks can only enlarge orbits, and a finitely generated group of permutations with
+uniformly bounded orbits is finite (\cref{prop:mono,prop:bounded} below); so the radii at which
+$\GG_5(r)$ is finite form an initial segment of $\R$, and its supremum
+\[
+  \rc(5) = \sup\{r\in\R : \GG_5(r)\text{ is finite}\}
+\]
+is the \emph{critical radius}. For $0<r<1$ the disks are disjoint and $\GG_5(r)\cong C_5\times C_5$~\cite{hkrsv};
+as $r$ grows the orbits grow (\cref{fig:orbit}), and at the critical radius they become infinite.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.62\textwidth]{figures/b4_monotone.png}
+  \caption{The orbit of the point $0$ under $\GG_5(2.13)$: $2\,543$ points, drawn with the two
+    disks. Slightly below the critical radius the orbits are finite but large; at
+    $\rs=\sqrt{3+\varphi}$ this orbit becomes infinite.}
+  \label{fig:orbit}
+\end{figure}
+
+Hearn et al.\ proved that $\GG_5$ is infinite at $r=\sqrt{3+\varphi}$~\cite[Thm.~2]{hkrsv}, where
+$\varphi=(1+\sqrt5)/2$, so that $\rc(5)\le\sqrt{3+\varphi}$, and their numerical estimate
+$\rc(5)\approx 2.148961$ agreed with $\sqrt{3+\varphi}=2.1489611\ldots$~\cite[Table~1]{hkrsv}. That
+the group is finite for every smaller radius was not known. We prove it.
+
+% =================================================================================================
+\section{The result}\label{sec:result}
+
+Throughout, $\rs=\sqrt{3+\varphi}=2.1489611417\ldots$; it is the largest root of $x^4-7x^2+11$
+(its conjugate $\sqrt{4-\varphi}$ is the value found in~\cite{hkrsv} for $\GG_{10}$).
+
+\begin{theorem}\label{thm:main}
+$\GG_5(r)$ is finite if and only if $r<\rs$. In particular $\rc(5)=\rs=\sqrt{3+\varphi}$. More precisely:
+\begin{enumerate}[label=(\alph*),nosep]
+  \item at $r=\rs$ the orbit of $0$ is infinite, so $\GG_5(r)$ is infinite for every $r\ge\rs$;
+  \item for every $r<\rs$ there is $N(r)$ such that every orbit of $\GG_5(r)$ has at most $N(r)$
+        points, so $\GG_5(r)$ is finite.
+\end{enumerate}
+\end{theorem}
+
+Both statements of the first sentence are formal theorems (\cref{sec:formal}):
+\begin{Verbatim}[fontsize=\small,xleftmargin=1.5em]
+theorem finite_GG_five_iff (r : ℝ) : Finite (GG 5 r) ↔ r < √(3 + φ)
+theorem criticalRadius_five : criticalRadius 5 = √(3 + φ)
+\end{Verbatim}
+where \texttt{criticalRadius n} is \texttt{sSup \{r | Finite (GG n r)\}}. By (a) and (b) this set is
+exactly $(-\infty,\rs)$, so the supremum is a genuine one; in particular the group is infinite at
+the critical radius itself. Two general facts connect orbits, groups and radii.
+
+\begin{proposition}[monotonicity]\label{prop:mono}
+If $r\le r'$ then $\Or_r(p)\subseteq\Or_{r'}(p)$ for every $p\in\C$.
+\end{proposition}
+
+\begin{proof}
+Apply a word to $p$ letter by letter. A letter that moves the current point at radius $r$ does so
+because the point lies in its radius-$r$ disk, hence in the concentric radius-$r'$ disk, where the
+radius-$r'$ letter moves it in the same way. A letter that fixes the current point is dropped.
+\end{proof}
+
+Note that $\GG_5(r)$ is not a subgroup of $\GG_5(r')$: the comparison is made point by point.
+
+\begin{proposition}[bounded orbits]\label{prop:bounded}
+Let $G$ be a group of permutations of a set $X$ generated by a finite set. If every $G$-orbit has
+at most $N$ points, then $G$ is finite.
+\end{proposition}
+
+\begin{proof}
+For $x\in X$, number the orbit of $x$ and let $\rho_x\colon G\to S_N$ be the action on it. Each
+$\rho_x$ is determined by the images of the finitely many generators, so only finitely many
+homomorphisms $\rho_x$ occur. An element of $G$ in the kernel of every $\rho_x$ fixes every point,
+hence is the identity; so $g\mapsto(\rho_x(g))_x$ embeds $G$ into a finite product of copies of~$S_N$.
+\end{proof}
+
+Hence, if $\GG_5(r')$ is finite and $r\le r'$, then $\GG_5(r)$ is finite (its orbits lie in those of
+$\GG_5(r')$, which have at most $|\GG_5(r')|$ points); and an infinite orbit at radius $r$ makes
+$\GG_5(r')$ infinite for every $r'\ge r$. \Cref{thm:main} therefore follows from its two parts, which
+are proved in \cref{sec:upper,sec:lower}.
+
+% =================================================================================================
+\section{Why it jumbles at \texorpdfstring{$\sqrt{3+\varphi}$}{sqrt(3+phi)}}\label{sec:upper}
+
+This is the construction of~\cite[Thm.~2]{hkrsv}; we recall it briefly. Let $r=\rs$ and
+\[
+  E=\zeta-\zeta^2,\qquad F=E/\varphi=1-\zeta+\zeta^2-\zeta^3,\qquad G=2F-E,
+\]
+and write $X'=-X$. Then $|E+1|^2=3+\varphi$: the point $E$ lies on the rim of $D_-$, and $E'$
+(by the symmetry $z\mapsto-z$) on the rim of $D_+$. The chord $E'E$ passes through $0$ and spans the
+lens $D_-\cap D_+$ from rim to rim (\cref{fig:setting}). The points
+$E',F',G',G,F,E$ lie on it in this order and cut it into three pieces
+\[
+  I_1=[E',F'],\qquad I_2=[F',G'],\qquad I_3=[G',E].
+\]
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.56\textwidth]{figures/a1_setting.png}
+  \caption{The two disks at $r=\rs$, the lens, and the chord $E'E$ with its three pieces $I_1$
+    (green), $I_2$ (magenta) and $I_3$ (yellow).}
+  \label{fig:setting}
+\end{figure}
+
+\begin{lemma}[three words]\label{lem:words}
+At $r=\rs$, with $A=a^{-1}$ and $B=b^{-1}$,
+\begin{enumerate}[label=(\roman*),nosep]
+  \item $AABAB=a^{-2}b^{-1}a^{-1}b^{-1}$ maps $I_1$ onto $[G,F]$, translating it by $2F$;
+  \item $ababb=abab^2$ maps $I_2$ onto $[F,E]$, translating it by $2F$;
+  \item $abaBAB=abab^{-1}a^{-1}b^{-1}$ maps $I_3$ onto $[E',G]$, translating it by $2F-2E$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+A word acts on a segment as the composition of the rotations of its letters as long as every
+intermediate image of the segment lies in the disk of the next letter. Disks are convex, so it is
+enough to check the two endpoints of each intermediate segment. These endpoints are explicit
+elements of $\Z[\zeta]$, and for $x\in\Z[\zeta]$ the number $|x\pm1|^2$ lies in $\Z[\varphi]$, so
+each check is an exact comparison $m+n\varphi\le 3+\varphi$ with $m,n\in\Z$. In each word the
+rotation angles add up to $0$, so the composition is a translation, and the endpoints go where
+stated (\cref{fig:words}).
+\end{proof}
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}{0.325\textwidth}\includegraphics[width=\linewidth]{figures/a2_word1.png}
+    \caption{$AABAB$ on $I_1$}\end{subfigure}\hfill
+  \begin{subfigure}{0.325\textwidth}\includegraphics[width=\linewidth]{figures/a3_word2.png}
+    \caption{$ababb$ on $I_2$}\end{subfigure}\hfill
+  \begin{subfigure}{0.325\textwidth}\includegraphics[width=\linewidth]{figures/a4_word3.png}
+    \caption{$abaBAB$ on $I_3$}\end{subfigure}
+  \caption{The three words, turn by turn: faint copies show the intermediate positions of the
+    piece and arcs the paths of its midpoint; the arrow is the resulting translation. Red dots mark
+    endpoints lying exactly on the rim of the disk about to turn.}
+  \label{fig:words}
+\end{figure}
+
+\begin{remark}
+Several of these comparisons are equalities: the endpoints touch the rims, at $\pm E$, at
+$\pm\bar E$ and at the two tips $\pm(\zeta-\zeta^{-1})=\pm i\sqrt{2+\varphi}$ of the lens (the red
+dots in \cref{fig:words}). For any smaller radius the same words would split the pieces.
+\end{remark}
+
+\begin{proposition}\label{prop:upper}
+At $r=\rs$ the orbit of $0$ is infinite. Hence $\GG_5(r)$ is infinite for every $r\ge\rs$.
+\end{proposition}
+
+\begin{proof}
+Parametrise the chord by $z=sE$, $s\in[-1,1)$. By \cref{lem:words} the three words realise the map
+\[
+  s\longmapsto\begin{cases} s+2/\varphi, & s<3-2\varphi,\\ s+2/\varphi-2, & s\ge 3-2\varphi,\end{cases}
+\]
+the rotation by $2/\varphi$ of the circle $[-1,1)$ of length $2$: the three pieces are exchanged,
+$I_1\cup I_2$ and $I_3$ having lengths in the ratio $1:\varphi$ (\cref{fig:exchange}). Its rotation
+number $1/\varphi$ is irrational, so the iterates of $s=0$ are pairwise distinct, and each of them is
+the image of $0$ under an element of the group. By \cref{prop:mono} the orbit of $0$ is infinite at
+every $r\ge\rs$, and an infinite orbit makes the group infinite.
+\end{proof}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.66\textwidth]{figures/a5_exchange.png}
+  \caption{Top: the exchange of the three pieces on the chord, $I_1I_2I_3\mapsto I_3I_1I_2$. Bottom:
+    gluing $E'$ to $E$ turns it into a rotation of a circle by $1/\varphi$ of a turn. The marks
+    outside the circle (and above the chord) are the first $300$ points of the orbit of $0$,
+    coloured by the piece they lie in; the orbit never closes.}
+  \label{fig:exchange}
+\end{figure}
+
+% =================================================================================================
+\section{Why it does not jumble below \texorpdfstring{$\sqrt{3+\varphi}$}{sqrt(3+phi)}}\label{sec:lower}
+
+Fix $r<\rs$ and a point $p$. If $p$ lies in neither disk, its orbit is $\{p\}$; otherwise
+$|p|\le 1+r$. Write $\Lam=\Z[\zeta]$ and $\mu_5=\{1,\zeta,\dots,\zeta^4\}$.
+
+\subsection{The point's-eye view}
+
+An element $g$ of the group acts on $p$ through the rotations of those letters that actually move
+the current point, so $g(p)=T(p)$ for an isometry $T(z)=mz+\tau$ with $m\in\mu_5$ and
+$\tau\in\Lam$. Each of the four rotations maps $-1+2\Lam$ onto itself; hence
+$T^{-1}(-1)=2\nu-1$ with $\nu\in\Lam$, and
+\begin{equation}\label{eq:normal}
+  g(p) = m\,(p+1-2\nu)-1 .
+\end{equation}
+Read from the point's side, $T^{-1}$ carries the centres $-1$ and $+1$ of the disks to
+$2\nu-1$ and $2(\nu+\bm)-1$: relative to the point the puzzle has moved, and its two centres now sit
+at lattice points. We call $\nu$ the \emph{pivot} and $\nu+\bm$ the \emph{tip}; the segment joining
+them is a \emph{dumbbell} of length~$1$. The next letter $a^{\pm1}$ moves $g(p)$ if and only if the
+pivot lies in the \emph{window}
+\[
+  \Win_p=\{v\in\Lam : |p+1-2v|\le r\},
+\]
+and then it turns the dumbbell about the pivot ($m\mapsto\zeta^{\mp1}m$, $\nu$ fixed); the letter
+$b^{\pm1}$ needs the tip in the window and turns the dumbbell about the tip
+($m\mapsto\zeta^{\mp1}m$, $\nu\mapsto\nu+\bm-\zeta^{\pm1}\bm$). So an orbit is a walk of a dumbbell on the lattice that may
+turn about an end only when that end lies in the window (\cref{fig:lattice}); both ends lie in the
+window exactly when $p$ lies in the lens of the two disks about $2\nu-1$ and $2(\nu+\bm)-1$.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/b1_lattice.png}
+  \caption{The point's-eye view of the orbit of a point $p$ at $r=2$ ($143$ positions). Each
+    position is a pair of disk centres $2\nu-1$ (blue) and $2(\nu+\bm)-1$ (orange) joined by a
+    segment; grey centres lie outside the window (dashed circle of radius $r$ about $p$) and cannot
+    be turned about.}
+  \label{fig:lattice}
+\end{figure}
+
+The lattice $\Lam$ has rank $4$ and is dense in $\C$, so the window contains infinitely many lattice
+points and the walk could, a priori, wander forever inside it. What must stay bounded are the two
+remaining coordinates, those of the Galois conjugate $\zeta\mapsto\zeta^2$. The rest of the proof
+bounds them.
+
+\paragraph{Types.}
+The ideal $\mathfrak p=(1-\zeta)$ is a prime of $\Lam$ of norm $5$, and $\zeta\equiv1\pmod{\mathfrak p}$.
+Write $\cls(v)\in\Z/5$ for the class of $v$ modulo $\mathfrak p$. Starting from the dumbbell
+$(\nu,\nu+\bm)=(0,1)$ of the identity, induction along the word shows that the pivot always has
+class $0$ and the tip class $1$. So the walk is \emph{typed}: from a point of class $0$ it adds a
+fifth root of unity, from a point of class $1$ it subtracts one. Call $V\subseteq\Lam$
+\emph{closed} if, for all $v\in V$ and $e\in\mu_5$,
+\[
+  \cls(v)=0,\ v+e\in\Win_p\ \Longrightarrow\ v+e\in V,\qquad
+  \cls(v)=1,\ v-e\in\Win_p\ \Longrightarrow\ v-e\in V.
+\]
+
+\begin{lemma}[orbit invariant]\label{lem:invariant}
+Let $V$ be closed, and suppose that each of $0,1$ lying in $\Win_p$ belongs to $V$ and that at
+least one of them does. Then every point of $\Or_r(p)$ has the form \eqref{eq:normal} with
+$m\in\mu_5$ and $\nu\in V$ or $\nu+\bm\in V$.
+\end{lemma}
+
+\begin{proof}
+One shows, letter by letter, that every reachable state $(m,\nu)$ keeps the property of the initial
+one: each end of the dumbbell that lies in $\Win_p$ is in $V$, and some end is in $V$. A turn happens
+about an end in $\Win_p$, which is in $V$; the moved end, if it lands in $\Win_p$, is reached from it
+by a typed step, so it is in $V$ as well.
+\end{proof}
+
+\subsection{A level}
+
+Let $u=1-\zeta+\zeta^2$, so $|u|=2-\varphi$, and for $v\in\Lam$ let
+\[
+  \psi(v)=2\langle u,v\rangle=\bar uv+u\bar v\in\Z[\varphi],\qquad \psi(v)=A(v)+B(v)\,\varphi\quad(A,B\in\Z).
+\]
+The \emph{level} of $v$ is the integer $\ell(v)=-A(v)-3B(v)$, and we put $\delta=3-\varphi$. Both
+$\psi$ and $\ell$ are additive.
+
+\begin{lemma}[the level]\label{lem:level}
+\begin{enumerate}[label=(\roman*),nosep]
+  \item $\psi(v)+\ell(v)=-\delta\,B(v)$; so on each level $\ell$ the values of $\psi$ form the
+        progression $-\ell+\delta\Z$.
+  \item For $e\in\mu_5$, $\ell(e)\in\{3,-2\}$, and $\psi(e)=3-2\varphi$ whenever $\ell(e)=3$ (which
+        happens for $e=1$ and $e=\zeta^2$).
+  \item $\ell(v)\equiv 3\cls(v)\pmod 5$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) holds by definition; (ii) is a table of five values; (iii) is a congruence between integer
+linear forms in the coordinates of $v$.
+\end{proof}
+
+So pivots sit on levels in $5\Z$ and tips on levels in $3+5\Z$, and a typed step changes the level
+by $+3$ or $-2$ (from a pivot) or by $-3$ or $+2$ (from a tip). Consequently the walk can rise above
+a level $5q$ only by an \emph{active} step: from a pivot $v$ on level $5q$ to $v+e$ with $\ell(e)=3$.
+Likewise it can reach level $5q$ from above only by an active step taken backwards.
+
+\subsection{The lens}
+
+\begin{lemma}[the lens bound]\label{lem:lens}
+Let $w,w'\in\C$ with $|w|,|w'|\le r$ and $w-w'=2e$, $|e|=1$. Let $U\in\C$, $C=|\re(Ue)|$,
+$D=|\im(Ue)|$, and suppose $C\sqrt{r^2-1}\le D$. Then $|\re(U(w+w'))|\le 2D\sqrt{r^2-1}$.
+\end{lemma}
+
+\begin{proof}
+Put $\xi=\tfrac12(w+w')\bar e=x+iy$. Then $w\bar e=\xi+1$ and $w'\bar e=\xi-1$, so $|\xi\pm1|\le r$:
+the point $\xi$ lies in the lens of two disks of radius $r$ about $\pm1$, that is
+$(|x|+1)^2+y^2\le r^2$. Now $\re(U(w+w'))=2\re(Ue\,\xi)$ is at most $2(C|x|+D|y|)$ in absolute
+value, and on the lens $C|x|+D|y|\le D\sqrt{r^2-1}$: the function
+$x\mapsto Cx+D\sqrt{r^2-(1+x)^2}$ is concave on $[0,r-1]$ with non-positive slope at $0$, so its
+maximum is taken at the tips $x=0$, $y=\pm\sqrt{r^2-1}$.
+\end{proof}
+
+Apply this to an active step $v\to v+e$ whose ends both lie in the window, with $w=p+1-2v$,
+$w'=p+1-2(v+e)$ and $U=\bar u$ (up to the rotation $m$, $w$ and $w'$ are the vectors from the two
+centres to $p$). Since $\re(\bar u\cdot 2v)=\psi(v)$ and $\psi(e)=3-2\varphi$, and since both active
+$e$ give $C=\varphi-\tfrac32$ and $D=\tfrac12\sqrt{7-4\varphi}$, for which the hypothesis of
+\cref{lem:lens} holds when $r^2<3+\varphi$, we get
+\begin{equation}\label{eq:window}
+  |\psi(v)-Z_p|\le L(r) := \tfrac12\sqrt{7-4\varphi}\,\sqrt{r^2-1},
+  \qquad Z_p=\re(\bar u(p+1))-\tfrac12(3-2\varphi).
+\end{equation}
+And $2L(r)<\delta$ if and only if $r^2<3+\varphi$: indeed $(2L)^2=(7-4\varphi)(r^2-1)$,
+$\delta^2=(3-\varphi)^2$, and $(3-\varphi)^2=(7-4\varphi)(2+\varphi)$.
+
+\subsection{Cut levels}
+
+By \cref{lem:level}(i) the values of $\psi$ at the pivots on level $5q$ lie in the progression
+$-5q+\delta\Z$, the \emph{teeth} of \cref{fig:levels}. Call $q$ a \emph{cut level} (for $p$) if this
+progression misses the interval $[Z_p-L(r),Z_p+L(r)]$. By \eqref{eq:window}, no active step starts
+on a cut level.
+
+\begin{lemma}[cut levels]\label{lem:cut}
+Let $\delta>0$, let $t\in\R$ with $t/\delta\notin\Q$, and let $0\le 2L<\delta$. There is $N$ such
+that for every $Z\in\R$ some $q\in[1,N]$ and some $q\in[-N,-1]$ satisfy
+$(tq+\delta\Z)\cap[Z-L,Z+L]=\varnothing$.
+\end{lemma}
+
+\begin{proof}
+Divide by $\delta$: with $\theta=t/\delta$ and $\eta=L/\delta<\tfrac12$ the point
+$q\theta-Z/\delta$ of $\R/\Z$ must enter an arc of length $1-2\eta>0$. By Dirichlet's approximation
+theorem there are $a\ge1$ and $b\in\Z$ with $0<|a\theta-b|<1-2\eta$ ($\ne0$ as $\theta\notin\Q$).
+Stepping $q$ by $a$ moves the point by the fixed small amount $a\theta-b$, which cannot jump over
+the arc; starting at $q=\pm1$, it enters the arc within $\lceil 1/|a\theta-b|\rceil+1$ steps.
+\end{proof}
+
+We use it with $t=-5$: consecutive rows of teeth are shifted by $5\equiv\delta/\varphi\pmod\delta$,
+and $5/\delta=2+\varphi$ is irrational --- a golden rotation.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.66\textwidth]{figures/b2_levels.png}
+  \caption{Levels of the orbit of \cref{fig:lattice} ($r=2$). Vertical: the level $\ell$; horizontal:
+    $\psi$. On each row $5q$ the teeth mark the progression $-5q+\delta\Z$; the green strip is
+    $[Z_p-L(r),Z_p+L(r)]$. Rows whose teeth all miss the strip are cut levels (red): no active step
+    leaves them upwards, so the walk's pivots (blue) and tips (orange) stay in the band between the
+    two nearest cut levels.}
+  \label{fig:levels}
+\end{figure}
+
+\subsection{Confinement}
+
+\begin{proposition}\label{prop:lower}
+For every $r<\rs$ there is $N(r)$ such that every orbit of $\GG_5(r)$ has at most $N(r)$ points.
+Hence $\GG_5(r)$ is finite.
+\end{proposition}
+
+\begin{proof}
+Besides $\psi$ use the rotated functional $\psi_2(v)=\psi(\zeta^{-1}v)=2\langle\zeta u,v\rangle$, with
+level $\ell_2(v)=\ell(\zeta^{-1}v)$; since $\zeta^{-1}$ preserves $\mu_5$, classes and window
+distances, everything above holds for it, with its own centre $Z'_p$. As $2L(r)<\delta$,
+\cref{lem:cut} gives $N$, depending on $r$ only, and cut levels $q_-<0<q_+$ for $(\psi,Z_p)$ and
+$q'_-<0<q'_+$ for $(\psi_2,Z'_p)$, all in $[-N,N]$. Let
+\[
+  V=\{v\in\Win_p : \cls(v)\in\{0,1\},\ 5q_-<\ell(v)\le 5q_+,\ 5q'_-<\ell_2(v)\le 5q'_+\}.
+\]
+\emph{$V$ is closed.} A typed step from $v\in V$ into the window lands in class $0$ or $1$. It could
+leave the first band only by an active step from a pivot on level $5q_+$ or onto a pivot on
+level $5q_-$, with both ends in $\Win_p$; but $q_\pm$ are cut levels. The same holds for $\ell_2$.
+The dumbbell $(0,1)$ has levels $(0,3)$ and $(0,-2)$, inside both bands, and one of its ends lies
+in $\Win_p$ because $p$ lies in a disk; so \cref{lem:invariant} applies.
+
+\emph{$V$ is small.} For $v\in V$ we have $|v|\le1+r$, hence $|\psi(v)|,|\psi_2(v)|\le 2+2r$, and
+$|\ell(v)|,|\ell_2(v)|\le 5N$; by \cref{lem:level}(i), $\delta|B(v)|\le|\psi(v)|+|\ell(v)|$, and
+likewise for $B_2$. The four integers $\ell,B,\ell_2,B_2$ determine $v$: in a basis of $\Lam$ they are
+given by an integer matrix of determinant $-5$. So $V$ lies in a box of lattice points whose size
+depends on $r$ only, and by \cref{lem:invariant} $\Or_r(p)$ has at most $5$ times as many points
+as the box (the pivot, or the tip, lies in $V$, and a tip differs from its pivot by a unit). The
+group is finite by \cref{prop:bounded}.
+\end{proof}
+
+\Cref{prop:upper,prop:lower} are parts (a) and (b) of \cref{thm:main}.
+
+\subsection{Why the same number twice}
+
+The two halves meet at the same radius for visible reasons (\cref{fig:threshold}). The words of
+\cref{lem:words} act on the whole chord only if $E'E$ lies in the lens, that is $|E+1|\le r$; the
+cut needs the window $2L(r)$ shorter than the period $\delta$. Both conditions switch at
+$r^2=3+\varphi$. In both halves the decisive points are the tips of the lens: the maximum in
+\cref{lem:lens} is attained there, and at $r=\rs$ the tips are the lattice points
+$\pm(\zeta-\zeta^{-1})$, where the three words touch the rims.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.9\textwidth]{figures/b3_threshold.png}
+  \caption{At $r=\rs$: the chord $E'E$ fits the lens exactly (left), and the window $2L(r)$ is
+    exactly one period wide, so every row of teeth meets it and no cut level is left (right, rows
+    $q=-25,\dots,25$). For $r<\rs$ the strip is narrower and cut levels appear on both sides.}
+  \label{fig:threshold}
+\end{figure}
+
+% =================================================================================================
+\section{The formal proof}\label{sec:formal}
+
+\Cref{thm:main} is proved in Lean~4~\cite{lean4} (version~4.34.0) with Mathlib~\cite{mathlib} (a
+pinned commit) by the library \texttt{CriticalRadiusFive}, about $2\,000$ lines in eleven modules
+(\cref{tab:modules}). The formal statements are those quoted in \cref{sec:result}; their proofs use
+the axioms \texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound} and nothing else, as
+the file \texttt{Test.lean} checks with \verb|#print axioms|.
+
+\begin{table}[h]
+  \centering\small
+  \begin{tabularx}{\textwidth}{@{}lX@{}}
+    \toprule
+    Module & Content \\
+    \midrule
+    \texttt{Defs} & the turns, $\GG_n(r)$, the critical radius (general $n$) \\
+    \texttt{Basic} & how the turns act; orbits of points off both disks \\
+    \texttt{Finiteness} & \cref{prop:bounded,prop:mono}; the critical radius as a threshold \\
+    \texttt{Words} & words acting on segments; convexity (proof of \cref{lem:words}) \\
+    \texttt{Cyclotomic} & exact arithmetic in $\Z[\zeta]$, classes modulo $1-\zeta$, the norm \\
+    \texttt{CircleRotation} & irrational rotations: no return, and \cref{lem:cut} \\
+    \texttt{UpperBound} & \cref{lem:words}, \cref{prop:upper} \\
+    \texttt{Lens} & \cref{lem:lens} \\
+    \texttt{PivotWalk} & the normal form \eqref{eq:normal} and \cref{lem:invariant} \\
+    \texttt{LowerBound} & \cref{lem:level}, \eqref{eq:window}, \cref{prop:lower} \\
+    \texttt{Main} & \cref{thm:main} \\
+    \bottomrule
+  \end{tabularx}
+  \caption{The modules of the formal proof.}
+  \label{tab:modules}
+\end{table}
+
+\paragraph{What exactly is checked.}
+The file \texttt{Challenge.lean} imports only Mathlib. It contains the five definitions of
+\texttt{Defs} (the turn of a disk, the two generators, the group and the critical radius) and the
+two theorems of \cref{sec:result} with \texttt{sorry} in place of proofs; a reader who wants to know
+what has been proved needs to read only this file. The file \texttt{Solution.lean} states the same
+two theorems and proves them from the library. The comparator~\cite{comparator}, configured by
+\texttt{comparator.json}, checks that each of the two theorems is proved in \texttt{Solution.lean}
+with exactly the statement it has in \texttt{Challenge.lean} --- every constant the statement
+mentions, definitions included, must be identical in the two modules --- that the proofs use only
+the three axioms above, and that both Lean's kernel and the independent kernel \texttt{nanoda}
+accept the solution; on Linux it runs every build and replay in a sandbox.
+\placeholder{Confirm the comparator run and its output before publication.}
+
+\paragraph{Scope.}
+Every numbered statement of \cref{sec:result,sec:upper,sec:lower} is formalised
+(\cref{app:lean}). The remarks, the sentence about the lattice being dense, the explanation of
+\cref{sec:lower}'s last subsection and all figures are illustrations; the figures were computed in
+floating point.
+
+\paragraph{Reproducing.}
+\texttt{lake exe cache get \&\& lake build} builds the library, the challenge, the solution and the
+axiom audit; \texttt{scripts/verify-comparator.sh} runs the comparator. The figures are the final
+frames of the animations in \texttt{animations/}, rendered by \texttt{animations/render.sh}.
+
+% =================================================================================================
+\appendix
+\section{From the paper to the Lean declarations}\label{app:lean}
+
+All names live in the namespace \texttt{CriticalRadiusFive}; \texttt{Cyc} is $\Lam$ with
+coordinates in the basis $1,\zeta,\zeta^2,\zeta^3$.
+
+\begin{center}\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.3\textwidth}>{\raggedright\arraybackslash}X@{}}
+  \toprule
+  Paper & Lean \\
+  \midrule
+  $a$, $b$, $\GG_5(r)$, $\rc(5)$ & \leanname{turn}, \leanname{genA}, \leanname{genB}, \leanname{GG}, \leanname{criticalRadius} \\
+  \Cref{prop:mono} & \leanname{orbit\_subset\_orbit\_of\_le} \\
+  \Cref{prop:bounded} & \leanname{finite\_of\_encard\_orbit\_le} \\
+  consequences in \cref{sec:result} & \leanname{finite\_GG\_of\_le}, \leanname{infinite\_of\_orbit\_infinite}, \leanname{finite\_GG\_iff\_of\_forall\_lt}, \leanname{criticalRadius\_eq\_of\_forall\_lt} \\
+  words on segments, convexity & \leanname{wordPerm}, \leanname{admissible\_of\_mem\_segment}, \leanname{wordPerm\_apply\_of\_admissible\_of\_prod\_eq\_one} \\
+  $E$; exact disk tests & \leanname{chordE}; \leanname{inDisk}, \leanname{admissibleZ} \\
+  \Cref{lem:words} & \leanname{piece₁}, \leanname{piece₂}, \leanname{piece₃} \\
+  the golden rotation of the chord & \leanname{chordRot}, \leanname{exists\_mem\_GG\_apply\_smul\_chordE} \\
+  no return of an irrational rotation & \leanname{iterate\_injective\_of\_irrational}, \leanname{orbit\_infinite\_of\_irrational\_rotation} \\
+  \Cref{prop:upper} & \leanname{orbit\_zero\_infinite}, \leanname{infinite\_GG\_five} \\
+  $\Lam$, classes, units & \leanname{Cyc}, \leanname{Cyc.cls}, \leanname{Cyc.units}, \leanname{Cyc.cls\_of\_mem\_units} \\
+  window, closed sets & \leanname{Window}, \leanname{EdgeClosed} \\
+  \eqref{eq:normal}, \cref{lem:invariant} & \leanname{Good}, \leanname{Reach}, \leanname{orbit\_subset\_reach} \\
+  $u$, $\psi$, $\ell$ & \leanname{cutU}, \leanname{psi}, \leanname{psi\_eq}, \leanname{level} \\
+  \Cref{lem:level} (i), (ii), (iii) & \leanname{psi\_add\_level}; \leanname{level\_of\_mem\_units}, \leanname{psi\_of\_level\_eq\_three}; \leanname{level\_emod\_five} \\
+  \Cref{lem:lens} & \leanname{abs\_re\_mul\_add\_le} (with \leanname{lens\_linear\_le}) \\
+  \eqref{eq:window}; $2L(r)<\delta$ & \leanname{abs\_psi\_sub\_cutCenter\_le}; \leanname{two\_mul\_lensWidth\_lt} \\
+  \Cref{lem:cut}; $5/\delta\notin\Q$ & \leanname{exists\_cut\_levels}; \leanname{irrational\_neg\_five\_div} \\
+  no step crosses a cut level & \leanname{level\_ne\_of\_cut}, \leanname{level\_mem\_band} \\
+  $V$ is small & \leanname{abs\_psiGold\_le}, \leanname{mem\_box\_of\_abs\_le} \\
+  \Cref{prop:lower} & \leanname{finite\_GG\_five\_of\_lt} \\
+  \Cref{thm:main} & \leanname{finite\_GG\_five\_iff}, \leanname{criticalRadius\_five} \\
+  \bottomrule
+\end{tabularx}
+\end{center}
+
+% =================================================================================================
+\begin{thebibliography}{9}
+\bibitem{hkrsv} R.~A. Hearn, W.~Kretschmer, T.~Rokicki, B.~Streeter, E.~Vergo,
+  \emph{Two-disk compound symmetry groups}, arXiv:2302.12950, 2023.
+\bibitem{lean4} L.~de~Moura, S.~Ullrich, \emph{The Lean~4 theorem prover and programming language},
+  in: Automated Deduction -- CADE 28, LNCS 12699, Springer, 2021, 625--635.
+\bibitem{mathlib} The mathlib Community, \emph{The Lean mathematical library}, in: Proceedings of
+  CPP 2020, ACM, 2020, 367--381.
+\bibitem{comparator} \emph{comparator}: checking a Lean solution against a challenge,
+  \url{https://github.com/leanprover/comparator}.
+\end{thebibliography}
+
+\end{document}
