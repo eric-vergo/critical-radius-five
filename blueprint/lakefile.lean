@@ -19,7 +19,11 @@ require mathlib from git "https://github.com/leanprover-community/mathlib4"@"5ed
 
 package CriticalRadiusFiveBlueprint where
   precompileModules := false
-  leanOptions := #[⟨`experimental.module, true⟩]
+  leanOptions := #[
+    ⟨`experimental.module, true⟩,
+    -- A `(lean := "…")` name that does not resolve is an error, not a warning.
+    ⟨`weak.verso.blueprint.externalCode.strictResolve, true⟩
+  ]
 
 @[default_target]
 lean_lib CriticalRadiusFiveBlueprint where

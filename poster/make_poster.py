@@ -437,8 +437,9 @@ def lens_figure(cx: float, cy: float, scale: float) -> str:
     ])
 
 
-def legend(x: float, y: float) -> str:
-    """One line: the colour families, the node kinds, and the meaning of an edge."""
+def legend(x: float, y: float, example: str) -> str:
+    """One line: the colour families, the node kinds, the meaning of an edge, and how Lean names
+    are shown (`example` is a fully qualified declaration name)."""
     parts = []
     cx = x
 
@@ -464,9 +465,9 @@ def legend(x: float, y: float) -> str:
     parts.append(text(cx + 64, y, m("_B_"), 17))
     parts.append(text(cx + 88, y, "means  " + m("_B_") + "  uses  " + m("_A_"), 15))
     parts.append(text(PAGE_W - MARGIN, y,
-                      f'<tspan font-family="{MONO_STACK}" font-size="14" fill="{INK}">orbit_mono</tspan>'
+                      f'<tspan font-family="{MONO_STACK}" font-size="14" fill="{INK}">{esc(short_lean(example))}</tspan>'
                       '  is the Lean declaration  '
-                      f'<tspan font-family="{MONO_STACK}" font-size="14" fill="{INK}">CriticalRadiusFive.orbit_mono</tspan>',
+                      f'<tspan font-family="{MONO_STACK}" font-size="14" fill="{INK}">{esc(example)}</tspan>',
                       15, fill=MUTED, anchor="end"))
     return "\n".join(parts)
 
@@ -505,6 +506,8 @@ def poster(graph: Graph, inner: str, gw: float, gh: float) -> tuple[str, float]:
                    13, fill=FAINT, anchor="middle")
 
     legend_y = PAGE_H - MARGIN - 38
+    main = graph.nodes.get(MAIN)
+    example = main.lean[0] if main and main.lean else NAMESPACE + "criticalRadius_five"
     legend_rule = (f'<line x1="{MARGIN:.1f}" y1="{legend_y - 34:.1f}" x2="{PAGE_W - MARGIN:.1f}" '
                    f'y2="{legend_y - 34:.1f}" stroke="{RULE}" stroke-width="1.5"/>')
     footer_y = PAGE_H - MARGIN + 2
@@ -527,7 +530,7 @@ def poster(graph: Graph, inner: str, gw: float, gh: float) -> tuple[str, float]:
         f'<rect width="{PAGE_W:.2f}" height="{PAGE_H:.2f}" fill="#ffffff"/>',
         title, formula, statement, subline, figure, caption, rule,
         body,
-        legend_rule, legend(MARGIN, legend_y),
+        legend_rule, legend(MARGIN, legend_y, example),
         footer, count,
         "</svg>",
     ]) + "\n"

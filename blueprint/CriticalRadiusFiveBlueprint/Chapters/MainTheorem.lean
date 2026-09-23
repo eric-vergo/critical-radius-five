@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import CriticalRadiusFive
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -13,7 +14,7 @@ file := "main-theorem"
 shortTitle := "The theorem"
 %%%
 
-:::theorem "thm:main" (lean := "CriticalRadiusFive.criticalRadius_five")
+:::theorem "thm:main" (lean := "CriticalRadiusFive.criticalRadius_five, CriticalRadiusFive.finite_GG_five_iff")
 *The critical radius of GG₅.*
 
 $$`r_c(5) = \sqrt{3 + \varphi} = 2.1489611417\ldots,`

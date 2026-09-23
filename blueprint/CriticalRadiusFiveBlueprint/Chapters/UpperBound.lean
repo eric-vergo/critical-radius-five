@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import CriticalRadiusFive
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -22,7 +23,7 @@ words act on a chord through the origin as an exchange of three intervals, which
 coordinate is the rotation of a circle by an irrational fraction of a turn. This is Theorem 2 of
 Hearn, Kretschmer, Rokicki, Streeter and Vergo.
 
-:::definition "def:points" (parent := "upper-bound") (lean := "CriticalRadiusFive.UpperBound.E, CriticalRadiusFive.UpperBound.F, CriticalRadiusFive.UpperBound.G")
+:::definition "def:points" (parent := "upper-bound") (lean := "CriticalRadiusFive.chordE, CriticalRadiusFive.smul_chordE")
 *The chord E′E.* Let $`r^2 = 3 + \varphi = 4 + \varphi^{-1}` and $`E := \zeta - \zeta^2`, so that
 $`|E + 1| = r`: the point $`E` lies on the boundary circle of $`D_-` and inside $`D_+`, and by
 symmetry $`E' := -E` lies on the boundary circle of $`D_+` and inside $`D_-`. Hence the chord from
@@ -32,7 +33,7 @@ coordinate $`z = sE` the points $`E', F', G', E` sit at
 $`s = -1,\ -\varphi^{-1},\ 1 - 2\varphi^{-1},\ 1`.
 :::
 
-:::lemma_ "lemma:convex-words" (parent := "upper-bound") (lean := "CriticalRadiusFive.segment_action")
+:::lemma_ "lemma:convex-words" (parent := "upper-bound") (lean := "CriticalRadiusFive.admissible_of_mem_segment, CriticalRadiusFive.wordPerm_apply_of_admissible")
 *Words act on segments through their endpoints.* Let a word in the turns be applied to a segment.
 If, at every letter, both endpoints of the current image segment lie in the closed disk of that
 letter, then the word acts on the whole segment as the corresponding composition of rotations; in
@@ -46,7 +47,7 @@ segment between the images of its endpoints, so the next image is again a segmen
 its endpoints. Induct along the word.
 :::
 
-:::lemma_ "lemma:words" (parent := "upper-bound") (lean := "CriticalRadiusFive.UpperBound.word₁_translates, CriticalRadiusFive.UpperBound.word₂_translates, CriticalRadiusFive.UpperBound.word₃_translates")
+:::lemma_ "lemma:words" (parent := "upper-bound") (lean := "CriticalRadiusFive.piece₁, CriticalRadiusFive.piece₂, CriticalRadiusFive.piece₃")
 *Three words translate the three pieces.* At $`r = \sqrt{3+\varphi}`, write $`A = a^{-1}` and
 $`B = b^{-1}` for the inverse turns of {uses "def:turns"}[]. On the chord $`E'E` of
 {uses "def:points"}[], the three words (read left to right)
@@ -65,7 +66,7 @@ exact comparison in $`\mathbb{Z}[\varphi]`. The composition of the rotations is 
 the stated translation.
 :::
 
-:::lemma_ "lemma:rotation" (parent := "upper-bound") (lean := "CriticalRadiusFive.UpperBound.exchange_eq_rot")
+:::lemma_ "lemma:rotation" (parent := "upper-bound") (lean := "CriticalRadiusFive.chordRot, CriticalRadiusFive.exists_mem_GG_apply_smul_chordE")
 *The exchange is a circle rotation.* In the coordinate $`z = sE`, $`t = s + 1 \in [0, 2)`, the three
 translations of {uses "lemma:words"}[] together act as the rotation
 
@@ -75,7 +76,7 @@ of the circle $`\mathbb{R}/2\mathbb{Z}`, with $`\alpha = 2\varphi^{-1}` and
 $`\beta = 2 - 2\varphi^{-1}`, so $`\alpha + \beta = 2`.
 :::
 
-:::theorem "thm:engine" (parent := "upper-bound") (lean := "CriticalRadiusFive.infinite_of_irrational_rotation")
+:::theorem "thm:engine" (parent := "upper-bound") (lean := "CriticalRadiusFive.orbit_infinite_of_irrational_rotation, CriticalRadiusFive.infinite_of_orbit_infinite")
 *An irrational rotation makes the group infinite.* Let $`\alpha, \beta \ge 0` with $`\alpha + \beta > 0`
 and $`\alpha/(\alpha+\beta) \notin \mathbb{Q}`, let $`x : [0, \alpha+\beta) \to \mathbb{C}` be
 injective, and let $`G \le \operatorname{Perm}(\mathbb{C})` contain, for every
@@ -90,7 +91,7 @@ $`x` is injective, the points $`x(\operatorname{rot}^k t_0)` are pairwise distin
 in the orbit of $`x(t_0)`, being reached by products of the given elements.
 :::
 
-:::theorem "thm:upper" (parent := "upper-bound") (lean := "CriticalRadiusFive.GG_five_infinite, CriticalRadiusFive.criticalRadius_five_le")
+:::theorem "thm:upper" (parent := "upper-bound") (lean := "CriticalRadiusFive.orbit_zero_infinite, CriticalRadiusFive.infinite_GG_five")
 *The upper bound.* $`G_5(\sqrt{3+\varphi})` is infinite; hence $`r_c(5) \le \sqrt{3+\varphi}`.
 :::
 
