@@ -14,7 +14,7 @@ from manim import *  # noqa: F401,F403
 from lib.geometry import CC, E, PHI, PIECES, RC, chord_point, rot
 from lib.style import (
     CHORD_C, FAINT, HOT, INK, LEFT_C, LENS_C, MUTED, PIECE_C, RIGHT_C, Frame, M, T, disk,
-    lens_shape, seg,
+    hold, lens_shape, seg,
 )
 
 ALPHA = 2 * CC          # rotation amount in t = s + 1 units (circle length 2)
@@ -34,6 +34,7 @@ class A5Exchange(Scene):
                                  PIECE_C[q["name"]], width=5) for q in PIECES])
         title = T("Three pieces, one golden rotation", 32, weight="BOLD").to_corner(UL, buff=0.3)
         self.add(title)
+        hold(self, title)
         self.play(FadeIn(L), FadeIn(R), FadeIn(lens), FadeIn(chord), FadeIn(pcs_small),
                   run_time=1.0)
 
@@ -59,12 +60,13 @@ class A5Exchange(Scene):
                           stroke_width=1.5)
         self.play(TransformFromCopy(pcs_small, bars), FadeIn(base), run_time=1.3)
         self.play(FadeIn(ticks), FadeIn(tlabels), FadeIn(plabels), run_time=0.8)
+        hold(self, tlabels, plabels)
 
         cap1 = VGroup(M(r"|I_1|=|I_2|", 28), M(r"|I_3| = 2\varphi\,|I_1|", 28),
                       M(r"|I_3| : |I_1\cup I_2| = \varphi", 28)).arrange(RIGHT, buff=0.5)
         cap1.move_to([3.45, 1.1, 0])
         self.play(FadeIn(cap1), run_time=0.8)
-        self.wait(2.2)
+        hold(self, cap1, at_least=2.2)
 
         # --- the exchange ------------------------------------------------------------------
         lifts = [0.5 * UP, 0.5 * UP, 0.5 * DOWN]   # I3 passes below I1, I2
@@ -83,7 +85,7 @@ class A5Exchange(Scene):
                       M(r"|E'E| : |2F| = \varphi", 28, INK)).arrange(RIGHT, buff=0.5)
         cap2.move_to(cap1)
         self.play(FadeOut(cap1), FadeIn(cap2), run_time=0.7)
-        self.wait(2.5)
+        hold(self, tlabels, cap2, at_least=2.5)       # the point labels came back just before
 
         # --- glue the ends: a rotation of a circle ------------------------------------------
         cc_ = np.array([4.1, -1.8, 0.0])
@@ -101,22 +103,25 @@ class A5Exchange(Scene):
         ring = Circle(radius=rad, color=CHORD_C, stroke_width=2).move_to(cc_).set_stroke(
             opacity=0.5)
         arcs = VGroup(*[arc_of(q["s0"] + 1, q["s1"] + 1, PIECE_C[q["name"]]) for q in PIECES])
-        glue = T("glue E' to E", 22, MUTED).next_to(ring, LEFT, buff=0.35).shift(1.1 * UP)
+        glue = M(r"\text{glue }E'\text{ to }E", 28, MUTED).next_to(ring, LEFT, buff=0.35).shift(
+            1.1 * UP)
         # restore the unrolled chord to the original order for the morph
         self.play(*[b.animate.shift(X(q["s0"] + 1) - X(q["s0"] + q["shift"] + 1))
                     for b, q in zip(bars, PIECES)], FadeOut(plabels), run_time=0.9)
         self.play(FadeIn(ring), FadeIn(glue), run_time=0.5)
+        hold(self, glue)
         self.play(LaggedStart(*[Create(a) for a in arcs], lag_ratio=0.6), run_time=1.6)
         top = Dot(C(0), radius=0.06, color=INK)
         top_l = M("E'\\equiv E", 26).next_to(C(0), UP, buff=0.42)
         self.play(FadeIn(top), FadeIn(top_l), run_time=0.5)
+        hold(self, top_l)
         rot_txt = VGroup(
             M(r"t \mapsto t + \tfrac{2}{\varphi} \pmod 2", 30),
             T("t = position along E′E  (E′ = 0, E = 2)", 20, MUTED),
             T("a rotation by 1/φ of a full turn", 20, MUTED),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.12).move_to([-6.7, -1.05, 0], aligned_edge=LEFT)
         self.play(FadeIn(rot_txt), run_time=0.6)
-        self.wait(1.5)
+        hold(self, rot_txt, at_least=1.5)
         self.play(Rotate(arcs, angle=-2 * PI * CC, about_point=cc_), run_time=2.0)
         self.wait(0.5)
 
@@ -130,6 +135,7 @@ class A5Exchange(Scene):
                                                                                 buff=0.12)
         counter.next_to(orbit_hdr, DOWN, aligned_edge=LEFT, buff=0.2)
         self.add(counter)
+        hold(self, orbit_hdr, counter)
         dots_c, dots_x, dots_d = VGroup(), VGroup(), VGroup()
 
         def piece_of(t):
@@ -189,4 +195,4 @@ class A5Exchange(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.12)
         never.next_to(counter, DOWN, aligned_edge=LEFT, buff=0.22)
         self.play(FadeIn(never), run_time=1.0)
-        self.wait(4.5)
+        hold(self, never, at_least=4.5)

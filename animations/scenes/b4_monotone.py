@@ -12,7 +12,8 @@ from manim import *  # noqa: F401,F403
 
 from lib.geometry import E, RC, direct_orbit
 from lib.style import (
-    CHORD_C, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, Frame, M, T, lens_shape, row,
+    CHORD_C, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, Frame, M, T, hold, lens_shape,
+    row,
 )
 
 STAGES = [1.0, 1.9, 2.0, 2.05, 2.1, 2.13]
@@ -22,12 +23,18 @@ def key(z):
     return (round(z.real, 7), round(z.imag, 7))
 
 
+def count_tex(n):
+    """The number n in math, with a thin space as the thousands separator (2\\,543)."""
+    return M(f"{n:,}".replace(",", r"\,"), 30)
+
+
 class B4Monotone(Scene):
     def construct(self):
         fr = Frame(scale=1.0, origin=(-3.45, -0.35))
         title = T("Monotone in r: a larger radius only adds positions", 30,
                   weight="BOLD").to_corner(UL, buff=0.3)
         self.add(title)
+        hold(self, title)
         rt = ValueTracker(STAGES[0])
 
         def disks():
@@ -46,11 +53,12 @@ class B4Monotone(Scene):
                                                    color=INK)).arrange(RIGHT, buff=0.15)
         r_lab[1].add_updater(lambda m: m.set_value(rt.get_value()))
         n_lab = VGroup(T("points in the orbit of 0:", 22, MUTED),
-                       Integer(0, font_size=30, color=INK)).arrange(RIGHT, buff=0.18)
+                       count_tex(0)).arrange(RIGHT, buff=0.18)
         info = VGroup(r_lab, n_lab).arrange(DOWN, aligned_edge=LEFT, buff=0.2)
         info.move_to([0.35, 2.45, 0], aligned_edge=LEFT)
         o = Dot(fr(0j), radius=0.06, color=INK)
         self.play(FadeIn(D), FadeIn(info), FadeIn(o), run_time=1.0)
+        hold(self, info)
 
         seen = {}
         all_dots = VGroup()
@@ -65,13 +73,14 @@ class B4Monotone(Scene):
             nd = VGroup(*[Dot(fr(z), radius=size, color=GOOD) for z in new])
             for z in new:
                 seen[key(z)] = z
-            anims = [Transform(n_lab[1], Integer(len(pts), font_size=30, color=INK).move_to(
-                n_lab[1], aligned_edge=LEFT))]
+            count = count_tex(len(pts)).move_to(n_lab[1], aligned_edge=LEFT)
+            anims = [Transform(n_lab[1], count)]
             if prev_new is not None:
                 anims.append(prev_new.animate.set_color(INK))
             if len(nd):
                 anims.append(FadeIn(nd, scale=1.5))
             self.play(*anims, run_time=1.0)
+            hold(self, count)
             all_dots.add(nd)
             prev_new = nd
             if k == 0:
@@ -84,12 +93,13 @@ class B4Monotone(Scene):
                 ).arrange(DOWN, aligned_edge=LEFT, buff=0.08).next_to(info, DOWN,
                                                                      aligned_edge=LEFT, buff=0.45)
                 self.play(FadeIn(why), run_time=1.0)
-                self.wait(3.0)
+                hold(self, why, at_least=3.0)
         self.play(prev_new.animate.set_color(INK), run_time=0.5)
         legend = VGroup(Dot(radius=0.06, color=GOOD), T("new at this radius", 20, MUTED),
                         Dot(radius=0.06, color=INK), T("already there", 20, MUTED)).arrange(
             RIGHT, buff=0.15).next_to(why, DOWN, aligned_edge=LEFT, buff=0.35)
         self.play(FadeIn(legend), run_time=0.5)
+        hold(self, legend)
         so = VGroup(
             row("So", "$r\\le r'$", "gives", "$\\mathrm{orbit}_r(p)\\subseteq\\mathrm{orbit}_{r'}(p)$.",
                 size=20),
@@ -99,4 +109,4 @@ class B4Monotone(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.1).next_to(legend, DOWN, aligned_edge=LEFT,
                                                              buff=0.35)
         self.play(FadeIn(so), run_time=1.2)
-        self.wait(4.5)
+        hold(self, so, at_least=4.5)

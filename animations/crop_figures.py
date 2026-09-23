@@ -10,10 +10,11 @@ DST = HERE.parent / "paper" / "figures"
 # crop boxes in scene coordinates (x0, y0, x1, y1); the frame is [-64/9, 64/9] x [-4, 4]
 BOXES = {
     "a1_setting": (-6.25, -3.08, 2.3, 2.75),
-    "a2_word1": (-6.25, -3.3, 2.3, 2.7),
-    "a3_word2": (-6.25, -3.3, 2.3, 2.7),
-    "a4_word3": (-6.25, -3.3, 2.3, 2.7),
-    "a5_exchange": (-0.35, -3.6, 7.11, 3.05),
+    # the three word figures sit side by side in the paper: crop each to the lens
+    "a2_word1": (-3.85, -3.0, -0.05, 2.5),
+    "a3_word2": (-3.85, -3.0, -0.05, 2.5),
+    "a4_word3": (-3.85, -3.0, -0.05, 2.5),
+    "a5_exchange": (0.18, -3.6, 7.11, 3.05),
     "b1_lattice": (-6.4, -3.45, 0.2, 2.75),
     "b2_levels": (-0.78, -4.0, 7.11, 2.25),
     "b3_threshold": (-7.11, -4.0, 7.11, 3.25),

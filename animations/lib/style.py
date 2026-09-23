@@ -1,16 +1,18 @@
 """Visual language shared by all scenes.
 
-Two themes: ``dark`` (videos, GIFs, site stills) and ``light`` (stills for the paper).
+Two themes: ``dark`` (videos, GIFs, dark stills) and ``light`` (stills for the paper).
 Select with the environment variable ``GG5_THEME`` (default ``dark``).
 """
 from __future__ import annotations
 
+import math
 import os
+import re
 
 import numpy as np
 from manim import (
-    DOWN, LEFT, RIGHT, UP, ORIGIN, Arc, Circle, Dot, Line, MathTex, Tex, Text, VGroup, VMobject,
-    Intersection, config, DashedLine, Arrow, CurvedArrow, TAU, PI,
+    DOWN, LEFT, RIGHT, UP, ORIGIN, Arc, Circle, DecimalNumber, Dot, Line, MathTex, Tex, Text,
+    VGroup, VMobject, Intersection, config, DashedLine, Arrow, CurvedArrow, TAU, PI,
 )
 
 from .geometry import RC
@@ -82,12 +84,66 @@ class Frame:
         return self.s * x
 
 
+# ----------------------------------------------------------------------------------------------
+# Reading time.  Every piece of text stays still on screen long enough to be read:
+#   2 s  +  0.35 s per word  +  1 s per equation.
+# T counts its words (whitespace-separated tokens); M counts one word per three glyphs (at least
+# one), and is an equation when its TeX contains a relation (=, <, >, \le, \ge, \equiv, \mapsto,
+# \in, \subseteq, \to, \pmod); row() adds up its parts; a DecimalNumber counts as one word.
+# ----------------------------------------------------------------------------------------------
+
+READ_BASE = 2.0       # seconds for any block of text
+READ_WORD = 0.35      # seconds per word
+READ_EQ = 1.0         # extra seconds per equation
+RELATION = re.compile(r"[=<>]|\\(le|ge|leq|geq|equiv|mapsto|in|subseteq|to|pmod)(?![A-Za-z])")
+
+
+def reads_as(mob, words: float, equations: int = 0):
+    """Record on ``mob`` how much reading it takes."""
+    mob.read_words, mob.read_eqs = words, equations
+    return mob
+
+
+def _reading(mob) -> tuple[float, int]:
+    if hasattr(mob, "read_words"):
+        return mob.read_words, mob.read_eqs
+    if isinstance(mob, DecimalNumber):          # a number readout
+        return 1, 0
+    words, eqs = 0, 0
+    for sub in mob.submobjects:
+        w, q = _reading(sub)
+        words, eqs = words + w, eqs + q
+    return words, eqs
+
+
+def read_time(*mobs) -> float:
+    """Seconds needed to read the text in ``mobs`` (groups are searched for T, M and row)."""
+    words, eqs = 0, 0
+    for mob in mobs:
+        w, q = _reading(mob)
+        words, eqs = words + w, eqs + q
+    return READ_BASE + READ_WORD * words + READ_EQ * eqs
+
+
+def hold(scene, *mobs, at_least: float = 0.0) -> float:
+    """Keep everything still while the text in ``mobs``, which has just appeared, is read."""
+    t = max(at_least, read_time(*mobs))
+    scene.wait(t)
+    return t
+
+
 def T(s: str, size: float = 30, color=None, weight="NORMAL", font=SANS, **kw) -> Text:
-    return Text(s, font=font, font_size=size, color=color or INK, weight=weight, **kw)
+    """Sans text of size ``size``.  Pango lays out small font sizes with rounded glyph advances,
+    which breaks the word spacing, so the text is set four times larger and scaled down (its
+    ``font_size`` still reads ``size``)."""
+    t = Text(s, font=font, font_size=4 * size, color=color or INK, weight=weight, **kw).scale(0.25)
+    return reads_as(t, len(s.split()))
 
 
 def M(s: str, size: float = 36, color=None, **kw) -> MathTex:
-    return MathTex(s, font_size=size, color=color or INK, **kw)
+    m = MathTex(s, font_size=size, color=color or INK, **kw)
+    glyphs = len(m.family_members_with_points())
+    return reads_as(m, max(1, math.ceil(glyphs / 3)), int(bool(RELATION.search(s))))
 
 
 def disk(fr: Frame, centre: float, r: float, color, fill_opacity=None, stroke_width=3.0,
@@ -143,4 +199,5 @@ def row(*parts, size=22, color=None, buff=0.1):
             mobs.append(M(body, size * 1.3, color=color))
         else:
             mobs.append(T(part, size, color=color))
-    return VGroup(*mobs).arrange(RIGHT, buff=buff)
+    return reads_as(VGroup(*mobs).arrange(RIGHT, buff=buff),
+                    sum(m.read_words for m in mobs), sum(m.read_eqs for m in mobs))

@@ -13,7 +13,8 @@ from manim import *  # noqa: F401,F403
 
 from lib.geometry import DELTA, E, RC, is_cut_level, lens_half_window, psiL, window_centre
 from lib.style import (
-    CHORD_C, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, Frame, M, T, lens_shape, row,
+    CHORD_C, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, Frame, M, T, hold, lens_shape,
+    row,
 )
 
 P0 = -0.1722 + 0.0773j
@@ -47,6 +48,7 @@ class B3Threshold(Scene):
         title = T("The cut opens exactly when E′E fits", 32, weight="BOLD").to_corner(UL,
                                                                                          buff=0.3)
         self.add(title)
+        hold(self, title)
 
         def disks():
             r = rt.get_value()
@@ -71,8 +73,9 @@ class B3Threshold(Scene):
 
         D = always_redraw(disks)
         C = always_redraw(chord)
-        lE = M("E", 28).next_to(fr(E), UR, buff=0.05)
-        lEp = M("E'", 28).next_to(fr(-E), DL, buff=0.05)
+        # buff 0.16 keeps both labels clear of the red rings (radius 0.16) drawn at the end
+        lE = M("E", 28).next_to(fr(E), UR, buff=0.16)
+        lEp = M("E'", 28).next_to(fr(-E), DL, buff=0.16)
         self.play(FadeIn(D), FadeIn(C), FadeIn(lE), FadeIn(lEp), run_time=1.0)
 
         # readouts
@@ -81,6 +84,7 @@ class B3Threshold(Scene):
         r_lab[1].add_updater(lambda m: m.set_value(rt.get_value()))
         r_lab.move_to([-6.75, 2.85, 0], aligned_edge=LEFT)
         self.add(r_lab)
+        hold(self, lE, lEp, r_lab)
 
         # ---------------- the comb, rows q = -25..25 ------------------------------------------
         Z = window_centre(P0, 1)
@@ -105,6 +109,7 @@ class B3Threshold(Scene):
         hdr = T("rows of teeth (levels 5q) and the strip", 20, MUTED).move_to(
             [(xl + xr) / 2, Y(25) + 0.35, 0])
         self.play(FadeIn(rows), FadeIn(teeth), FadeIn(lab_q), FadeIn(hdr), run_time=1.2)
+        hold(self, hdr)                     # the header (tick labels are not read one by one)
 
         def strip():
             L = lens_half_window(rt.get_value())
@@ -140,10 +145,10 @@ class B3Threshold(Scene):
             return bar
 
         G = always_redraw(gauge)
-        g_lab = row("strip width", "$2D\\sqrt{r^2-1}$", "against the period", "$\\delta = 3-\\varphi$",
+        g_lab = row("strip width", "$2L(r)$", "against the period", "$\\delta = 3-\\varphi$",
                     size=18, color=MUTED).next_to(gauge_bg, UP, buff=0.12).align_to(gauge_bg, LEFT)
         self.play(FadeIn(gauge_bg), FadeIn(G), FadeIn(g_lab), run_time=0.8)
-        self.wait(0.5)
+        hold(self, g_lab, at_least=0.5)
 
         # ---------------- grow r to the critical radius -----------------------------------------
         self.play(rt.animate.set_value(2.05), run_time=3.0, rate_func=linear)
@@ -159,7 +164,7 @@ class B3Threshold(Scene):
             T("every row has a tooth inside, no cut is left.", 20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.08).move_to([-6.75, -3.2, 0], aligned_edge=LEFT)
         self.play(Create(ringE), Create(ringEp), FadeIn(crit), run_time=1.0)
-        self.wait(3.5)
+        hold(self, crit, at_least=3.5)
 
         # beyond
         self.play(FadeOut(ringE), FadeOut(ringEp), FadeOut(crit), run_time=0.5)
@@ -169,7 +174,7 @@ class B3Threshold(Scene):
             T("the orbit of 0 is infinite (and stays so for larger r).", 20),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.08).move_to([-6.75, -3.35, 0], aligned_edge=LEFT)
         self.play(FadeIn(beyond), run_time=0.8)
-        self.wait(3.0)
+        hold(self, beyond, at_least=3.0)
         self.play(FadeOut(beyond), rt.animate.set_value(RC), run_time=1.5)
         self.play(FadeIn(crit), Create(ringE), Create(ringEp), run_time=0.8)
-        self.wait(3.5)
+        hold(self, crit, at_least=4.0)

@@ -14,7 +14,7 @@ from manim import *  # noqa: F401,F403
 from lib.geometry import ANGLE, CC, CENTRE, E, PIECES, RC, chord_point, segment_trace
 from lib.style import (
     CHORD_C, FAINT, HOT, INK, LEFT_C, LENS_C, MUTED, PIECE_C, RIGHT_C, Frame, M, T, disk,
-    lens_shape, seg,
+    hold, lens_shape, seg,
 )
 from lib.anim import turn_arrow
 
@@ -59,6 +59,7 @@ class WordScene(Scene):
         panel = VGroup(word_lab, letters, src).arrange(DOWN, aligned_edge=LEFT, buff=0.22)
         panel.move_to([2.75, 2.35, 0], aligned_edge=LEFT)
         self.play(FadeIn(title), FadeIn(word_lab), FadeIn(letters), run_time=0.8)
+        hold(self, title, word_lab, letters)
 
         p0, q0 = chord_point(pc["s0"]), chord_point(pc["s1"])
         moving = seg(fr, p0, q0, col, width=9)
@@ -69,7 +70,7 @@ class WordScene(Scene):
         lq = M(pname(pc["s1"]), 28).next_to(fr(q0), UP + RIGHT * 0.3, buff=0.08)
         self.play(Create(moving), FadeIn(dp), FadeIn(dq), FadeIn(lp), FadeIn(lq), FadeIn(src),
                   run_time=1.0)
-        self.wait(1.2)
+        hold(self, lp, lq, src, at_least=1.2)
         self.play(FadeOut(lp), FadeOut(lq), run_time=0.3)
 
         trace = segment_trace(pc["word"], p0, q0, r)
@@ -93,6 +94,7 @@ class WordScene(Scene):
                     contact_note = T("on the rim", 22, HOT)
                 note = contact_note.copy().next_to(rings[0], UP, buff=0.08)
                 self.play(Create(rings), FadeIn(note), run_time=0.45)
+                hold(self, note)
             arr = turn_arrow(fr, letter, r, dcol)
             ghost = moving.copy().set_opacity(0.30).set_stroke(width=5)
             ghosts.add(ghost)
@@ -123,6 +125,7 @@ class WordScene(Scene):
         tgt_l = M(pname(pc["s0"] + pc["shift"]), 28).next_to(fr(p1), DOWN + LEFT * 0.3, buff=0.08)
         tgt_r = M(pname(pc["s1"] + pc["shift"]), 28).next_to(fr(q1), UP + RIGHT * 0.3, buff=0.08)
         self.play(FadeIn(tgt_l), FadeIn(tgt_r), run_time=0.5)
+        hold(self, tgt_l, tgt_r)
         nrm = 1j * E / abs(E)
         off = 0.42 * nrm if self.piece_index != 2 else -0.42 * nrm
         a0, a1 = (p0 + q0) / 2 + off, (p1 + q1) / 2 + off
@@ -138,11 +141,12 @@ class WordScene(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.16)
         res.next_to(panel, DOWN, aligned_edge=LEFT, buff=0.3)
         self.play(FadeIn(res), run_time=0.8)
+        hold(self, res)
         foot = T("Red: an endpoint lies exactly on the rim of the disk about to turn;"
                  " at any smaller radius that turn would split the segment.", 17, MUTED)
         foot.to_edge(DOWN, buff=0.3)
         self.play(FadeIn(foot), run_time=0.8)
-        self.wait(4.0)
+        hold(self, foot, at_least=4.0)
 
 
 class A2WordOne(WordScene):

@@ -16,7 +16,8 @@ from lib.geometry import (
     ANGLE, CENTRE, TURN, State, conj_pt, in_window, orbit_states, pt, state_step, turn,
 )
 from lib.style import (
-    row, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, BG, Frame, M, T, disk, lens_shape,
+    row, FAINT, GOOD, HOT, INK, LEFT_C, LENS_C, MUTED, RIGHT_C, BG, Frame, M, T, disk, hold,
+    lens_shape,
 )
 
 P0 = -0.1722 + 0.0773j
@@ -33,6 +34,7 @@ class B1Lattice(Scene):
         self.add(title)
         rlab = M(r"r = 2 < \sqrt{3+\varphi}", 30).to_corner(UR, buff=0.35)
         self.add(rlab)
+        hold(self, title, rlab)
 
         L = disk(fr, -1, r, LEFT_C, teeth=True)
         R = disk(fr, 1, r, RIGHT_C, teeth=True)
@@ -41,11 +43,13 @@ class B1Lattice(Scene):
         halo = Circle(radius=0.16, color=INK, stroke_width=2).move_to(fr(p))
         plab = M("p", 30).next_to(pd, DR, buff=0.12)
         self.play(FadeIn(pd), Create(halo), FadeIn(plab), run_time=0.6)
+        hold(self, plab)
 
         # ---- 1. the usual view: the point moves -------------------------------------------
         cap = T("The usual view: the disks turn, the point moves.", 20, MUTED)
         cap.move_to([-3.15, -3.7, 0])
         self.play(FadeIn(cap), run_time=0.5)
+        hold(self, cap)
         z = p
         trail = VGroup()
         for letter in DEMO:
@@ -62,7 +66,7 @@ class B1Lattice(Scene):
             z = znew
         word = M(r"a\,b\,a\,b", 34).next_to(rlab, DOWN, aligned_edge=RIGHT, buff=0.3)
         self.play(FadeIn(word), run_time=0.4)
-        self.wait(0.5)
+        hold(self, word, at_least=0.5)
 
         # ---- 2. the point's view: the puzzle moves ------------------------------------------
         cap2 = T("The point's view: the point stays; the pair of disks turns about a centre.", 19,
@@ -71,6 +75,7 @@ class B1Lattice(Scene):
                   plab.animate.next_to(fr(p), DR, buff=0.12), FadeOut(cap), run_time=1.0)
         cap = cap2
         self.play(FadeIn(cap), run_time=0.5)
+        hold(self, cap)
         # reset the teeth
         L2 = disk(fr, -1, r, LEFT_C)
         R2 = disk(fr, 1, r, RIGHT_C)
@@ -108,21 +113,21 @@ class B1Lattice(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.14)
         box.move_to([1.2, 2.05, 0], aligned_edge=LEFT)
         self.play(FadeIn(box), run_time=0.8)
-        self.wait(2.0)
+        hold(self, box, at_least=2.0)
         rule = VGroup(
             T("A turn about a centre is possible", 22),
             T("only if the point lies within r of it.", 22),
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.08).next_to(box, DOWN, aligned_edge=LEFT,
                                                               buff=0.35)
         self.play(FadeIn(rule), run_time=0.6)
-        win = DashedLine  # noqa: F841 (placeholder to keep imports tidy)
+        hold(self, rule)
         window = DashedVMobject(Circle(radius=fr.len(r), color=GOOD, stroke_width=3).move_to(
             fr(p)), num_dashes=60)
         wlab = VGroup(DashedLine(ORIGIN, 0.5 * RIGHT, color=GOOD, stroke_width=3),
                       T("the window  |c − p| ≤ r", 20, GOOD)).arrange(RIGHT, buff=0.15)
         wlab.next_to(rule, DOWN, aligned_edge=LEFT, buff=0.25)
         self.play(Create(window), FadeIn(wlab), run_time=1.0)
-        self.wait(2.0)
+        hold(self, wlab, at_least=2.0)
 
         # ---- 4. all positions of the orbit -------------------------------------------------------
         states, _ = orbit_states(p, r)
@@ -146,6 +151,7 @@ class B1Lattice(Scene):
         self.play(FadeIn(cap), LaggedStart(*[Create(b) for b in bars], lag_ratio=0.02),
                   LaggedStart(*[FadeIn(d) for d in dots], lag_ratio=0.02), run_time=3.5)
         self.bring_to_front(pd, halo, plab)
+        hold(self, cap)
         leg = VGroup(
             VGroup(Dot(radius=0.06, color=LEFT_C), T("left centres (can turn a)", 20)).arrange(
                 RIGHT, buff=0.15),
@@ -156,7 +162,7 @@ class B1Lattice(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.1).next_to(wlab, DOWN, aligned_edge=LEFT,
                                                              buff=0.2)
         self.play(FadeIn(leg), run_time=0.8)
-        self.wait(2.5)
+        hold(self, leg, at_least=2.5)
 
         # ---- 5. the hidden coordinates -------------------------------------------------------------
         dense = VGroup(
@@ -166,9 +172,9 @@ class B1Lattice(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.07)
         dense.next_to(leg, DOWN, aligned_edge=LEFT, buff=0.3)
         self.play(FadeIn(dense), run_time=0.8)
-        self.wait(1.5)
+        hold(self, dense, at_least=1.5)
         # inset: conjugates of the window centres
-        ins_c = np.array([2.35, -2.9, 0.0])
+        ins_c = np.array([2.35, -3.05, 0.0])  # low enough to clear the text block above
         ins_s = 0.04
         frame_ins = RoundedRectangle(width=2.3, height=1.25, corner_radius=0.1, color=FAINT,
                                      stroke_width=1.5).move_to(ins_c)
@@ -183,4 +189,4 @@ class B1Lattice(Scene):
                                                                   buff=0.05)
         ins_lab.next_to(frame_ins, RIGHT, buff=0.2)
         self.play(FadeIn(ins_lab), run_time=0.5)
-        self.wait(4.0)
+        hold(self, ins_lab, at_least=4.0)

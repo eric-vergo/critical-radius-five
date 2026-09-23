@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Render every scene: 1080p60 MP4, a GIF preview, and two stills of the final frame
-# (dark theme for the site, light theme for the paper).
+# (dark theme, and light theme for the paper's figures).
 #
 #   ./render.sh                 # all scenes
 #   ./render.sh B2Levels ...    # only the named scenes
@@ -49,10 +49,16 @@ for entry in "${SCENES[@]}"; do
   mp4=$(ls -t "$BUILD"/dark/videos/"$module"/*/"$name".mp4 | head -1)
   cp "$mp4" "$OUT/mp4/$name.mp4"
 
-  # 2. the GIF preview: 640 px wide, 12 fps, optimised palette
-  ffmpeg -loglevel error -y -i "$OUT/mp4/$name.mp4" -vf \
-    "fps=12,scale=640:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle" \
-    -loop 0 "$OUT/gif/$name.gif"
+  # 2. the GIF preview: 1280 px wide, 12 fps (10 fps if that would exceed 25 MB), optimised palette
+  gif="$OUT/gif/$name.gif"
+  for fps in 12 10; do
+    ffmpeg -loglevel error -y -i "$OUT/mp4/$name.mp4" -vf \
+      "fps=$fps,scale=1280:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=256:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle" \
+      -loop 0 "$gif"
+    size=$(( $(wc -c < "$gif") ))
+    echo "  $name.gif: $fps fps, $size bytes"
+    [ "$size" -le $((25 * 1024 * 1024)) ] && break
+  done
 
   # 3. the last frame as a still, in both themes
   for theme in dark light; do

@@ -13,7 +13,7 @@ from manim import *  # noqa: F401,F403
 from lib.geometry import CC, E, F, G, PHI, RC, chord_point, PIECES
 from lib.style import (
     BG, CHORD_C, FAINT, HOT, I1_C, I2_C, I3_C, INK, LEFT_C, LENS_C, MUTED, PIECE_C, RIGHT_C,
-    Frame, M, T, disk, lens_shape, seg,
+    Frame, M, T, disk, hold, lens_shape, seg,
 )
 from lib.anim import turn_anims, turn_arrow
 
@@ -25,6 +25,7 @@ class A1Setting(Scene):
 
         title = T("Two disks, five-fold turns", size=34, weight="BOLD").to_corner(UL, buff=0.35)
         self.add(title)
+        hold(self, title)
 
         L = disk(fr, -1, r, LEFT_C)
         R = disk(fr, 1, r, RIGHT_C)
@@ -33,6 +34,7 @@ class A1Setting(Scene):
         cl = M("-1", 28, LEFT_C).next_to(fr(-1 + 0j), UP, buff=0.1)
         cr = M("+1", 28, RIGHT_C).next_to(fr(1 + 0j), DOWN, buff=0.1)
         self.play(FadeIn(cl), FadeIn(cr), run_time=0.5)
+        hold(self, cl, cr)
 
         # --- the two turns ------------------------------------------------------------------
         panel_x = 2.75
@@ -46,11 +48,13 @@ class A1Setting(Scene):
         tb2.shift(0.05 * UP)
         panel.move_to([panel_x, 2.2, 0], aligned_edge=LEFT)
         self.play(FadeIn(zeta), FadeIn(ta), FadeIn(ta2), run_time=0.8)
+        hold(self, zeta, ta, ta2)
         arr = turn_arrow(fr, "a", r, LEFT_C)
         self.play(Create(arr), run_time=0.5)
         self.play(*turn_anims(fr, "a", [L.marks]), run_time=1.3)
         self.play(FadeOut(arr), run_time=0.3)
         self.play(FadeIn(tb), FadeIn(tb2), run_time=0.6)
+        hold(self, tb, tb2)
         arr = turn_arrow(fr, "b", r, RIGHT_C)
         self.play(Create(arr), run_time=0.5)
         self.play(*turn_anims(fr, "b", [R.marks]), run_time=1.3)
@@ -60,7 +64,7 @@ class A1Setting(Scene):
         lens = lens_shape(fr, r)
         lens_lab = T("the lens", 24, LENS_C).move_to(fr(0 + 1.45j))
         self.play(FadeIn(lens), FadeIn(lens_lab), run_time=1.0)
-        self.wait(1.2)
+        hold(self, lens_lab, at_least=1.2)
 
         # --- the chord E'E -------------------------------------------------------------------
         Ep = -E
@@ -72,6 +76,7 @@ class A1Setting(Scene):
         lE = M("E", 30).next_to(fr(E), UR, buff=0.06)
         lEp = M("E'", 30).next_to(fr(Ep), DL, buff=0.06)
         self.play(FadeIn(dE), FadeIn(dEp), FadeIn(lE), FadeIn(lEp), run_time=0.6)
+        hold(self, lE, lEp)
 
         rad_l = DashedLine(fr(-1 + 0j), fr(E), color=LEFT_C, stroke_width=2.5, dash_length=0.08)
         rad_r = DashedLine(fr(1 + 0j), fr(Ep), color=RIGHT_C, stroke_width=2.5, dash_length=0.08)
@@ -83,11 +88,11 @@ class A1Setting(Scene):
         ).arrange(DOWN, aligned_edge=LEFT, buff=0.16).move_to([panel_x, 0.05, 0], aligned_edge=LEFT)
         fE.align_to(panel, LEFT)
         self.play(FadeIn(fE), run_time=0.8)
-        self.wait(1.0)
-        note = T("E on the rim of the left disk,\nE' on the rim of the right disk", 20, MUTED,
+        hold(self, fE, at_least=1.0)
+        note = T("E on the rim of the left disk,\nE′ on the rim of the right disk", 20, MUTED,
                  line_spacing=0.8).next_to(fE, DOWN, aligned_edge=LEFT, buff=0.2)
         self.play(FadeIn(note), run_time=0.6)
-        self.wait(2.0)
+        hold(self, note, at_least=2.0)
 
         # --- the points F', G', G, F and the three pieces -------------------------------------
         pieces = VGroup()
@@ -107,6 +112,7 @@ class A1Setting(Scene):
             labels.add(M(name, 26).move_to(fr(z + off * nrm)))
         self.play(FadeOut(rad_l), FadeOut(rad_r), run_time=0.4)
         self.play(Create(ticks), FadeIn(labels), run_time=0.8)
+        hold(self, labels)
         self.play(LaggedStart(*[Create(p) for p in pieces], lag_ratio=0.5), run_time=1.6)
         self.bring_to_front(dE, dEp)
 
@@ -123,10 +129,12 @@ class A1Setting(Scene):
         legend.arrange(DOWN, aligned_edge=LEFT, buff=0.12).next_to(fF, DOWN, aligned_edge=LEFT,
                                                                      buff=0.25)
         self.play(FadeIn(fF), run_time=0.6)
+        hold(self, fF)
         self.play(FadeIn(legend), run_time=0.8)
+        hold(self, legend)
 
         # --- the number ------------------------------------------------------------------------
         num = M(r"r=\sqrt{3+\varphi}=2.148961\ldots", 34).to_corner(DL, buff=0.35)
         num.shift(0.1 * UP)
         self.play(Write(num), run_time=1.2)
-        self.wait(4.0)
+        hold(self, num, at_least=4.0)

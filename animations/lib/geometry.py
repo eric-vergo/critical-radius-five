@@ -9,9 +9,10 @@ Conventions (as in the Lean development):
   capital letters are inverses (``A = a^-1``, ``B = b^-1``);
 * words act left to right: the word ``"ab"`` first applies ``a``, then ``b``.
 
-Floating point is used only to draw pictures.  The lattice ``Z[zeta_5]`` is handled with integer
-coordinates in the basis ``1, w, w^2, w^3`` (``w = exp(2 pi i / 10)``), exactly as in the Lean
-module ``Lattice``, so levels and classes are exact integers.
+Floating point is used only to draw pictures.  The lattice ``Z[zeta_5] = Z[zeta_10]`` is handled
+with integer coordinates in the basis ``1, w, w^2, w^3`` (``w = exp(2 pi i / 10)``), so levels and
+classes are exact integers.  (The Lean library, ``CriticalRadiusFive/Cyclotomic.lean``, uses the
+power basis ``1, zeta, zeta^2, zeta^3`` instead; both are bases of the same lattice.)
 """
 from __future__ import annotations
 
