@@ -43,7 +43,7 @@
 <text xml:space="preserve" text-anchor="start" x="201.25" y="-1057.53" font-family="'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="600" font-size="21.00" fill="#c2410c">(r) is finite for r &lt; √(3 + φ)</text>
 </g>
 
-<g id="edge4" class="edge">
+<g id="edge3" class="edge">
 
 <path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1813.48,-128.02C1784.05,-149.47 1748.05,-175.71 1715.36,-199.53"/>
 <polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1709.05,-204.13 1713.39,-196.51 1710.66,-202.65 1715.37,-199.22 1715.51,-199.42 1715.66,-199.62 1710.95,-203.06 1717.63,-202.33 1709.05,-204.13"/>
@@ -85,7 +85,7 @@
 <polygon fill="#1e293b" stroke="#1e293b" stroke-width="2.4" points="1440.84,-1087.54 1443.72,-1078.1 1441.36,-1085.89 1446.24,-1080.31 1446.77,-1080.77 1447.3,-1081.23 1442.41,-1086.81 1449.82,-1083.43 1440.84,-1087.54"/>
 </g>
 
-<g id="edge3" class="edge">
+<g id="edge4" class="edge">
 
 <path fill="none" stroke="#7fa6ec" stroke-width="1.5" d="M1367.67,-134.19C1408.82,-155.37 1457.19,-180.26 1500.76,-202.69"/>
 <polygon fill="#7fa6ec" stroke="#7fa6ec" stroke-width="1.5" points="1507.78,-206.3 1499.02,-205.84 1505.73,-205.53 1500.55,-202.86 1500.67,-202.64 1500.78,-202.42 1505.96,-205.08 1502.31,-199.44 1507.78,-206.3"/>

@@ -54,8 +54,8 @@ digraph proof {
   "thm:main" [shape=box, style="rounded,filled", color="#0f172a", fillcolor="#0f172a", penwidth=3.0, margin="0.10,0.07", label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="3" COLOR="#475569" WIDTH="214"><TR><TD ALIGN="LEFT" VALIGN="BOTTOM" WIDTH="100"><FONT FACE="Avenir Next Demi-Bold" POINT-SIZE="10" COLOR="#fcd34d">THEOREM 4.1</FONT></TD><TD ALIGN="RIGHT" VALIGN="BOTTOM" WIDTH="114"><FONT FACE="Menlo" POINT-SIZE="8" COLOR="#cbd5e1">thm:main</FONT></TD></TR><HR/><TR><TD COLSPAN="2" ALIGN="LEFT" BALIGN="LEFT"><FONT FACE="Avenir Next Demi-Bold" POINT-SIZE="21" COLOR="#ffffff">The critical radius of GG<SUB><FONT POINT-SIZE="14">5</FONT></SUB></FONT></TD></TR><TR><TD COLSPAN="2" ALIGN="LEFT"><FONT FACE="STIX Two Text" POINT-SIZE="26" COLOR="#fde68a"><I>r</I><SUB><FONT POINT-SIZE="17"><I>c</I></FONT></SUB>(5) = √(3 + <I>φ</I>) = 2.14896…</FONT></TD></TR><TR><TD COLSPAN="2" ALIGN="LEFT" BALIGN="LEFT"><FONT FACE="Menlo" POINT-SIZE="11" COLOR="#fde68a">criticalRadius_five<BR/>finite_GG_five_iff</FONT></TD></TR></TABLE>>];
   "def:criticalRadius" -> "lemma:threshold" [color="#94a3b8", weight=3];
   "lemma:finite-mono" -> "lemma:threshold" [color="#94a3b8", weight=3];
-  "def:turns" -> "lemma:words" [color="#7fa6ec"];
   "def:points" -> "lemma:words" [color="#7fa6ec", weight=3];
+  "def:turns" -> "lemma:words" [color="#7fa6ec"];
   "lemma:convex-words" -> "lemma:words" [color="#7fa6ec", weight=3];
   "lemma:normal-form" -> "lemma:typed-walk" [color="#f0a070", weight=3];
   "def:group" -> "thm:lower" [color="#f0a070"];
